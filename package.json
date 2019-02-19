@@ -1,0 +1,27 @@
+{
+  "name": "tech-startup",
+  "version": "1.0.0",
+  "description": "tech developers networking system",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SeanP8/Project-3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SeanP8/Project-3/issues"
+  },
+  "homepage": "https://github.com/SeanP8/Project-3#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mysql2": "^1.6.5",
+    "passport": "^0.4.0",
+    "passport-github2": "^0.1.11",
+    "passport-google-oauth20": "^1.0.0",
+    "sequelize": "^4.42.0"
+  }
+}
