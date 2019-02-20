@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/SeanP8/Project-3#readme",
   "dependencies": {
+    "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "mysql2": "^1.6.5",
     "passport": "^0.4.0",
