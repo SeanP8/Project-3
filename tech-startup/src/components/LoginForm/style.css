@@ -12,3 +12,7 @@ h2,h6{
     font-family: 'Nanum Gothic', sans-serif;
 
 }
+#loginBtnBox{
+    border: 2px black solid;
+    margin: 0 auto
+}

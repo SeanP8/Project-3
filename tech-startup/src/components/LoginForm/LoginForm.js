@@ -1,5 +1,7 @@
 import React from "react";
 import Wrapper from "../Wrapper/Wrapper";
+import GitHubLoginBtn from "../GitHubLoginBtn/GitHubLoginBtn";
+import GoogleLoginBtn from "../GoogleLoginBtn/GoogleLoginBtn";
 import "./style.css"
 
 class LoginForm extends React.Component {
@@ -30,6 +32,10 @@ class LoginForm extends React.Component {
                             <input type="submit" className="btn btn-outline-success"/>
                         </div>
                     </form>
+                    <h2>Login</h2>
+                    <h6>With GitHub or Google+</h6>
+                        <GitHubLoginBtn/>
+                        <GoogleLoginBtn/>
                 </Wrapper>
             </div>
         );
