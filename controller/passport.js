@@ -1,6 +1,6 @@
-const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-const keys = require('../config/keys');
+const passport = require("passport");
+const GoogleStrategy = require("passport-google-oauth20");
+const keys = require("../config/keys");
 
 // Use the GoogleStrategy within Passport.
 //   Strategies in Passport require a `verify` function, which accept
@@ -22,7 +22,7 @@ const keys = require('../config/keys');
 passport.use(
   new GoogleStrategy({
     // options for google strategy
-    callbackURL:'/auth/google/redirect',
+    callbackURL:"/auth/google/redirect",
     clientID: keys.google.clientID,
     clientSecret: keys.google.clientSecret
   }, () => {

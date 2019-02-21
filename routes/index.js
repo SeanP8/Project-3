@@ -1,5 +1,6 @@
 const path = require("path");
 const router = require("express").Router();
+const passport = require("passport");
 // const apiRoutes = require("./api");
 
 // // API Routes
@@ -22,9 +23,12 @@ router.get("/logout", (req, res) => {
 })
 
 //Auth login with google
-router.get("/google", (req, res) => {
-  //handle with passport here
-  res.send("logging in with google");
-});
+router.get("/google", passport.authenticate("google", {
+  scope: ["profile"]
+}));
+
+router.get("/google/redirect", (req,res) => {
+  res.send("you reached the callback URI");
+})
 
 module.exports = router;
