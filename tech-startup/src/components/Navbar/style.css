@@ -1,3 +1,11 @@
-img{
-    border-radius: 7px;
+button{
+    float: right;
+    margin-left: 10px;
+    border-radius: 4px;
+}
+.password, .email{
+    float: right;
+    margin-left: 10px;
+    margin-top: 4px;
+    border-radius: 4px;
 }

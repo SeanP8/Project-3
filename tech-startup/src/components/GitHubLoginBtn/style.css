@@ -1,0 +1,12 @@
+#gitHubLoginBtn{
+    clear: both;
+    display: block;
+    margin-right: 40%;
+    margin-bottom: 10px;
+    background-color: rgb(22, 20, 20);
+    color: whitesmoke;
+    width: 20%;
+  }
+  #gitHubLoginBtn:hover{
+    background-color:rgb(43, 38, 38);
+  }

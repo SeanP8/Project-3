@@ -1,0 +1,11 @@
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    padding: 20px;
+    margin-top: 20px;
+    color: gainsboro;
+    background-color: #373c42;
+}
