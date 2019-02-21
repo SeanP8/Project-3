@@ -1,11 +1,13 @@
 import React from "react";
 import "./style.css";
+import googlelogo from "./img/googlelogo.jpg";
 
-function Login(props) {
+function Login() {
     return (
         <main>
-             <h1>Login with Google</h1>
-            <a className="google-btn" href="/auth/google">Google+</a>
+            <h3>Login with Google</h3><br />
+            <a className="google-btn" href="/auth/google">
+                <img className="google-logo" src={googlelogo} alt="google-logo" />Google+</a>
         </main>
     );
 }
