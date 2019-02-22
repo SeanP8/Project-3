@@ -1,5 +1,5 @@
 const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth20");
+const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 const keys = require("../config/keys");
 
 // Use the GoogleStrategy within Passport.
@@ -19,6 +19,32 @@ const keys = require("../config/keys");
 //   }
 // ));
 
+// passport.serializeUser(function (user, done) {
+//   done(null, user);
+// });
+
+// passport.deserializeUser(function (user, done) {
+//   done(null, user);
+// });
+
+// passport.use(
+//   new GoogleStrategy({
+//     // options for google strategy
+//     callbackURL: "/auth/google/redirect",
+//     clientID: keys.google.clientID,
+//     clientSecret: keys.google.clientSecret
+//   },
+//     function (accessToken, refreshToken, profile, done) {
+//       var userData = {
+//         email: profile.emails[0].value,
+//         name: profile.displayName,
+//         token: accessToken
+//       };
+//       done(null, userData);
+//     }
+//   )
+// );
+
 passport.use(
   new GoogleStrategy({
     // options for google strategy
@@ -29,3 +55,5 @@ passport.use(
     // passport callback function
   })
 )
+
+module.exports = passportSetup;

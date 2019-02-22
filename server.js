@@ -14,7 +14,11 @@ app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(routes);
-app.use('/auth', authRoutes);
+app.use("/auth", authRoutes);
+app.use(passportSetup);
+
+// app.use(passportSetup.initialize()); 
+// require("./controller/passport");
 
 if(process.env.NODE_ENV === "production") {
     app.use(express.static("tech-startup/build"));

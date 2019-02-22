@@ -2,6 +2,7 @@ import React from "react";
 import "./style.css";
 
 class GoogleLoginBtn extends React.Component {
+
     render() {
         return (
             <div>
