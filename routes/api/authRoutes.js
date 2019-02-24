@@ -1,7 +1,7 @@
 require("../../controller/passport");
 var passport = require("passport");
 
-module.exports = function(app) {
+module.exports = function (app) {
 
   app.get(
     "/auth/github",
@@ -9,16 +9,39 @@ module.exports = function(app) {
       scope: ["profile", "email"]
     })
   );
-  
-  app.get("/github/callback", passport.authenticate("github"), function(
+
+  app.get("/github/callback", passport.authenticate("github"), function (
     req,
     res
   ) {
     res.redirect("/home");
   });
-  
-  app.get("api/logout", function(req, res) {
+
+  app.get("api/logout", function (req, res) {
     req.logout();
     res.redirect("/");
-  });  
+  });
+
+  // Google //
+
+  // app.get("/auth/google",
+  //   passport.authenticate("google", { scope: ["https://www.googleapis.com/auth/plus.login"] }));
+
+  // app.get("/auth/google",
+  //   passport.authenticate("google", {
+  //     scope: ["profile", "email"]
+  //   })
+  // );
+
+  // app.get("/google/redirect",
+  //   passport.authenticate("google"),
+  //   function (req, res) {
+  //     res.redirect("/home");
+  //   });
+
+  // app.get("api/logout", function (req, res) {
+  //   req.logout();
+  //   res.redirect("/");
+  // });
+
 }
