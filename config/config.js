@@ -1,13 +1,13 @@
 module.exports = {
   development: {
-    username: process.env.username,
+    username: "root",
     password: process.env.password,
     database: process.env.database,
     host: process.env.host,
     dialect: process.env.dialect
   },
   test: {
-    username: process.env.username,
+    username: "root",
     password: process.env.password,
     database: "database_test",
     host: process.env.host,
