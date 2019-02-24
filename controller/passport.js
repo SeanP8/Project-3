@@ -1,61 +1,3 @@
-const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
-const keys = require("../config/keys");
-
-// Use the GoogleStrategy within Passport.
-//   Strategies in Passport require a `verify` function, which accept
-//   credentials (in this case, an accessToken, refreshToken, and Google
-//   profile), and invoke a callback with a user object.
-// passport.use(
-//   new GoogleStrategy({
-//     clientID: GOOGLE_CLIENT_ID,
-//     clientSecret: GOOGLE_CLIENT_SECRET,
-//     callbackURL: "http://www.example.com/auth/google/callback"
-//   },
-//   function(accessToken, refreshToken, profile, done) {
-//        User.findOrCreate({ googleId: profile.id }, function (err, user) {
-//          return done(err, user);
-//        });
-//   }
-// ));
-
-// passport.serializeUser(function (user, done) {
-//   done(null, user);
-// });
-
-// passport.deserializeUser(function (user, done) {
-//   done(null, user);
-// });
-
-// passport.use(
-//   new GoogleStrategy({
-//     // options for google strategy
-//     callbackURL: "/auth/google/redirect",
-//     clientID: keys.google.clientID,
-//     clientSecret: keys.google.clientSecret
-//   },
-//     function (accessToken, refreshToken, profile, done) {
-//       var userData = {
-//         email: profile.emails[0].value,
-//         name: profile.displayName,
-//         token: accessToken
-//       };
-//       done(null, userData);
-//     }
-//   )
-// );
-
-passport.use(
-  new GoogleStrategy({
-    // options for google strategy
-    callbackURL:"/auth/google/redirect",
-    clientID: keys.google.clientID,
-    clientSecret: keys.google.clientSecret
-  }, () => {
-    // passport callback function
-  })
-)
-
 //Github//
 
 module.exports = passportSetup;
@@ -66,43 +8,89 @@ var github = "GITHUB";
 
 // authenticate session persistence
 passport.serializeUser(function (user, cb) {
-    cb(null, user.id)
+  cb(null, user.id)
 });
 
 passport.deserializeUser(function (id, cb) {
-    db.Auths.findById(id).then(function (user) {
-        cb(null, user);
-    });
+  db.Auths.findById(id).then(function (user) {
+    cb(null, user);
+  });
 });
 
 // config for github 
 passport.use(
-    new GitHubStrategy(
-        {
-            clientID: process.env.GITHUB_CLIENT_ID,
-            clientSecret: process.env.GITHUB_CLIENT_SECRET,
-            callbackURL: process.env.GITHUB_CALLBACK_URL
-        },
-        function (accessToken, refreshToken, profile, cb) {
-            db.Auths.findOne({
-                where: { authModeID: profile.id }
-            }).then(function (existingUser) {
-                if (existingUser) {
-                    cb(null, existingUser);
-                } else {
-                    db.Auths.create({
-                        firstName: profile.name.givenName,
-                        lastName: profile.name.familyName,
-                        email: profile.emails[0].value,
-                        avatar: profile.photos[0].value,
-                        authMode: github,
-                        authModeID: profile.id
-                    }).then(function (user) {
-                        console.log(user.id);
-                        cb(null, user);
-                    });
-                }
-            });
+  new GitHubStrategy(
+    {
+      clientID: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      callbackURL: process.env.GITHUB_CALLBACK_URL
+    },
+    function (accessToken, refreshToken, profile, cb) {
+      db.Auths.findOne({
+        where: { authModeID: profile.id }
+      }).then(function (existingUser) {
+        if (existingUser) {
+          cb(null, existingUser);
+        } else {
+          db.Auths.create({
+            firstName: profile.name.givenName,
+            lastName: profile.name.familyName,
+            email: profile.emails[0].value,
+            avatar: profile.photos[0].value,
+            authMode: github,
+            authModeID: profile.id
+          }).then(function (user) {
+            console.log(user.id);
+            cb(null, user);
+          });
         }
-    )
+      });
+    }
+  )
 );
+
+//Google//
+
+const passport = require("passport");
+const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
+
+passport.serializeUser(function (user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function (id, done) {
+  db.googleAuths.findById(id).then(function (user) {
+    done(null, user);
+  });
+});
+
+passport.use(new GoogleStrategy({
+  // options for google strategy
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  callbackURL: "http://localhost:3000/auth/google/redirect"
+},
+  // passport callback function
+  function (accessToken, refreshToken, profile, done) {
+    db.googleAuths.findOne({
+      where: { googleId: profile.id }
+    }).then(function (existingUser) {
+      if (existingUser) {
+        done(null, existingUser);
+      } else {
+        db.googleAuths.create({
+          firstName: profile.name.givenName,
+          lastName: profile.name.familyName,
+          email: profile.emails[0].value,
+          avatar: profile.photos[0].value,
+          googleAuthMode: google,
+          googleAuthModeID: profile.id
+        }).then(function (user) {
+          console.log(user.id);
+          return done(null, user);
+        });
+      }
+
+    });
+  }
+));

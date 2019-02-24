@@ -14,20 +14,20 @@ router.get(
   })
 );
 
-router.get("/auth/github/callback", passport.authenticate("github"), function(
+router.get("/auth/github/callback", passport.authenticate("github"), function (
   req,
   res
 ) {
   res.redirect("/home");
 });
 
-router.get("api/logout", function(req, res) {
+router.get("api/logout", function (req, res) {
   req.logout();
   res.redirect("/");
 });
 
 // If no API routes are hit, send the React app
-router.use(function(req, res) {
+router.use(function (req, res) {
   res.sendFile(path.join(__dirname, "../tech-startup/build/index.html"));
 });
 
@@ -45,24 +45,18 @@ router.use(function(req, res) {
 //   }
 // );
 
-// //Auth login
-// router.get("/login", (req, res) => {
-//   res.render("login");
-// });
+router.get("/auth/google",
+  passport.authenticate("google", { scope: ["https://www.googleapis.com/auth/plus.login"] }));
 
-// // Auth logout
-// router.get("/logout", (req, res) => {
-//   //handle with passport here
-//   res.send("logging out");
-// })
+router.get("/auth/google/redirect",
+  passport.authenticate("google", { failureRedirect: "/login" }),
+  function (req, res) {
+    res.redirect("/home");
+  });
 
-//Auth login with google
-router.get("/google", passport.authenticate("google", {
-  scope: ["profile", "email", "openid"]
-}));
-
-router.get("/google/redirect", (req,res) => {
-  res.send("you reached the callback URI");
-})
+router.get("api/logout", function (req, res) {
+  req.logout();
+  res.redirect("/");
+});
 
 module.exports = router;
