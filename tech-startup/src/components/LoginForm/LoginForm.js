@@ -81,11 +81,11 @@ class LoginForm extends React.Component {
           <h2>Sign Up</h2>
           <h6>It's free and always will be</h6>
           <hr />
-          <form onSubmit={this.handleSubmit}>
+          <form id="loginForm" onSubmit={this.handleSubmit}>
             <Input
               name="firstname"
               value={account.firstname}
-              label="firstname"
+              label="First Name"
               onChange={this.handleChange}
               error={errors.firstname}
             />
@@ -93,7 +93,7 @@ class LoginForm extends React.Component {
             <Input
               name="lastname"
               value={account.lastname}
-              label="lastname"
+              label="Last Name"
               onChange={this.handleChange}
               error={errors.lastname}
             />
@@ -101,7 +101,7 @@ class LoginForm extends React.Component {
             <Input
               name="email"
               value={account.email}
-              label="email"
+              label="Email"
               onChange={this.handleChange}
               error={errors.email}
             />
@@ -109,7 +109,7 @@ class LoginForm extends React.Component {
             <Input
               name="password"
               value={account.password}
-              label="password"
+              label="Password"
               onChange={this.handleChange}
               error={errors.password}
             />
