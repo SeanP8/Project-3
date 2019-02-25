@@ -2,11 +2,11 @@
 
 module.exports = passportSetup;
 var GitHubStrategy = require('passport-github').Strategy;
-// const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
+const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 var passport = require("passport");
 var db = require("../models");
 var github = "GITHUB";
-// var google = "GOOGLE";
+var google = "GOOGLE";
 
 // authenticate session persistence
 passport.serializeUser(function (user, cb) {
@@ -51,45 +51,45 @@ passport.use(
   )
 );
 
-// //Google//
+//Google//
 
-// passport.serializeUser(function (user, done) {
-//   done(null, user.id);
-// });
+passport.serializeUser(function (user, done) {
+  done(null, user.id);
+});
 
-// passport.deserializeUser(function (id, done) {
-//   db.googleAuths.findById(id).then(function (user) {
-//     done(null, user);
-//   });
-// });
+passport.deserializeUser(function (id, done) {
+  db.googleAuths.findById(id).then(function (user) {
+    done(null, user);
+  });
+});
 
-// passport.use(new GoogleStrategy({
-//   // options for google strategy
-//   clientID: process.env.GOOGLE_CLIENT_ID,
-//   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-//   callbackURL: process.env.GOOGLE_CALLBACK_URL
-// },
-//   // passport callback function
-//   function (accessToken, refreshToken, profile, done) {
-//     db.googleAuths.findOne({
-//       where: { googleId: profile.id }
-//     }).then(function (existingUser) {
-//       if (existingUser) {
-//         done(null, existingUser);
-//       } else {
-//         db.googleAuths.create({
-//           firstName: profile.name.givenName,
-//           lastName: profile.name.familyName,
-//           email: profile.emails[0].value,
-//           avatar: profile.photos[0].value,
-//           googleAuthMode: google,
-//           googleAuthModeID: profile.id
-//         }).then(function (user) {
-//           console.log(user.id);
-//           return done(null, user);
-//         });
-//       }
+passport.use(new GoogleStrategy({
+  // options for google strategy
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  callbackURL: process.env.GOOGLE_CALLBACK_URL
+},
+  // passport callback function
+  function (accessToken, refreshToken, profile, done) {
+    db.googleAuths.findOne({
+      where: { googleId: profile.id }
+    }).then(function (existingUser) {
+      if (existingUser) {
+        done(null, existingUser);
+      } else {
+        db.googleAuths.create({
+          firstName: profile.name.givenName,
+          lastName: profile.name.familyName,
+          email: profile.emails[0].value,
+          avatar: profile.photos[0].value,
+          googleAuthMode: google,
+          googleAuthModeID: profile.id
+        }).then(function (user) {
+          console.log(user.id);
+          return done(null, user);
+        });
+      }
 
-//     });
-//   }
-// ));
+    });
+  }
+));

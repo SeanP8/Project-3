@@ -24,8 +24,8 @@ module.exports = function (app) {
 
   // Google //
 
-  // app.get("/auth/google",
-  //   passport.authenticate("google", { scope: ["https://www.googleapis.com/auth/plus.login"] }));
+  app.get("/auth/google",
+    passport.authenticate("google", { scope: ["https://www.googleapis.com/auth/plus.login", "https://www.googleapis.com/auth/plus.me"] }));
 
   // app.get("/auth/google",
   //   passport.authenticate("google", {
@@ -33,15 +33,15 @@ module.exports = function (app) {
   //   })
   // );
 
-  // app.get("/google/redirect",
-  //   passport.authenticate("google"),
-  //   function (req, res) {
-  //     res.redirect("/home");
-  //   });
+  app.get("/google/redirect",
+    passport.authenticate("google"),
+    function (req, res) {
+      res.redirect("/home");
+    });
 
-  // app.get("api/logout", function (req, res) {
-  //   req.logout();
-  //   res.redirect("/");
-  // });
+  app.get("api/logout", function (req, res) {
+    req.logout();
+    res.redirect("/");
+  });
 
 }
