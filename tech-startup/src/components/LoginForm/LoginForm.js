@@ -3,12 +3,13 @@ import Wrapper from "../Wrapper/Wrapper";
 import GitHubLoginBtn from "../GitHubLoginBtn/GitHubLoginBtn";
 import GoogleLoginBtn from "../GoogleLoginBtn/GoogleLoginBtn";
 import Joi from "joi-browser";
-import Input from "./loginInput.js/input";
-import "./style.css";
 
-class LoginForm extends React.Component {
+import "./style.css";
+import Form from "../Form/form";
+
+class LoginForm extends Form {
   state = {
-    account: { firstname: "", lastname: "", email: "", password: "" },
+    data: { firstname: "", lastname: "", email: "", password: "" },
     errors: {}
   };
   schema = {
@@ -26,55 +27,11 @@ class LoginForm extends React.Component {
       .label("Pastname")
   };
 
-  validate = () => {
-    const { error } = Joi.validate(this.state.account, this.schema, {
-      abortEarly: false
-    });
-    if (!error) return null;
-    const errors = {};
-    for (let item of error.details) errors[item.path[0]] = item.message;
-    return errors;
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-
-    const errors = this.validate();
-
-    this.setState({ errors: errors || {} });
-    if (errors) return;
-
+  doSubmit = () => {
     console.log("submitted");
   };
 
-  validateProperty = ({ name, value }) => {
-    if (name === "firstname") {
-      if (value.trim() === "") return "Firstname is required";
-    }
-    if (name === "lastname") {
-      if (value.trim() === "") return "Lastname is required";
-    }
-    if (name === "email") {
-      if (value.trim() === "") return "Email is required";
-    }
-    if (name === "password") {
-      if (value.trim() === "") return "Password is required";
-    }
-  };
-
-  handleChange = ({ currentTarget: input }) => {
-    const errors = { ...this.state.errors };
-    const errorMessage = this.validateProperty(input);
-    if (errorMessage) errors[input.name] = errorMessage;
-    else delete errors[input.name];
-
-    const account = { ...this.state.account };
-    account[input.name] = input.value;
-    this.setState({ account });
-  };
-
   render() {
-    const { account, errors } = this.state;
     return (
       <div>
         <Wrapper>
@@ -82,41 +39,12 @@ class LoginForm extends React.Component {
           <h6>It's free and always will be</h6>
           <hr />
           <form onSubmit={this.handleSubmit}>
-            <Input
-              name="firstname"
-              value={account.firstname}
-              label="firstname"
-              onChange={this.handleChange}
-              error={errors.firstname}
-            />
+            {this.renderInput("firstname", "Firstname")}
+            {this.renderInput("lastname", "Lastname")}
+            {this.renderInput("email", "Email")}
+            {this.renderInput("password", "Password", "password")}
 
-            <Input
-              name="lastname"
-              value={account.lastname}
-              label="lastname"
-              onChange={this.handleChange}
-              error={errors.lastname}
-            />
-
-            <Input
-              name="email"
-              value={account.email}
-              label="email"
-              onChange={this.handleChange}
-              error={errors.email}
-            />
-
-            <Input
-              name="password"
-              value={account.password}
-              label="password"
-              onChange={this.handleChange}
-              error={errors.password}
-            />
-
-            <div className="form-group">
-              <input type="submit" className="btn btn-outline-success" />
-            </div>
+            {this.renderButton("Login")}
           </form>
           <h2>Login</h2>
           <h6>With GitHub or Google+</h6>
