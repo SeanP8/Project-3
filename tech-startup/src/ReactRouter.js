@@ -9,7 +9,6 @@ const ReactRouter = () => {
                 <BrowserRouter>
                 <Switch>
                     <Route exact path="/" component={Login}/>
-                    <Route path="/auth/google/" />
                     <Route component={NoMatch}/>
                 </Switch>
                 </BrowserRouter>

@@ -1,6 +1,5 @@
 //Github//
 
-module.exports = passportSetup;
 var GitHubStrategy = require('passport-github').Strategy;
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 var passport = require("passport");
