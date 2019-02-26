@@ -1,6 +1,13 @@
 module.exports = function(sequelize, DataTypes) {
-    var Auths = sequelize.define("Auths", {
+    var googleAuths = sequelize.define("googleAuths", {
         firstName: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1, 240]
+            }
+        },
+        lastName: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -18,14 +25,14 @@ module.exports = function(sequelize, DataTypes) {
                 len: [1, 240]
             }
         },
-        authMode: {
+        googleAuthMode: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        authModeID: {
+        googleAuthModeID: {
             type: DataTypes.STRING,
             allowNull: false
         }
     });
-    return Auths;
+    return googleAuths;
 }

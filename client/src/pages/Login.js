@@ -1,8 +1,7 @@
 import React from "react";
-import Navbar from "../../components/Navbar/Navbar";
-import LoginForm from "../../components/LoginForm/LoginForm";
-import Footer from "../../components/Footer/Footer";
-import "./style.css";
+import Navbar from "../components/Navbar";
+import LoginForm from "../components/LoginForm";
+import Footer from "../components/Footer";
 
 class Login extends React.Component {
     render() {

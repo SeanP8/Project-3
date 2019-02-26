@@ -1,10 +1,9 @@
 import React from "react";
-import Wrapper from "../Wrapper/Wrapper";
-import GitHubLoginBtn from "../GitHubLoginBtn/GitHubLoginBtn";
-import GoogleLoginBtn from "../GoogleLoginBtn/GoogleLoginBtn";
+import Wrapper from "./Wrapper";
+import GitHubLoginBtn from "./GitHubLoginBtn";
+import GoogleLoginBtn from "./GoogleLoginBtn";
 import Joi from "joi-browser";
-import Input from "./loginInput.js/input";
-import "./style.css";
+import Input from "./input";
 
 class LoginForm extends React.Component {
   state = {
