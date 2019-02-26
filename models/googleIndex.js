@@ -6,11 +6,11 @@ const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.js')[env];
-const googledb = {};
+const db = {};
 
 let sequelize;
-if (config.useEnvVariable) {
-  sequelize = new Sequelize(process.env[config.useEnvVariable], config);
+if (config.use_env_variable) {
+  sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
@@ -22,16 +22,16 @@ fs
   })
   .forEach(file => {
     const model = sequelize['import'](path.join(__dirname, file));
-    googledb[model.name] = model;
+    db[model.name] = model;
   });
 
-Object.keys(googledb).forEach(modelName => {
-  if (googledb[modelName].associate) {
-    googledb[modelName].associate(googledb);
+Object.keys(db).forEach(modelName => {
+  if (db[modelName].associate) {
+    db[modelName].associate(db);
   }
 });
 
-googledb.sequelize = sequelize;
-googledb.Sequelize = Sequelize;
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
 
-module.exports = googledb;
+module.exports = db;

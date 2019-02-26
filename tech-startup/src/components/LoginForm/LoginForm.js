@@ -1,8 +1,7 @@
 import React from "react";
 import Wrapper from "../Wrapper/Wrapper";
 import GitHubLoginBtn from "../GitHubLoginBtn/GitHubLoginBtn";
-//import GoogleLoginBtn from "../GoogleLoginBtn/GoogleLoginBtn";
-import GoogleLogin from "react-google-login";
+import GoogleLoginBtn from "../GoogleLoginBtn/GoogleLoginBtn";
 import Joi from "joi-browser";
 import Input from "./loginInput.js/input";
 import "./style.css";
@@ -122,7 +121,7 @@ class LoginForm extends React.Component {
           <h2>Login</h2>
           <h6>With GitHub or Google+</h6>
           <GitHubLoginBtn />
-          <GoogleLogin />
+          <GoogleLoginBtn />
         </Wrapper>
       </div>
     );

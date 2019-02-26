@@ -24,14 +24,14 @@ module.exports = function (app) {
 
   // Google //
 
-  app.get("/auth/google",
-    passport.authenticate("google", { scope: ["https://www.googleapis.com/auth/plus.login", "https://www.googleapis.com/auth/plus.me"] }));
-
   // app.get("/auth/google",
-  //   passport.authenticate("google", {
-  //     scope: ["profile", "email"]
-  //   })
-  // );
+  //   passport.authenticate("google", { scope: ["https://www.googleapis.com/auth/plus.login", "https://www.googleapis.com/auth/plus.me"] }));
+
+  app.get("/auth/google",
+    passport.authenticate("google", {
+      scope: ["profile", "email"]
+    })
+  );
 
   app.get("/google/redirect",
     passport.authenticate("google"),
