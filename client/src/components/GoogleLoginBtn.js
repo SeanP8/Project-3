@@ -9,7 +9,7 @@ class GoogleLoginBtn extends React.Component {
     render() {
         return (
             <div>
-            <button onClick={this.handleClick} type="button" id="googleLogInBtn" className="btn btn-gplus"><i className="fab fa-google-plus-g pr-1"></i>Google +</button>
+            <button onClick={this.handleClick} id="googleLogInBtn" type="button" className="btn btn-gplus"><i className="fab fa-google-plus-g pr-1"></i>Google +</button>
             </div>
         )
     }
