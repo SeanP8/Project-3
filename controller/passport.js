@@ -7,13 +7,13 @@ var db = require("../models");
 var github = "GITHUB";
 
 // authenticate session persistence
-passport.serializeUser(function (user, cb) {
-  cb(null, user.id)
+passport.serializeUser(function (user, done) {
+  done(null, user.id)
 });
 
-passport.deserializeUser(function (id, cb) {
+passport.deserializeUser(function (id, done) {
   db.Auths.findById(id).then(function (user) {
-    cb(null, user);
+    done(null, user);
   });
 });
 
@@ -25,23 +25,24 @@ passport.use(
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
       callbackURL: process.env.GITHUB_CALLBACK_URL
     },
-    function (accessToken, refreshToken, profile, cb) {
+    function (accessToken, refreshToken, profile, done) {
+      console.log(profile);
       db.Auths.findOne({
         where: { authModeID: profile.id }
       }).then(function (existingUser) {
         if (existingUser) {
-          cb(null, existingUser);
+          console.log("Logged In User : " + profile.id);
+          console.log("Logged In User : " + existingUser.id);
+          done(null, existingUser);
         } else {
           db.Auths.create({
-            firstName: profile.name.givenName,
-            lastName: profile.name.familyName,
-            email: profile.emails[0].value,
+            firstName: profile.displayName,
             avatar: profile.photos[0].value,
             authMode: github,
             authModeID: profile.id
           }).then(function (user) {
             console.log(user.id);
-            cb(null, user);
+            done(null, user);
           });
         }
       });

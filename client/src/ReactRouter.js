@@ -1,7 +1,8 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Login from "./pages/LoginPage/Login";
-import NoMatch from "./components/NoMatch/NoMatch";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Login from "./pages/Login";
+import Home from "./pages/HomePage";
+import NoMatch from "./components/NoMatch";
 
 const ReactRouter = () => {
         return (
@@ -9,7 +10,7 @@ const ReactRouter = () => {
                 <BrowserRouter>
                 <Switch>
                     <Route exact path="/" component={Login}/>
-                    <Route path="/auth/google/" />
+                    <Route path="/home" component={Home}/>
                     <Route component={NoMatch}/>
                 </Switch>
                 </BrowserRouter>
