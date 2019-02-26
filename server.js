@@ -1,7 +1,13 @@
 require("dotenv").config();
 const express = require("express");
 const passport = require("passport");
+<<<<<<< HEAD
 const cookieSession = require("cookie-session");
+=======
+const passportSetup = require("./controller/passport");
+
+const db = require("./models");
+>>>>>>> 31cc1b16149283448fa0890c92e326d1d21124ff
 const routes = require("./routes");
 const db = require("./models/");
 const app = express();

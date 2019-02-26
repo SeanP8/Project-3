@@ -1,10 +1,11 @@
 //Github//
 
-module.exports = passportSetup;
 var GitHubStrategy = require('passport-github').Strategy;
+const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 var passport = require("passport");
 var db = require("../models");
 var github = "GITHUB";
+var google = "GOOGLE";
 
 // authenticate session persistence
 passport.serializeUser(function (user, done) {
@@ -52,9 +53,6 @@ passport.use(
 
 //Google//
 
-const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
-
 passport.serializeUser(function (user, done) {
   done(null, user.id);
 });
@@ -69,7 +67,7 @@ passport.use(new GoogleStrategy({
   // options for google strategy
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: "http://localhost:3000/auth/google/redirect"
+  callbackURL: process.env.GOOGLE_CALLBACK_URL
 },
   // passport callback function
   function (accessToken, refreshToken, profile, done) {
