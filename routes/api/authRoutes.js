@@ -4,6 +4,7 @@ const passport = require("passport");
 
 router.route("/auth/github")
   .get(passport.authenticate("github", { scope: ["profile"] }));
+module.exports = function (app) {
 
 router.route("/auth/github/callback")
   .get(passport.authenticate("github"), function (req, res) {
@@ -21,12 +22,6 @@ router.route("/api/logout")
     res.redirect("http://localhost:3000/")
   })
 
-
-// Google //
-
-// app.get("/auth/google",
-//   passport.authenticate("google", { scope: ["https://www.googleapis.com/auth/plus.login", 
-//  "https://www.googleapis.com/auth/plus.me"] }));
 
 router.route("/auth/google")
   .get(passport.authenticate("google", {
@@ -52,3 +47,5 @@ router.route("/api/logout")
   })
 
 module.exports = router;
+}
+
