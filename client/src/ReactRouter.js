@@ -10,7 +10,10 @@ const ReactRouter = () => {
                 <BrowserRouter>
                 <Switch>
                     <Route exact path="/" component={Login}/>
+<<<<<<< HEAD:client/src/ReactRouter.js
                     <Route path="/home" component={Home}/>
+=======
+>>>>>>> 31cc1b16149283448fa0890c92e326d1d21124ff:tech-startup/src/ReactRouter.js
                     <Route component={NoMatch}/>
                 </Switch>
                 </BrowserRouter>
