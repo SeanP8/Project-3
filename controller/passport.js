@@ -1,7 +1,7 @@
 //Github//
 
 var GitHubStrategy = require('passport-github').Strategy;
-const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
+var GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 var passport = require("passport");
 var db = require("../models");
 var github = "GITHUB";
@@ -71,16 +71,17 @@ passport.use(new GoogleStrategy({
 },
   // passport callback function
   function (accessToken, refreshToken, profile, done) {
+    console.log(profile);
     db.googleAuths.findOne({
-      where: { googleId: profile.id }
+      where: { googleAuthModeId: profile.id }
     }).then(function (existingUser) {
       if (existingUser) {
+        console.log("Logged In User : " + profile.id);
+        console.log("Logged In User : " + existingUser.id);
         done(null, existingUser);
       } else {
         db.googleAuths.create({
-          firstName: profile.name.givenName,
-          lastName: profile.name.familyName,
-          email: profile.emails[0].value,
+          firstName: profile.displayName,
           avatar: profile.photos[0].value,
           googleAuthMode: google,
           googleAuthModeID: profile.id
