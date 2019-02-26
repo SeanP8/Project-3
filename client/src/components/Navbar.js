@@ -1,6 +1,5 @@
 import React from "react";
-import Wrapper from "../Wrapper/Wrapper";
-import "./style.css";
+import Wrapper from "./Wrapper";
 
 class Navbar extends React.Component {
     render() {

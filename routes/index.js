@@ -3,13 +3,18 @@ const router = require("express").Router();
 const apiRoutes = require("./api/authRoutes");
 
 // API Routes
-router.use("/auth/github", apiRoutes);
+router.use(apiRoutes);
 
 router.use("/auth/google", apiRoutes);
 
 // If no API routes are hit, send the React app
+<<<<<<< HEAD
 router.use(function (req, res) {
   res.sendFile(path.join(__dirname, "../tech-startup/build/index.html"));
+=======
+router.use(function(req, res) {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+>>>>>>> d1bd2375a0a280c760e0406f586d0906655be46f
 });
 
 
