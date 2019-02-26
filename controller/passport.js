@@ -1,7 +1,7 @@
-//Github//
+// Passport //
 
 var GitHubStrategy = require('passport-github').Strategy;
-const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 var passport = require("passport");
 var db = require("../models");
 var github = "GITHUB";
@@ -52,16 +52,6 @@ passport.use(
 );
 
 //Google//
-
-passport.serializeUser(function (user, done) {
-  done(null, user.id);
-});
-
-passport.deserializeUser(function (id, done) {
-  db.googleAuths.findById(id).then(function (user) {
-    done(null, user);
-  });
-});
 
 passport.use(new GoogleStrategy({
   // options for google strategy

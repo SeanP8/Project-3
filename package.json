@@ -28,9 +28,7 @@
     "passport": "^0.4.0",
     "passport-github": "^1.1.0",
     "passport-github2": "^0.1.11",
-    "passport-google-oauth": "^1.0.0",
     "passport-google-oauth20": "^1.0.0",
-    "react-github-login": "^1.0.3",
     "sequelize": "^4.42.0",
     "superagent": "^4.1.0"
   }
