@@ -2,7 +2,7 @@ body{
     background-image: url("./full-bloom.png");
 }
 footer{
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     text-align: center;
@@ -31,6 +31,7 @@ footer{
     background-color: rgb(221, 75, 57);
     color: whitesmoke;
     width: 20%;
+    margin-bottom: 100px;
   }
 #googleLogInBtn:hover{
     background-color: rgb(187, 55, 37);
@@ -55,7 +56,7 @@ h2,h6{
 }
 #loginBtnBox{
     border: 2px black solid;
-    margin: 0 auto
+    margin: 0 auto;
 }
 button{
     float: right;
@@ -69,6 +70,7 @@ button{
     border-radius: 4px;
 }
 .wrapper{
-    width: 1140px;
+    width: 100%;
     margin: 0 auto;
+    position: relative;
 }
