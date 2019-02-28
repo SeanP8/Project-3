@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const bcrypt = require("bcrypt-nodejs");
 const db = require('../../models');
 
 router.route("/api/users")
@@ -18,6 +19,7 @@ router.route("/api/user/:id")
             res.send(dbUser);
         })
     });
+
 router.route("/api/user")
     .get(function (req, res) {
         db.Auths.findOne({
@@ -28,8 +30,18 @@ router.route("/api/user")
             res.send(dbUser);
         })
     })
+    .post(function(req, res){
+        db.Auths.create({
+            firstName: req.body.firstName,
+            lastName: req.body.lastname,
+            password: bcrypt.hashSync(req.body.password),
+            email: req.body.email
+        }).then((dbAuth) => {
+            res.send(dbAuth);
+        })
+    })
 
-router.route("/api/projects")
+router.route("/api/projects/all")
     .get(function (req, res) {
         db.Projects.findAll()
             .then((dbProjects) => {
@@ -53,6 +65,15 @@ router.route("/api/projects")
             }
         }).then((dbProject) => {
             res.send(dbProject)
+        })
+    })
+    .post(function(req, res) {
+        db.Projects.create({
+            name: req.body.name,
+            description: req.body.description,
+            authID: req.user.id
+        }).then((dbProject) => {
+            res.send(dbProject);
         })
     })
 
