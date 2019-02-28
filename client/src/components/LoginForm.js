@@ -1,10 +1,8 @@
 import React from "react";
-import Wrapper from "../Wrapper/Wrapper";
+import Wrapper from "./Wrapper";
 
 import Joi from "joi-browser";
-import Form from "../Form/form";
-
-import "./style.css";
+import Form from "./Form/form";
 
 class LoginForm extends Form {
   state = {
