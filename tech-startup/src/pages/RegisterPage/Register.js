@@ -1,15 +1,15 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
-import LoginForm from "../../components/LoginForm/LoginForm";
+import RegisterForm from "../../components/RegisterForm/registerForm";
 import Footer from "../../components/Footer/Footer";
-import "./style.css";
+// import "./style.css";
 
 class Login extends React.Component {
   render() {
     return (
       <div>
         <Navbar />
-        <LoginForm />
+        <RegisterForm />
         <Footer />
       </div>
     );
