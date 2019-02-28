@@ -5,6 +5,7 @@ import Home from "./pages/HomePage";
 import NoMatch from "./components/NoMatch";
 
 const ReactRouter = () => {
+<<<<<<< HEAD
         return (
             <div>
                 <BrowserRouter>
@@ -19,5 +20,19 @@ const ReactRouter = () => {
             </div>
         );
     }
+=======
+  return (
+    <div>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route path="/home" component={Home} />
+          <Route component={NoMatch} />
+        </Switch>
+      </BrowserRouter>
+    </div>
+  );
+};
+>>>>>>> develop
 
 export default ReactRouter;

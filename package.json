@@ -18,6 +18,7 @@
   "proxy": "http://localhost:5000",
   "homepage": "https://github.com/SeanP8/Project-3#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "cookie-session": "^2.0.0-beta.3",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
@@ -26,6 +27,7 @@
     "passport": "^0.4.0",
     "passport-github": "^1.1.0",
     "passport-google-oauth20": "^1.0.0",
+    "react-toastify": "^4.5.2",
     "sequelize": "^4.42.0"
   }
 }
