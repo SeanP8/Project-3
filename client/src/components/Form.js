@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Input from "../input";
+import Input from "./Input";
 import Joi from "joi-browser";
 
 class Form extends Component {
@@ -45,7 +45,7 @@ class Form extends Component {
   };
   renderButton(label) {
     return (
-      <button disabled={this.validate()} className="btn btn-primary">
+      <button type="submit" disabled={this.validate()} className="btn btn-primary">
         Login
       </button>
     );

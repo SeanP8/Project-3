@@ -1,12 +1,8 @@
 import React from "react";
-import Wrapper from "../Wrapper/Wrapper";
-import GitHubLoginBtn from "../GitHubLoginBtn/GitHubLoginBtn";
-import GoogleLoginBtn from "../GoogleLoginBtn/GoogleLoginBtn";
+import Wrapper from "./Wrapper";
 import Joi from "joi-browser";
-import Form from "../Form/form";
+import Form from "./Form";
 import * as userService from "../services/userService";
-
-// import "./style.css";
 
 class RegisterForm extends Form {
   state = {
@@ -47,18 +43,13 @@ class RegisterForm extends Form {
           <h2>Sign Up</h2>
           <h6>It's free and always will be</h6>
           <hr />
-          <form onSubmit={this.handleSubmit}>
+          <form className="RegisterForm" onSubmit={this.handleSubmit}>
             {this.renderInput("firstname", "Firstname")}
             {this.renderInput("lastname", "Lastname")}
             {this.renderInput("email", "Email")}
             {this.renderInput("password", "Password", "password")}
-
             {this.renderButton("Login")}
           </form>
-          <h2>Login</h2>
-          <h6>With GitHub or Google+</h6>
-          <GitHubLoginBtn />
-          <GoogleLoginBtn />
         </Wrapper>
       </div>
     );
