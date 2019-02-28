@@ -1,11 +1,10 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Login from "./pages/Login";
+import Login from "./pages/LoginPage";
 import Home from "./pages/HomePage";
 import NoMatch from "./components/NoMatch";
 
 const ReactRouter = () => {
-<<<<<<< HEAD
         return (
             <div>
                 <BrowserRouter>
@@ -20,19 +19,5 @@ const ReactRouter = () => {
             </div>
         );
     }
-=======
-  return (
-    <div>
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={Login} />
-          <Route path="/home" component={Home} />
-          <Route component={NoMatch} />
-        </Switch>
-      </BrowserRouter>
-    </div>
-  );
-};
->>>>>>> develop
 
 export default ReactRouter;
