@@ -53,7 +53,7 @@ class RegisterForm extends Form {
             {this.renderInput("email", "Email")}
             {this.renderInput("password", "Password", "password")}
 
-            {this.renderButton("Login")}
+            {this.renderButton("Register")}
           </form>
           <h2>Login</h2>
           <h6>With GitHub or Google+</h6>
