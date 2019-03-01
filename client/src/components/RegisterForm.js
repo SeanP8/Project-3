@@ -26,6 +26,7 @@ class RegisterForm extends Form {
 
   doSubmit = async () => {
     try {
+      console.log(this.state.data)
       await userService.register(this.state.data);
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
@@ -48,7 +49,7 @@ class RegisterForm extends Form {
             {this.renderInput("lastname", "Lastname")}
             {this.renderInput("email", "Email")}
             {this.renderInput("password", "Password", "password")}
-            {this.renderButton("Login")}
+            {this.renderButton("Register")}
           </form>
         </Wrapper>
       </div>
