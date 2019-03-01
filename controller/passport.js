@@ -62,19 +62,19 @@ passport.use(new GoogleStrategy({
   // passport callback function
   function (accessToken, refreshToken, profile, done) {
     console.log(profile);
-    db.googleAuths.findOne({
-      where: { googleAuthModeId: profile.id }
+    db.Auths.findOne({
+      where: { authModeId: profile.id }
     }).then(function (existingUser) {
       if (existingUser) {
         console.log("Logged In User : " + profile.id);
         console.log("Logged In User : " + existingUser.id);
         done(null, existingUser);
       } else {
-        db.googleAuths.create({
+        db.Auths.create({
           firstName: profile.displayName,
           avatar: profile.photos[0].value,
-          googleAuthMode: google,
-          googleAuthModeID: profile.id
+          authMode: google,
+          authModeID: profile.id
         }).then(function (user) {
           console.log(user.id);
           return done(null, user);

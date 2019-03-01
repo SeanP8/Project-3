@@ -19,6 +19,10 @@
   "homepage": "https://github.com/SeanP8/Project-3#readme",
   "dependencies": {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    "axios": "^0.18.0",
+>>>>>>> origin/develop
     "cookie-session": "^2.0.0-beta.3",
 =======
     "axios": "^0.18.0",
