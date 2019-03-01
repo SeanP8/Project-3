@@ -1,6 +1,6 @@
 import React from "react";
 import Wrapper from "./Wrapper";
-
+import { login } from "../services/authService";
 import Joi from "joi-browser";
 import Form from "./Form/form";
 
@@ -18,7 +18,21 @@ class LoginForm extends Form {
       .label("Pastname")
   };
 
-  doSubmit = () => {
+  doSubmit = async () => {
+    try {
+      const { data } = this.state;
+
+      const { data: jwt } = await login(data.username, data.password);
+      localStorage.setItem("token", jwt);
+      this.props.history.push("/");
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        // clone errors obj
+        const errors = { ...this.state.errors };
+        errors.username = error.response.data;
+        this.setState({ errors });
+      }
+    }
     console.log("submitted");
   };
 

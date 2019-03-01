@@ -16,5 +16,9 @@ module.exports = {
   production: {
     useEnvVariable: "JAWSDB_URL",
     dialect: process.env.dialect
+  },
+  urlDevelopment: {
+    useEnvVariable: "DB_URL",
+    dialect: process.env.dialect
   }
-}
+};
