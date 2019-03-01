@@ -1,8 +1,12 @@
 import React from "react";
-import Wrapper from "./Wrapper";
+import Wrapper from "../Wrapper/Wrapper";
+import GitHubLoginBtn from "../GitHubLoginBtn/GitHubLoginBtn";
+import GoogleLoginBtn from "../GoogleLoginBtn/GoogleLoginBtn";
 import Joi from "joi-browser";
-import Form from "./Form";
+import Form from "../Form/form";
 import * as userService from "../services/userService";
+
+// import "./style.css";
 
 class RegisterForm extends Form {
   state = {
@@ -26,10 +30,7 @@ class RegisterForm extends Form {
 
   doSubmit = async () => {
     try {
-      console.log(this.state.data)
-      await userService.register(this.state.data).then((user) => {
-        window.location = "/home";
-      });
+      await userService.register(this.state.data);
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
@@ -46,13 +47,18 @@ class RegisterForm extends Form {
           <h2>Sign Up</h2>
           <h6>It's free and always will be</h6>
           <hr />
-          <form className="RegisterForm" onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit}>
             {this.renderInput("firstname", "Firstname")}
             {this.renderInput("lastname", "Lastname")}
             {this.renderInput("email", "Email")}
             {this.renderInput("password", "Password", "password")}
-            {this.renderButton("Register")}
+
+            {this.renderButton("Login")}
           </form>
+          <h2>Login</h2>
+          <h6>With GitHub or Google+</h6>
+          <GitHubLoginBtn />
+          <GoogleLoginBtn />
         </Wrapper>
       </div>
     );

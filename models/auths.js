@@ -7,9 +7,10 @@ module.exports = function(sequelize, DataTypes) {
                 len: [1, 240]
             }
         },
+       
         email: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false
         },
         avatar: {
             type: DataTypes.STRING,
@@ -20,11 +21,14 @@ module.exports = function(sequelize, DataTypes) {
         },
         authMode: {
             type: DataTypes.STRING,
-            allowNull: false
-        },
+            allowNull: true        },
         authModeID: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: true
         }
     });
     return Auths;

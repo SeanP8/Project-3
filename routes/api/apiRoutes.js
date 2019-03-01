@@ -4,7 +4,7 @@ const db = require('../../models');
 
 router.route("/api/users")
     .get(function (req, res) {
-        db.findAll().then((dbUsers) => {
+        db.Auths.findAll().then((dbUsers) => {
             res.send(dbUsers);
         })
     });
@@ -19,25 +19,51 @@ router.route("/api/user/:id")
             res.send(dbUser);
         })
     });
-
+router.route("/api/user/login")
+    .get(function(req, res) {
+        db.Auths.findOne({
+            where: {
+                email: req.params.email
+            }
+        }).then((dbUser) => {
+            if(bcrypt.compareSync(req.params.password, dbUser.password)){
+                req.user = dbUser;
+            }else{
+                res.send(401)
+            }
+        })
+    })
 router.route("/api/user")
     .get(function (req, res) {
         db.Auths.findOne({
             where: {
                 id: req.body.id
             }
-        }).then((dbUser) => {
+        }).then((dbUser) => {   
             res.send(dbUser);
         })
     })
     .post(function(req, res){
-        db.Auths.create({
-            firstName: req.body.firstName,
-            lastName: req.body.lastname,
-            password: bcrypt.hashSync(req.body.password),
-            email: req.body.email
+        console.log(req.body);
+        db.Auths.findOne({
+            where: {
+                email: req.body.email
+            }
         }).then((dbAuth) => {
-            res.send(dbAuth);
+            if(dbAuth){
+                res.send("email is taken");
+            }else{
+                db.Auths.create({
+                    avatar: "https://via.placeholder.com/150",
+                    firstName: req.body.firstname,
+                    lastName: req.body.lastname,
+                    password: bcrypt.hashSync(req.body.password),
+                    email: req.body.email
+                    
+                }).then((dbAuth) => {
+                    res.send(dbAuth);
+                })
+            }
         })
     })
 
