@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Input from "./Input";
+import Input from "./input";
 import Joi from "joi-browser";
 
 class Form extends Component {
