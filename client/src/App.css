@@ -6,6 +6,13 @@ h2,h6{
     font-family: 'Nanum Gothic', sans-serif;
     margin-top: 4px;
 }
+/* Pages Title */
+.subTitle {
+    text-align: left;
+    text-decoration: underline;
+    margin-top: 20px;
+}
+/*-------------*/
 .wrapper{
     width: 80%;
     margin: 0 auto;
@@ -98,3 +105,19 @@ footer{
     font-size: 18px;
 }
 /* ---------------------------*/
+/* Projects Page */
+#addProject, #saveProject {
+    color: whitesmoke;
+    background-color: #18a0ac;
+    border-radius: 4px;
+    border: none;
+    padding: 5px 10px;
+    float: right;
+    font-size: 20px;
+}
+#addProject:hover, #saveProject:hover {
+    font-size: 21px;
+}
+
+
+/* --------------*/
