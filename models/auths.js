@@ -21,13 +21,14 @@ module.exports = function(sequelize, DataTypes) {
         },
         authMode: {
             type: DataTypes.STRING,
-            allowNull: true,
-            defaultValue: "none"
-        },
+            allowNull: true        },
         authModeID: {
             type: DataTypes.STRING,
-            allowNull: true,
-            defaultValue: "null"
+            allowNull: true
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: true
         }
     });
     return Auths;

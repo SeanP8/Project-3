@@ -56,6 +56,7 @@ router.route("/api/user")
                 db.Auths.create({
                     avatar: "https://via.placeholder.com/150",
                     firstName: req.body.firstname,
+                    lastName: req.body.lastname,
                     password: bcrypt.hashSync(req.body.password),
                     email: req.body.email
                     
