@@ -58,7 +58,9 @@ router.route("/api/user")
                     firstName: req.body.firstname,
                     lastName: req.body.lastname,
                     password: bcrypt.hashSync(req.body.password),
-                    email: req.body.email
+                    email: req.body.email,
+                    authMode: "local",
+                    authModeID: Date.now()
                     
                 }).then((dbAuth) => {
                     res.send(dbAuth);
