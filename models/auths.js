@@ -1,4 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
+
   var Auths = sequelize.define("Auths", {
     firstName: {
       type: DataTypes.STRING,
@@ -25,12 +26,17 @@ module.exports = function(sequelize, DataTypes) {
     authModeID: {
       type: DataTypes.STRING,
       allowNull: false
-    }
+    },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: true
+        }
   });
   Auths.associate = model => {
     model.Auths.belongsToMany(model.Projects, {
       as: "Funding",
       through: "FundingList"
+
     });
     model.Auths.hasOne(model.Favorite);
   };

@@ -26,7 +26,10 @@ class RegisterForm extends Form {
 
   doSubmit = async () => {
     try {
-      await userService.register(this.state.data);
+      console.log(this.state.data)
+      await userService.register(this.state.data).then((user) => {
+        window.location = "/home";
+      });
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
@@ -48,7 +51,6 @@ class RegisterForm extends Form {
             {this.renderInput("lastname", "Lastname")}
             {this.renderInput("email", "Email")}
             {this.renderInput("password", "Password", "password")}
-
             {this.renderButton("Register")}
           </form>
         </Wrapper>

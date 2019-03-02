@@ -2,14 +2,43 @@ import React, { Component } from "react";
 import HomeNav from "../components/HomeNav";
 import Wrapper from "../components/Wrapper";
 import Footer from "../components/Footer";
+import axios from "axios";
 
 class Home extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            user: null
+        }
+    }
+
+    componentDidMount() {
+        axios.get("http://localhost:5000/api/current_user").then((response) => {
+            const currentUser = response.data;
+            console.log("MOUNT CALL + " + Object.keys(currentUser))
+            if(currentUser){
+                this.setState({
+                    user: currentUser
+                })
+            }
+        })
+    }
+
     render() {
+        var display;
+        if(this.state.user){
+            display = <p>Hello {this.state.user.firstName}!</p>
+        }else{
+            display = <p>Hello there! <a href="/">Sign up here!</a></p>
+        }
         return (
             <div>
                 <HomeNav/>
                 <Wrapper>
-                   <p>Home Page!</p> 
+                   {
+                       display
+                   }
                 </Wrapper>
                 <Footer />
             </div>
