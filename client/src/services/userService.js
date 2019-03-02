@@ -9,4 +9,7 @@ export function register(user) {
     firstname: user.firstname,
     lastname: user.lastname
   });
+  
 }
+
+
