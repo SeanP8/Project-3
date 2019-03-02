@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Projects.associate = Model => {
-    Model.car.belongsToMany(Model.Auths, {
+    Model.Projects.belongsToMany(Model.Auths, {
       as: "Funders",
       through: "FundingList"
     });
