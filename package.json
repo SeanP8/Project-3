@@ -30,6 +30,6 @@
     "passport-github": "^1.1.0",
     "passport-google-oauth20": "^1.0.0",
     "react-toastify": "^4.5.2",
-    "sequelize": "^4.42.0"
+    "sequelize": "^4.42.1"
   }
 }

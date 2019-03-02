@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "joi-browser": "^13.4.0",
+    "passport-google-oauth": "^1.0.0",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-github-login": "^1.0.3",
@@ -12,7 +13,7 @@
     "react-scripts": "^2.1.5",
     "sequelize": "^4.42.0"
   },
-  "proxy": "http://localhost:5000", 
+  "proxy": "http://localhost:5000",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
