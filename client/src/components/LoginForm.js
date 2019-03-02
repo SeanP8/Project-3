@@ -1,5 +1,7 @@
 import React from "react";
 import Wrapper from "./Wrapper";
+import GitHubLoginBtn from "./GitHubLoginBtn";
+import GoogleLoginBtn from "./GoogleLoginBtn";
 
 import { login } from "../services/authService";
 

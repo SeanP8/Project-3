@@ -3,10 +3,10 @@ import HomeNav from "../components/HomeNav";
 import Wrapper from "../components/Wrapper";
 import Footer from "../components/Footer";
 
-class Projects extends Component {
+class ProjectsPage extends Component {
 
     state = {
-        title: "",
+        name: "",
         description: "",
         image: ""
     };
@@ -17,7 +17,7 @@ class Projects extends Component {
     }
 
     handleSubmit = event => {
-        this.setState({title: event.target.value})
+        this.setState({name: event.target.value})
         this.setState({description: event.target.value})
         this.setState({image: event.target.value})
     }
@@ -36,7 +36,7 @@ class Projects extends Component {
                         + Add Project
                     </button>
                     <div id="projectContainer">
-                    <div id="displayTitle">Title goes here</div><br/>
+                    <div id="displayName">Title goes here</div><br/>
                     <div id="displayDescription">Description goes here</div><br/>
                     <div id="displayImage">Image goes here</div>
                     </div>
@@ -52,13 +52,13 @@ class Projects extends Component {
                                 <div className="modal-body">
                                     <form>
                                         <div className="form-group">
-                                            <label for="inputTitle">Title</label>
+                                            <label for="inputName">Title</label>
                                             <input 
-                                                // value={this.state.title}
+                                                // value={this.state.name}
                                                 // onSubmit={this.handleSubmit.bind(this)}
-                                                type="title" 
+                                                type="name" 
                                                 className="form-control" 
-                                                id="inputTitle" 
+                                                id="inputName" 
                                                 placeholder="My Project" />
                                         </div>
                                         <div className="form-group">
@@ -97,4 +97,4 @@ class Projects extends Component {
             }
         }
         
-export default Projects;
+export default ProjectsPage;
