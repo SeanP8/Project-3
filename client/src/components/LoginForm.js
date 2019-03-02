@@ -53,6 +53,8 @@ class LoginForm extends Form {
           </form>
           <hr />
           <h6>Login with GitHub or Google+</h6>
+          <GitHubLoginBtn/>
+          <GoogleLoginBtn/>
         </Wrapper>
       </div>
     );

@@ -12,7 +12,7 @@
     "react-scripts": "^2.1.5",
     "sequelize": "^4.42.0"
   },
-  "proxy": "http://localhost:5000", 
+  "proxy": "http://localhost:5000",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
