@@ -25,6 +25,10 @@ module.exports = function(sequelize, DataTypes) {
     authModeID: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: true
     }
   });
   Auths.associate = model => {

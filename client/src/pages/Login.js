@@ -1,20 +1,14 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import Registration from "../components/RegisterForm";
 import LoginForm from "../components/LoginForm";
-
+import Footer from "../components/Footer";
 
 class Login extends React.Component {
   render() {
     return (
       <div>
         <Navbar />
-      
-        <div className="flexBox">
-          <Registration />
-          <LoginForm />
-        </div>
+        <LoginForm />
         <Footer />
       </div>
     );
