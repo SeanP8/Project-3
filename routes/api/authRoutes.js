@@ -18,8 +18,14 @@ router.route("/auth/google/callback")
     res.redirect("http://localhost:3000/home");
   })
 
+  router.route("/api/login")
+    .post( passport.authenticate('local'), function(req, res){
+      res.send(req.user)
+    } )
+
 router.route("/api/current_user")
   .get(function (req, res) {
+    console.log(Object.keys(req))
     res.send(req.user)
   });
 

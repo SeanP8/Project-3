@@ -16,7 +16,7 @@ class Home extends Component {
     componentDidMount() {
         axios.get("http://localhost:5000/api/current_user").then((response) => {
             const currentUser = response.data;
-            console.log("MOUNT CALL + " + Object.keys(currentUser))
+            console.log("MOUNT CALL + " + Object.keys(response.request))
             if(currentUser){
                 this.setState({
                     user: currentUser

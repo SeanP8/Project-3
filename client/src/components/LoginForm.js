@@ -24,10 +24,14 @@ class LoginForm extends Form {
   doSubmit = async () => {
     try {
       const { data } = this.state;
+      console.log("SUBMIT")
 
-      const { data: jwt } = await login(data.username, data.password);
+      const jwt = await login(data.email, data.password);
+      console.log("jwt " + jwt)
       localStorage.setItem("token", jwt);
       this.props.history.push("/");
+      window.location = "/home";
+     
     } catch (error) {
       if (error.response && error.response.status === 400) {
         // clone errors obj
@@ -36,6 +40,7 @@ class LoginForm extends Form {
         this.setState({ errors });
       }
     }
+    
     console.log("submitted");
   };
 
