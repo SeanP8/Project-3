@@ -4,7 +4,10 @@ module.exports = {
     password: process.env.password,
     database: process.env.database,
     host: process.env.host,
-    dialect: process.env.dialect
+    dialect: process.env.dialect,
+    define: {
+      FreezeTableName: true
+    }
   },
   test: {
     username: "root",

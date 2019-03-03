@@ -7,7 +7,7 @@ const db = require("./models/");
 const app = express();
 const PORT = process.env.PORT || 5000;
 const cors = require("cors");
-app.use(cors())
+app.use(cors());
 // cookie sessions middleware
 app.use(
   cookieSession({
@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-var syncOptions = { force: false };
+var syncOptions = { force: true };
 
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
