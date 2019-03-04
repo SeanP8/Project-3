@@ -98,6 +98,8 @@ router.route("/api/projects")
     .post(function(req, res) {
         db.Projects.create({
             name: req.body.name,
+            link: req.body.link,
+            image: req.body.image,
             description: req.body.description,
             authID: req.user.id
         }).then((dbProject) => {

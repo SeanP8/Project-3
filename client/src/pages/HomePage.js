@@ -36,7 +36,7 @@ class Home extends Component {
                 <Wrapper>
                     {display}
                     <div className="userInfo">
-                        <img src={this.state.user.avatar} alt={this.state.user.firstName} width="150" height="150"/>
+                        <img src={this.state.user.avatar} alt={this.state.user.firstName} width="100" height="100" style={{borderRadius: 50}}/>
                         <h3>{this.state.user.firstName}</h3>
                         <textarea rows="4" cols="18" placeholder="write a small bio here..."></textarea>
                     </div>
