@@ -1,6 +1,6 @@
 import http from "./httpService";
 
-const apiEndpoint = "http:localhost:5000/api/user";
+const apiEndpoint = "http://localhost:5000/api/user";
 
 export function register(user) {
   return http.post(apiEndpoint, {
@@ -9,4 +9,7 @@ export function register(user) {
     firstname: user.firstname,
     lastname: user.lastname
   });
+  
 }
+
+

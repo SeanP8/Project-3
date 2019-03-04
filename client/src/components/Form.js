@@ -41,7 +41,7 @@ class Form extends Component {
 
     const data = { ...this.state.data };
     data[input.name] = input.value;
-    console.log(data)
+    //console.log(data)
     this.setState({ data });
   };
   renderButton(label) {

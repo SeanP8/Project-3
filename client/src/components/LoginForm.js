@@ -7,7 +7,8 @@ import { login } from "../services/authService";
 
 import Joi from "joi-browser";
 import Form from "./Form";
-
+import GitHubLoginBtn from "./GitHubLoginBtn";
+import GoogleLoginBtn from "./GoogleLoginBtn";
 class LoginForm extends Form {
   state = {
     data: { email: "", password: "" },
@@ -44,18 +45,18 @@ class LoginForm extends Form {
     return (
       <div>
         <Wrapper>
-          <h2>Login</h2> 
+          <h2>Login</h2>
           <h6>Enter you email and password</h6>
-          <hr/>
+          <hr />
           <form className="loginForm" onSubmit={this.handleSubmit}>
             {this.renderInput("email", "Email")}
             {this.renderInput("password", "Password", "password")}
             {this.renderButton("Login")}
           </form>
-          <hr/>
+          <hr />
           <h6>Login with GitHub or Google+</h6>
-          <GitHubLoginBtn />
-          <GoogleLoginBtn />
+          <GitHubLoginBtn/>
+          <GoogleLoginBtn/>
         </Wrapper>
       </div>
     );
