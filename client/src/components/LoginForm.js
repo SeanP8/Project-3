@@ -7,8 +7,6 @@ import { login } from "../services/authService";
 
 import Joi from "joi-browser";
 import Form from "./Form";
-import GitHubLoginBtn from "./GitHubLoginBtn";
-import GoogleLoginBtn from "./GoogleLoginBtn";
 class LoginForm extends Form {
   state = {
     data: { email: "", password: "" },
