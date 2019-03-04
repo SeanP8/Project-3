@@ -11,6 +11,39 @@ const LocalStrategy = require('passport-local').Strategy;
 
 
 
+// config for github 
+passport.use(
+  new GitHubStrategy(
+    {
+      clientID: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      callbackURL: process.env.GITHUB_CALLBACK_URL
+    },
+    function (accessToken, refreshToken, profile, done) {
+      console.log(profile);
+      db.Auths.findOne({
+        where: { authModeID: profile.id }
+      }).then(function (existingUser) {
+        if (existingUser) {
+          console.log("Logged In User : " + profile.id);
+          console.log("Logged In User : " + existingUser.id);
+          done(null, existingUser);
+        } else {
+          db.Auths.create({
+            firstName: profile.displayName,
+            avatar: profile.photos[0].value,
+            authMode: github,
+            authModeID: profile.id
+          }).then(function (user) {
+            console.log("reading this line...")
+            console.log(user.id);
+            return done(null, user);
+          });
+        }
+      });
+    }
+  )
+);
 
 //Google//
 
@@ -97,36 +130,3 @@ passport.deserializeUser(function (id, done) {
     done(null, user);
   });
 });
-
-// config for github 
-passport.use(new GitHubStrategy(
-  {
-    clientID: process.env.GITHUB_CLIENT_ID,
-    clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: process.env.GITHUB_CALLBACK_URL
-  },
-  function (accessToken, refreshToken, profile, done) {
-    console.log(profile);
-    db.Auths.findOne({
-      where: { authModeID: profile.id }
-    }).then(function (existingUser) {
-      if (existingUser) {
-        console.log("GIT HUB USER + " + existingUser.dataValues.firstName)
-        console.log("Logged In User : " + profile.id);
-        console.log("Logged In User : " + existingUser.id);
-        done(null, existingUser);
-      } else {
-        db.Auths.create({
-          firstName: profile.displayName,
-          avatar: profile.photos[0].value,
-          authMode: github,
-          authModeID: profile.id
-        }).then(function (user) {
-          console.log(user.id);
-          done(null, user);
-        });
-      }
-    });
-  }
-)
-);
