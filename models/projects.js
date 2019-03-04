@@ -7,9 +7,16 @@ module.exports = function(sequelize, DataTypes) {
         len: [1, 240]
       }
     },
+    link: {
+      type: DataString.STRING,
+      allowNull: false
+    },
     description: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    image: {
+      type: DataString.STRING,
     },
     authID: {
       type: DataTypes.INTEGER,
