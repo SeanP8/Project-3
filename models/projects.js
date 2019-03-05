@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var Projects = sequelize.define("Projects", {
-    name: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     image: {
@@ -24,8 +24,11 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Projects.associate = Model => {
-    Model.Projects.belongsToMany(Model.Auths, {
+  Projects.associate = model => {
+    Projects.belongsToMany(model.Auths, {
+      foreignKey: {
+        allowNull: false
+      },
       as: "Funders",
       through: "FundingList"
     });

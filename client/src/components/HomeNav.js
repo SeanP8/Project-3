@@ -2,11 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Wrapper from "./Wrapper";
 
-class HomeNav extends React.Component {
-    render() {
+const HomeNav = () => {
         return (
             <div>
-                <nav className="navbar navbar-dark bg-dark">
+                <nav className="navbar fixed-top navbar-dark bg-dark">
                     <Wrapper>
                         <Link to="/home" className="navbar-brand">
                             <img src="/techLogo.jpg" width="30" height="30" className="d-inline-block align-top" alt="logo" style={{ borderRadius: 7 }} /> TechBook</Link>
@@ -18,6 +17,5 @@ class HomeNav extends React.Component {
             </div>
         );
     }
-}
 
 export default HomeNav;
