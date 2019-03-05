@@ -1,6 +1,6 @@
 // Passport //
 
-const GitHubStrategy = require('passport-github2').Strategy;
+const GitHubStrategy = require('passport-github').Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const passport = require("passport");
 const bcrypt = require("bcrypt-nodejs");
@@ -13,34 +13,34 @@ const LocalStrategy = require('passport-local').Strategy;
 
 // config for github 
 passport.use("github", new GitHubStrategy(
-    {
-      clientID: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: process.env.GITHUB_CALLBACK_URL
-    },
-    function (accessToken, refreshToken, profile, done) {
-      console.log(profile);
-      db.Auths.findOne({
-        where: { authModeID: profile.id }
-      }).then(function (existingUser) {
-        if (existingUser) {
-          console.log("Logged In User : " + profile.id);
-          console.log("Logged In User : " + existingUser.id);
-          done(null, existingUser)
-        } else {
-          db.Auths.create({
-            firstName: profile.displayName,
-            avatar: profile.photos[0].value,
-            authMode: github,
-            authModeID: profile.id
-          }).then(function (user) {
-            console.log(user.id);
-            done(null, user);
-          });
-        }
-      });
-    }
-  )
+  {
+    clientID: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    callbackURL: process.env.GITHUB_CALLBACK_URL
+  },
+  function (accessToken, refreshToken, profile, done) {
+    console.log(profile);
+    db.Auths.findOne({
+      where: { authModeID: profile.id }
+    }).then(function (existingUser) {
+      if (existingUser) {
+        console.log("Logged In User : " + profile.id);
+        console.log("Logged In User : " + existingUser.id);
+        return done(null, existingUser)
+      } else {
+        db.Auths.create({
+          firstName: profile.displayName,
+          avatar: profile.photos[0].value,
+          authMode: github,
+          authModeID: profile.id
+        }).then(function (user) {
+          console.log(user.id);
+          return done(null, user);
+        });
+      }
+    });
+  }
+)
 );
 
 //Google//
@@ -70,7 +70,7 @@ passport.use('google', new GoogleStrategy({
           authModeID: profile.id
         }).then(function (user) {
           console.log(user.id);
-         done(null, user);
+          return done(null, user);
         });
       }
 
@@ -90,7 +90,7 @@ passport.use('local', new LocalStrategy(
 
         if (user) {
           console.log("logging " + user.dataValues);
- 
+
           if (bcrypt.compareSync(password, user.password)) {
             console.log("Ok")
             return done(null, user);
@@ -98,12 +98,12 @@ passport.use('local', new LocalStrategy(
             console.log("NO MATCH")
             done(null, false);
           }
-        }else{
-          done(null,null);
+        } else {
+          done(null, null);
         }
 
 
-      }).catch(function(err){
+      }).catch(function (err) {
         console.log(err);
       });
   }

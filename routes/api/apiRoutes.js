@@ -92,8 +92,8 @@ router.route("/api/projects")
         db.Projects.create({
             title: req.body.title,
             link: req.body.link,
-            description: req.body.description,
             image: req.body.image,
+            description: req.body.description,
             authID: req.user.id
         }).then(dbProject => {
             res.send(dbProject);
