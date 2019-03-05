@@ -12,8 +12,7 @@ const LocalStrategy = require('passport-local').Strategy;
 
 
 // config for github 
-passport.use(
-  new GitHubStrategy(
+passport.use("github", new GitHubStrategy(
     {
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
@@ -27,7 +26,7 @@ passport.use(
         if (existingUser) {
           console.log("Logged In User : " + profile.id);
           console.log("Logged In User : " + existingUser.id);
-          done(null, existingUser);
+          return done(null, existingUser)
         } else {
           db.Auths.create({
             firstName: profile.displayName,
@@ -47,7 +46,7 @@ passport.use(
 
 //Google//
 
-passport.use(new GoogleStrategy({
+passport.use('google', new GoogleStrategy({
   // options for google strategy
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -72,7 +71,7 @@ passport.use(new GoogleStrategy({
           authModeID: profile.id
         }).then(function (user) {
           console.log(user.id);
-          done(null, user);
+         return done(null, user);
         });
       }
 
@@ -80,7 +79,7 @@ passport.use(new GoogleStrategy({
   }
 ));
 
-passport.use(new LocalStrategy(
+passport.use('local', new LocalStrategy(
   function (username, password, done) {
     console.log("HYE " + username + " " + password);
     db.Auths.findOne(
@@ -95,7 +94,7 @@ passport.use(new LocalStrategy(
  
           if (bcrypt.compareSync(password, user.password)) {
             console.log("Ok")
-            done(null, user);
+            return done(null, user);
           } else {
             console.log("NO MATCH")
             done(null, false);

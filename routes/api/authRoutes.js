@@ -1,13 +1,12 @@
-require("../../controller/passport");
 const router = require("express").Router();
 const passport = require("passport");
 
 router.route("/auth/github")
-  .get(passport.authenticate("github", { scope: ["profile"] }));
+  .get(passport.authenticate("github",{scope:["profile"]}));
 
 router.route("/auth/github/callback")
   .get(passport.authenticate("github"), function (req, res) {
-    console.log("git callback " + req.session.passport)
+    console.log("git callback " + req.user.dataValues)
     res.redirect("http://localhost:3000/home");
   })
 
@@ -21,7 +20,7 @@ router.route("/auth/google/callback")
   })
 
   router.route("/api/login")
-    .get(passport.authenticate('local'), function(req, res){
+    .post(passport.authenticate('local'), function(req, res){
       console.log("AFTER LOCAL LOGIN");
       res.redirect("http://localhost:3000/home");
     } );

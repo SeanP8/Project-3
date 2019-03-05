@@ -22,12 +22,12 @@ class LoginForm extends Form {
   };
 
   doSubmit = async () => {
-    var jwt;
+    // var jwt;
     try {
       const { data } = this.state;
       console.log("SUBMIT")
 
-      jwt = await login(data.email, data.password);
+      login(data.email, data.password);
       
      
     } catch (error) {
@@ -38,7 +38,7 @@ class LoginForm extends Form {
         this.setState({ errors });
       }
     }
-    console.log("jwt " + Object.keys(jwt.data))
+    // console.log("jwt " + Object.keys(jwt.data))
     window.location.href = "http://localhost:3000/home";
   };
 

@@ -8,6 +8,7 @@ const session = require("express-session")
 const routes = require("./routes");
 const db = require("./models/");
 const app = express();
+
 const PORT = process.env.PORT || 5000;
 const cors = require("cors");
 app.use(express.urlencoded({ extended: true }));
@@ -20,7 +21,7 @@ app.use(
     resave: false,
     saveUnititialized: false,
     cookie: {
-      expires: 600000
+      expires: 6000000
     }
   })
 );// cookie sessions middleware
