@@ -40,12 +40,12 @@ module.exports = function(sequelize, DataTypes) {
         }
   });
   Auths.associate = model => {
-    model.Auths.belongsToMany(model.Projects, {
+    Auths.belongsToMany(model.Projects, {
       as: "Funding",
-      through: "FundingList"
+      through: "FundingList",
+      onDelete: "cascade"
 
     });
-    model.Auths.hasOne(model.Favorite);
   };
   return Auths;
 };

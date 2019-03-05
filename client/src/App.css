@@ -1,4 +1,5 @@
 body{
+    margin-top: 70px;
     background-image: url("./full-bloom.png");
 }
 h1,h3,h4,h5{
@@ -125,11 +126,15 @@ footer{
 }
 .project-info {
     background-color: whitesmoke;
-    width: 50%;
+    width: 75%;
     padding: 10px;
     margin: 10px;
     border: 1px solid #343a40;
     border-radius: 4px;
     list-style-type: none
+}
+.delete-btn, .update-btn{
+    float: right;
+    margin: 3px;
 }
 /* --------------*/
