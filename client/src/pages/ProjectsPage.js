@@ -16,17 +16,6 @@ class Projects extends Component {
     state = {
         projects: {},
     }
-<<<<<<< HEAD
-    //  ----  When component mounts grab all user's projects from db and display ----
-    // componentDidMount(id) { 
-    //     Axios.get("api/projects/" + id).then(res => {
-    //         this.setState({
-    //             projects: res.data
-    //         })
-    //     }).catch(err => console.log(err));
-    // }
-
-=======
 
     componentDidMount() { 
        this.loadProjects();
@@ -36,7 +25,6 @@ class Projects extends Component {
         .then( res => this.setState({ projects: res.data })
         ).catch( err => console.log(err));
     }
->>>>>>> 966cc125d4eadb89ba3c736c720ed32c7220463a
     handleSubmit = event => {
         event.preventDefault();
         const project = {
@@ -55,12 +43,6 @@ class Projects extends Component {
         .catch( err => console.log(err));
 
         event.currentTarget.reset();
-<<<<<<< HEAD
-        console.log(project);
-
-    }  
-
-=======
     }
     
     // updateYourProject = id => {
@@ -68,7 +50,6 @@ class Projects extends Component {
     //     .then( res => console.log(res))
     //     .catch( err => console.log(err));
     // }
->>>>>>> 966cc125d4eadb89ba3c736c720ed32c7220463a
 
     deleteYourProject = id => {
         API.deleteProject(id)
