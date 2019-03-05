@@ -29,7 +29,7 @@ class RegisterForm extends Form {
     try {
       console.log(this.state.data)
       await userService.register(this.state.data).then((user) => {
-        window.location = "http://localhost:3000/home";
+        window.location.href = "http://localhost:3000/home";
       });
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
