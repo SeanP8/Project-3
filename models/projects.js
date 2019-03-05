@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     link: {
-      type: DataString.STRING,
+      type: DataTypes.STRING,
       allowNull: false
     },
     description: {
@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     image: {
-      type: DataString.STRING,
+      type: DataTypes.STRING,
     },
     authID: {
       type: DataTypes.INTEGER,

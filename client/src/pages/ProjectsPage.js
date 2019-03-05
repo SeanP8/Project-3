@@ -24,7 +24,6 @@ class Projects extends Component {
     //         })
     //     }).catch(err => console.log(err));
     // }
-    
     handleSubmit = event => {
         event.preventDefault();
         const project = {
@@ -36,13 +35,12 @@ class Projects extends Component {
         this.addProject(project);
         event.currentTarget.reset();
     }
-
     addProject = project => {
-        const projects = {...this.state.projects};
-        projects[`${Date.now()}`] = project 
+        const projects = { ...this.state.projects };
+        projects[`${Date.now()}`] = project
         this.setState({ projects });
     }
-        
+
     render() {
         return (
             <div>
