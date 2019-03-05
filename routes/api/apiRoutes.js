@@ -2,6 +2,7 @@ const router = require("express").Router();
 const bcrypt = require("bcrypt-nodejs");
 const db = require('../../models');
 
+// User Routes //
 router.route("/api/users")
     .get(function (req, res) {
         db.Auths.findAll().then((dbUsers) => {
@@ -19,40 +20,27 @@ router.route("/api/user/:id")
             res.send(dbUser);
         })
     });
-router.route("/api/user/login")
-    .get(function(req, res) {
-        db.Auths.findOne({
-            where: {
-                email: req.params.email
-            }
-        }).then((dbUser) => {
-            if(bcrypt.compareSync(req.params.password, dbUser.password)){
-                req.user = dbUser;
-            }else{
-                res.send(401)
-            }
-        })
-    })
+
 router.route("/api/user")
     .get(function (req, res) {
         db.Auths.findOne({
             where: {
                 id: req.body.id
             }
-        }).then((dbUser) => {   
+        }).then((dbUser) => {
             res.send(dbUser);
         })
     })
-    .post(function(req, res){
+    .post(function (req, res) {
         console.log(req.body);
         db.Auths.findOne({
             where: {
                 email: req.body.email
             }
         }).then((dbAuth) => {
-            if(dbAuth){
+            if (dbAuth) {
                 res.send("email is taken");
-            }else{
+            } else {
                 db.Auths.create({
                     avatar: "https://via.placeholder.com/150",
                     firstName: req.body.firstname,
@@ -61,7 +49,7 @@ router.route("/api/user")
                     email: req.body.email,
                     authMode: "local",
                     authModeID: Date.now()
-                    
+
                 }).then((dbAuth) => {
                     res.send(dbAuth);
                 })
@@ -69,19 +57,24 @@ router.route("/api/user")
         })
     })
 
+// Project Routes //
 router.route("/api/projects/all")
     .get(function (req, res) {
         db.Projects.findAll()
-            .then((dbProjects) => {
+            .then(dbProjects => {
                 res.send(dbProjects);
             })
     })
-router.route("/api/projects/:userID")
+
+router.route("/api/projects/user")
     .get(function (req, res) {
+        let userId = req.user.id
         db.Projects.findAll({
             where: {
-                authID: req.param.userID
+                authID: userId
             }
+        }).then(dbProjects => {
+            res.send(dbProjects)
         })
     })
 
@@ -91,19 +84,39 @@ router.route("/api/projects")
             where: {
                 id: req.body.id
             }
-        }).then((dbProject) => {
+        }).then(dbProject => {
             res.send(dbProject)
         })
     })
-    .post(function(req, res) {
+    .post(function (req, res) {
         db.Projects.create({
             title: req.body.title,
             link: req.body.link,
             description: req.body.description,
             image: req.body.image,
             authID: req.user.id
-        }).then((dbProject) => {
+        }).then(dbProject => {
             res.send(dbProject);
+        })
+    })
+
+router.route("/api/projects/:id")
+    .put(function (req, res) {
+        db.Projects.update(req.body, {
+            where: {
+                id: req.body.id
+            }
+        }).then(dbProject => {
+            res.json(dbProject);
+        })
+    })
+    .delete(function (req, res) {
+        db.Projects.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(dbProject => {
+            res.json(dbProject)
         })
     })
 

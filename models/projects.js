@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     image: {
@@ -25,7 +25,10 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Projects.associate = model => {
-    model.Projects.belongsToMany(model.Auths, {
+    Projects.belongsToMany(model.Auths, {
+      foreignKey: {
+        allowNull: false
+      },
       as: "Funders",
       through: "FundingList"
     });

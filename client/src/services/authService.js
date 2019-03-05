@@ -1,8 +1,8 @@
 import http from "./httpService";
 
-const apiEndpoint = "/api/current_user";
+const apiEndpoint = "/api/login";
 
 export function login(email, password) {
-  return http.post(apiEndpoint, { email, password });
+  return http.post(apiEndpoint, { username: email, password: password });
 }
 

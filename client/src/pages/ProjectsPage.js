@@ -3,7 +3,7 @@ import HomeNav from "../components/HomeNav";
 import Wrapper from "../components/Wrapper";
 import Footer from "../components/Footer";
 import YourProjects from "../components/YourProjects";
-//import Axios from "axios";
+import API from "../utils/API";
 
 class Projects extends Component {
     constructor(props) {
@@ -16,6 +16,7 @@ class Projects extends Component {
     state = {
         projects: {},
     }
+<<<<<<< HEAD
     //  ----  When component mounts grab all user's projects from db and display ----
     // componentDidMount(id) { 
     //     Axios.get("api/projects/" + id).then(res => {
@@ -25,6 +26,17 @@ class Projects extends Component {
     //     }).catch(err => console.log(err));
     // }
 
+=======
+
+    componentDidMount() { 
+       this.loadProjects();
+    }
+    loadProjects = () => {
+        API.getUsersProjects()
+        .then( res => this.setState({ projects: res.data })
+        ).catch( err => console.log(err));
+    }
+>>>>>>> 966cc125d4eadb89ba3c736c720ed32c7220463a
     handleSubmit = event => {
         event.preventDefault();
         const project = {
@@ -33,19 +45,37 @@ class Projects extends Component {
             description: this.descriptionRef.current.value,
             image: this.imageRef.current.value
         }
-        this.addProject(project);
+        API.saveProject({
+            title: project.title,
+            link: project.link,
+            description: project.description,
+            image: project.image
+        })
+        .then( res => this.loadProjects())
+        .catch( err => console.log(err));
+
         event.currentTarget.reset();
+<<<<<<< HEAD
         console.log(project);
 
     }  
 
-
-    addProject = project => {
-        const projects = {...this.state.projects};
-        projects[`${Date.now()}`] = project 
-        this.setState({ projects });
+=======
     }
-        
+    
+    // updateYourProject = id => {
+    //     API.updateProject(id)
+    //     .then( res => console.log(res))
+    //     .catch( err => console.log(err));
+    // }
+>>>>>>> 966cc125d4eadb89ba3c736c720ed32c7220463a
+
+    deleteYourProject = id => {
+        API.deleteProject(id)
+        .then( res => this.loadProjects())
+        .catch( err => console.log(err));
+    }
+
     render() {
         return (
             <div>
@@ -65,6 +95,8 @@ class Projects extends Component {
                                 key={key}
                                 index={key}
                                 details={this.state.projects[key]}
+                                //updateYourProject = {this.updateYourProject}
+                                deleteYourProject = {this.deleteYourProject}
                             />)}
                         </ul>
                     </div>
