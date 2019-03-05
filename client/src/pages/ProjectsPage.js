@@ -24,7 +24,7 @@ class Projects extends Component {
     //         })
     //     }).catch(err => console.log(err));
     // }
-    
+
     handleSubmit = event => {
         event.preventDefault();
         const project = {
@@ -35,7 +35,10 @@ class Projects extends Component {
         }
         this.addProject(project);
         event.currentTarget.reset();
-    }
+        console.log(project);
+
+    }  
+
 
     addProject = project => {
         const projects = {...this.state.projects};
