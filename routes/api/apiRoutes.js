@@ -19,20 +19,7 @@ router.route("/api/user/:id")
             res.send(dbUser);
         })
     });
-router.route("/api/user/login")
-    .get(function(req, res) {
-        db.Auths.findOne({
-            where: {
-                email: req.params.email
-            }
-        }).then((dbUser) => {
-            if(bcrypt.compareSync(req.params.password, dbUser.password)){
-                req.user = dbUser;
-            }else{
-                res.send(401)
-            }
-        })
-    })
+
 router.route("/api/user")
     .get(function (req, res) {
         db.Auths.findOne({
