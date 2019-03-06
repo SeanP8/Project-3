@@ -1,5 +1,16 @@
 module.exports = function(sequelize, DataTypes) {
   var Projects = sequelize.define("Projects", {
+
+  
+    // name: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    //   validate: {
+    //     len: [1, 240]
+    //   }
+    // },
+ 
+
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -21,17 +32,20 @@ module.exports = function(sequelize, DataTypes) {
     authID: {
       type: DataTypes.INTEGER,
       allowNull: false
+
     }
+  
+
   });
 
   Projects.associate = model => {
-    Projects.belongsToMany(model.Auths, {
-      foreignKey: {
-        allowNull: false
-      },
-      as: "Funders",
-      through: "FundingList"
+
+    model.Projects.belongsToMany(model.Auths, {
+      as: "Contributers",
+      through: "UserProjects"
+
     });
+    model.Projects.hasMany(model.Review, { as: "All_Reviews" });
   };
 
   return Projects;

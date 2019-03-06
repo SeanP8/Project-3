@@ -1,14 +1,19 @@
 module.exports = (sequelize, Datatypes) => {
-  const Favorite = sequelize.define("Favorite", {
-    AuthorId: {
-      type: Datatypes.STRING,
-      allowNull: false
+
+  const Favorite = sequelize.define(
+    "Favorite",
+    {
+      title: Datatypes.STRING
     },
-    ProjectId: {
-      type: Datatypes.STRING,
-      allowNull: false
+
+    {
+      timestamps: false
     }
-  });
+  );
+  //   Favorite.associate = models => {
+  //     models.Favorite.hasOne(models.Auth);
+  //   };
+
 
   return Favorite;
 };
