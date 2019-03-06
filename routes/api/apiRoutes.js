@@ -104,7 +104,7 @@ router.route("/api/projects/:id")
     .put(function (req, res) {
         db.Projects.update(req.body, {
             where: {
-                id: req.body.id
+                id: req.params.id
             }
         }).then(dbProject => {
             res.json(dbProject);
