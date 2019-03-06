@@ -34,7 +34,6 @@ passport.use("github", new GitHubStrategy(
             authMode: github,
             authModeID: profile.id
           }).then(function (user) {
-            console.log("reading this line...")
             console.log(user.id);
             done(null, user);
           });

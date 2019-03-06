@@ -2,26 +2,60 @@ import React, { Component } from "react";
 import HomeNav from "../components/HomeNav";
 import Wrapper from "../components/Wrapper";
 import Footer from "../components/Footer";
+import YourProjects from "../components/YourProjects";
+import API from "../utils/API";
 
 class Projects extends Component {
-
+    constructor(props) {
+        super(props);
+        this.titleRef = React.createRef();
+        this.linkRef = React.createRef();
+        this.descriptionRef = React.createRef();
+        this.imageRef = React.createRef();
+    }
     state = {
-        title: "",
-        description: "",
-        image: ""
-    };
-
-    handleSaveProject = event => {
-        alert("Project Saved!");
-        // handle saving project here
+        projects: {},
     }
 
+    componentDidMount() { 
+       this.loadProjects();
+    }
+    loadProjects = () => {
+        API.getUsersProjects()
+        .then( res => this.setState({ projects: res.data })
+        ).catch( err => console.log(err));
+    }
     handleSubmit = event => {
-        this.setState({title: event.target.value})
-        this.setState({description: event.target.value})
-        this.setState({image: event.target.value})
-    }
+        event.preventDefault();
+        const project = {
+            title: this.titleRef.current.value,
+            link: this.linkRef.current.value,
+            description: this.descriptionRef.current.value,
+            image: this.imageRef.current.value
+        }
+        API.saveProject({
+            title: project.title,
+            link: project.link,
+            description: project.description,
+            image: project.image
+        })
+        .then( res => this.loadProjects())
+        .catch( err => console.log(err));
 
+        event.currentTarget.reset();
+    }
+    
+    // updateYourProject = id => {
+    //     API.updateProject(id)
+    //     .then( res => console.log(res))
+    //     .catch( err => console.log(err));
+    // }
+
+    deleteYourProject = id => {
+        API.deleteProject(id)
+        .then( res => this.loadProjects())
+        .catch( err => console.log(err));
+    }
 
     render() {
         return (
@@ -30,17 +64,25 @@ class Projects extends Component {
                 <Wrapper>
                     <div>
                         <h1 className="subTitle">Projects</h1>
-                    </div><br/>
-
-                    <button id="addProject" type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                    </div>
+                    {/* This button toggles the modal form to add a project */}
+                    <button id="addProject" type="button" className="btn btn-primary" data-toggle="modal" data-target="#project-modal">
                         + Add Project
                     </button>
+                    {/* Container that will display all your projects */}
                     <div id="projectContainer">
-                    <div id="displayTitle">Title goes here</div><br/>
-                    <div id="displayDescription">Description goes here</div><br/>
-                    <div id="displayImage">Image goes here</div>
+                        <ul className="project-list">
+                            {Object.keys(this.state.projects).map(key => <YourProjects
+                                key={key}
+                                index={key}
+                                details={this.state.projects[key]}
+                                //updateYourProject = {this.updateYourProject}
+                                deleteYourProject = {this.deleteYourProject}
+                            />)}
+                        </ul>
                     </div>
-                    <div className="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    {/* Modal to add a project */}
+                    <div className="modal fade" id="project-modal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div className="modal-dialog modal-dialog-centered" role="document">
                             <div className="modal-content">
                                 <div className="modal-header">
@@ -50,51 +92,62 @@ class Projects extends Component {
                                     </button>
                                 </div>
                                 <div className="modal-body">
-                                    <form>
+                                    <form className="add-a-project" onSubmit={this.handleSubmit}>
                                         <div className="form-group">
-                                            <label for="inputTitle">Title</label>
-                                            <input 
-                                                // value={this.state.title}
-                                                // onSubmit={this.handleSubmit.bind(this)}
-                                                type="title" 
-                                                className="form-control" 
-                                                id="inputTitle" 
-                                                placeholder="My Project" />
+                                            <label htmlFor="inputTitle">Title</label>
+                                            <input
+                                                name="title"
+                                                ref={this.titleRef}
+                                                type="text"
+                                                className="form-control"
+                                                id="inputTitle"
+                                                placeholder="title" />
                                         </div>
                                         <div className="form-group">
-                                            <label for="inputDescription">Description</label>
-                                            <textarea 
-                                                // value={this.state.description}
-                                                // onSubmit={this.handleSubmit.bind(this)}
-                                                className="form-control" 
-                                                id="inputDescription" 
-                                                rows="3" 
-                                                placeholder="The My Project app is a simple and quick way to...">
+                                            <label htmlFor="inputLink">Link</label>
+                                            <input
+                                                name="link"
+                                                ref={this.linkRef}
+                                                type="text"
+                                                className="form-control"
+                                                id="inputTitle"
+                                                placeholder="Link to your project" />
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="inputDescription">Description</label>
+                                            <textarea
+                                                name="description"
+                                                ref={this.descriptionRef}
+                                                className="form-control"
+                                                id="inputDescription"
+                                                rows="3"
+                                                placeholder="write a description here...">
                                             </textarea>
                                         </div>
                                         <div className="form-group">
-                                            <label id="imgLabel" for="uploadImage">Upload Image</label>
-                                            <input 
-                                                // value={this.state.image}
-                                                // onSubmit={this.handleSubmit.bind(this)}
-                                                type="file" 
-                                                className="form-control-file" 
-                                                id="uploadImage"/>
+                                            <label id="imgLabel" htmlFor="uploadImage">Upload Image</label>
+                                            <input
+                                                name="image"
+                                                ref={this.imageRef}
+                                                type="file"
+                                                className="form-control-file"
+                                                id="uploadImage" />
                                         </div>
-                                    </form>  
+                                        <div className="modal-footer">
+                                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button id="saveProject" type="submit" className="btn btn-primary">Save Project</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                    <div className="modal-footer">
-                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button onClick={this.handleSaveProject} id="saveProject" type="button" className="btn btn-primary">Save Project</button>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
-                    </Wrapper>
-                    <Footer />
-                </div>
-                )
-            }
-        }
-        
+                    </div>
+                </Wrapper>
+                <Footer />
+            </div>
+        )
+    }
+}
+
 export default Projects;

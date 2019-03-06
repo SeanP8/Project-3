@@ -3,7 +3,6 @@ import Wrapper from "./Wrapper";
 import Joi from "joi-browser";
 import Form from "./Form";
 import * as userService from "../services/userService";
-//import axios from "axios"
 
 class RegisterForm extends Form {
   state = {
@@ -27,9 +26,11 @@ class RegisterForm extends Form {
 
   doSubmit = async () => {
     try {
-      console.log(this.state.data)
-      await userService.register(this.state.data).then((user) => {
-        window.location.href = "http://localhost:3000/home";
+
+      console.log(this.state.data);
+      await userService.register(this.state.data).then(user => {
+        window.location = "/home";
+
       });
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {

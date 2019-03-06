@@ -23,7 +23,8 @@ class Home extends Component {
     }
 
     render() {
-        var display;
+        let display;
+        const { avatar, firstName } = this.state.user
         if (this.state.user) {
             display = <p>Hello {this.state.user.firstName}!</p>
         } else {
@@ -32,12 +33,12 @@ class Home extends Component {
 
         return (
             <div>
-                <HomeNav />
+                <HomeNav options={this.state.user}/>
                 <Wrapper>
                     {display}
                     <div className="userInfo">
-                        <img src={this.state.user.avatar} alt={this.state.user.firstName} width="150" height="150"/>
-                        <h3>{this.state.user.firstName}</h3>
+                        <img src={avatar} alt={firstName} width="150" height="150"/>
+                        <h3>{firstName}</h3>
                         <textarea rows="4" cols="18" placeholder="write a small bio here..."></textarea>
                     </div>
                     
