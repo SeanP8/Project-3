@@ -26,9 +26,11 @@ class RegisterForm extends Form {
 
   doSubmit = async () => {
     try {
+
       console.log(this.state.data);
       await userService.register(this.state.data).then(user => {
         window.location = "/home";
+
       });
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {

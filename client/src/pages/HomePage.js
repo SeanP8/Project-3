@@ -5,19 +5,16 @@ import Footer from "../components/Footer";
 import axios from "axios";
 
 class Home extends Component {
-    constructor(props){
-        super(props);
-
-        this.state = {
-            user: null
-        }
-    }
+    state = {
+        user: {}
+    };
 
     componentDidMount() {
-        axios.get("http://localhost:5000/api/current_user").then((response) => {
+        axios.get("/api/current_user").then((response) => {
             const currentUser = response.data;
+            console.log(currentUser);
             console.log("MOUNT CALL + " + Object.keys(currentUser))
-            if(currentUser){
+            if (currentUser) {
                 this.setState({
                     user: currentUser
                 })
@@ -26,19 +23,25 @@ class Home extends Component {
     }
 
     render() {
-        var display;
-        if(this.state.user){
+        let display;
+        const { avatar, firstName } = this.state.user
+        if (this.state.user) {
             display = <p>Hello {this.state.user.firstName}!</p>
-        }else{
+        } else {
             display = <p>Hello there! <a href="/">Sign up here!</a></p>
         }
+
         return (
             <div>
-                <HomeNav/>
+                <HomeNav options={this.state.user}/>
                 <Wrapper>
-                   {
-                       display
-                   }
+                    {display}
+                    <div className="userInfo">
+                        <img src={avatar} alt={firstName} width="150" height="150"/>
+                        <h3>{firstName}</h3>
+                        <textarea rows="4" cols="18" placeholder="write a small bio here..."></textarea>
+                    </div>
+                    
                 </Wrapper>
                 <Footer />
             </div>

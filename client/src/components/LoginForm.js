@@ -22,12 +22,14 @@ class LoginForm extends Form {
   };
 
   doSubmit = async () => {
+    // var jwt;
     try {
       const { data } = this.state;
+      console.log("SUBMIT")
 
-      const { data: jwt } = await login(data.username, data.password);
-      localStorage.setItem("token", jwt);
-      this.props.history.push("/");
+      login(data.email, data.password);
+      
+     
     } catch (error) {
       if (error.response && error.response.status === 400) {
         // clone errors obj
@@ -36,7 +38,8 @@ class LoginForm extends Form {
         this.setState({ errors });
       }
     }
-    console.log("submitted");
+    // console.log("jwt " + Object.keys(jwt.data))
+    window.location.href = "http://localhost:3000/home";
   };
 
   render() {
@@ -53,6 +56,8 @@ class LoginForm extends Form {
           </form>
           <hr />
           <h6>Login with GitHub or Google+</h6>
+          <GitHubLoginBtn/>
+          <GoogleLoginBtn/>
         </Wrapper>
       </div>
     );
