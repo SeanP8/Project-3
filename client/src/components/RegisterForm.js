@@ -3,7 +3,6 @@ import Wrapper from "./Wrapper";
 import Joi from "joi-browser";
 import Form from "./Form";
 import * as userService from "../services/userService";
-//import axios from "axios"
 
 class RegisterForm extends Form {
   state = {

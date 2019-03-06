@@ -33,11 +33,11 @@ class Home extends Component {
 
         return (
             <div>
-                <HomeNav />
+                <HomeNav options={this.state.user}/>
                 <Wrapper>
                     {display}
                     <div className="userInfo">
-                        <img src={avatar} alt={firstName} width="100" height="100" style={{borderRadius: 50}}/>
+                        <img src={avatar} alt={firstName} width="150" height="150"/>
                         <h3>{firstName}</h3>
                         <textarea rows="4" cols="18" placeholder="write a small bio here..."></textarea>
                     </div>
