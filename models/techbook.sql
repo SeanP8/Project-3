@@ -3,3 +3,4 @@ create database techbook_db;
 
 use techbook_db;
 select * from auths;
+
