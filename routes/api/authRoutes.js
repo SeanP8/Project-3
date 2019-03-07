@@ -26,7 +26,7 @@ router.route("/auth/google/callback")
   router.route("/api/login")
     .post(passport.authenticate('local'), function(req, res){
       console.log("AFTER LOCAL LOGIN");
-      res.redirect("http://localhost:3000/home");
+      res.redirect("/home");
     } );
       
     
@@ -44,6 +44,6 @@ router.route("/api/logout")
   .get(function (req, res) {
     console.log("logging ot")
     req.logout();
-    res.redirect("http://localhost:3000/")
+    res.redirect("/")
   })
 module.exports = router;
