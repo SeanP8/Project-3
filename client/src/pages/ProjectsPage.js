@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import HomeNav from "../components/HomeNav";
 import Wrapper from "../components/Wrapper";
 import Footer from "../components/Footer";
