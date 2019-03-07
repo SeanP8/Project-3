@@ -97,7 +97,8 @@ router.route("/update").put(function(req, res) {
   )
     .then(rows => {
       res.json(rows);
-=======
+    });
+  });
 
 router.route("/api/user")
     .get(function (req, res) {
@@ -131,15 +132,16 @@ router.route("/api/user")
                 }).then((dbAuth) => {
                     res.send(dbAuth);
                 })
+                .catch(error => {
+                  console.log(error);
+                  res.status(404).send(error);
+                });
             }
         })
 
     })
-    .catch(error => {
-      console.log(error);
-      res.status(404).send(error);
-    });
-});
+  
+
 // router.route("/remove").delete(function(req, res) {
 //   db.Auths.destroy({
 //     where: { id: 1 }
@@ -250,7 +252,7 @@ router
       res.send(dbProject);
     });
   });
-=======
+
 // Project Routes //
 router.route("/api/projects/all")
     .get(function (req, res) {
@@ -313,6 +315,6 @@ router.route("/api/projects/:id")
         }).then(dbProject => {
             res.json(dbProject)
         })
-    })
-
+    }); 
+  
 module.exports = router;

@@ -5,6 +5,7 @@ import Home from "./pages/HomePage";
 import Projects from "./pages/ProjectsPage";
 import Favorites from "./pages/FavoritesPage";
 import AllProjects from "./pages/AllProjectsPage";
+import ImageInputForm from "./components/ImageInputForm";
 import NoMatch from "./components/NoMatch";
 
 
@@ -18,6 +19,7 @@ const ReactRouter = () => {
                     <Route path="/projects" component={Projects}/>
                     <Route path="/favorites" component={Favorites}/>
                     <Route path="/all-projects" component={AllProjects}/>
+                    <Route path="/image" component={ImageInputForm} />
                     <Route component={NoMatch}/>
                 </Switch>
                 </BrowserRouter>

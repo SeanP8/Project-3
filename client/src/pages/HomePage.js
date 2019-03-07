@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import HomeNav from "../components/HomeNav";
 import Wrapper from "../components/Wrapper";
+import ImageInput from "../components/ImageInputForm";
 import Footer from "../components/Footer";
 import axios from "axios";
 
@@ -38,6 +39,7 @@ class Home extends Component {
                     {display}
                     <div className="userInfo">
                         <img src={avatar} alt={firstName} width="150" height="150"/>
+                        <ImageInput imageName="Avatar"/>
                         <h3>{firstName}</h3>
                         <textarea rows="4" cols="18" placeholder="write a small bio here..."></textarea>
                     </div>
