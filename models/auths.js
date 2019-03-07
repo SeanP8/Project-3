@@ -11,6 +11,13 @@ module.exports = function(sequelize, DataTypes) {
         isEmail: true
       }
     },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        len: [1, 240]
+      }
+    },
     email: {
       type: DataTypes.JSON,
       validate: {
@@ -52,12 +59,14 @@ module.exports = function(sequelize, DataTypes) {
     // }
   });
   Auths.associate = model => {
+
     model.Auths.belongsToMany(model.Projects, {
       as: "SeeksFunding",
       through: "UserProjects"
     });
     // Foreign key of authId will be made in Favorite table
     model.Auths.hasOne(model.Favorite);
+
   };
 
   return Auths;

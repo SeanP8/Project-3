@@ -1,6 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
   var Projects = sequelize.define("Projects", {
-    // title: DataTypes.STRING
+
+  
     // name: {
     //   type: DataTypes.STRING,
     //   allowNull: true,
@@ -8,25 +9,41 @@ module.exports = function(sequelize, DataTypes) {
     //     len: [1, 240]
     //   }
     // },
-    description: {
+ 
+
+    title: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false,
+      validate: {
+        len: [1, 240]
+      }
+    },
+    link: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    image: {
+      type: DataTypes.STRING,
+    },
+    authID: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+
     }
-    // ,
-    //   authID: {
-    //     type: DataTypes.INTEGER,
-    //     allowNull: false
-    //   }
-    // }
-    // ,
-    // {
-    //   timestamps: false
+  
+
   });
 
   Projects.associate = model => {
+
     model.Projects.belongsToMany(model.Auths, {
       as: "Contributers",
       through: "UserProjects"
+
     });
     model.Projects.hasMany(model.Review, { as: "All_Reviews" });
   };
