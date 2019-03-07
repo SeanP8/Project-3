@@ -13,6 +13,9 @@ h2,h6{
 }
 
 /* Home Page */
+.navbar {
+    height: 70px;
+}
 .jumbotron {
     background-color: #c5c5c5;
     color: black;
@@ -23,20 +26,34 @@ h2,h6{
 #linkToProjects {
     color: whitesmoke;
 }
+.search-container {
+    float: right;
+    position: relative;
+    right: 100px;
+    bottom: 20px;
+}
+h6 {
+    color: white;
+    position: relative;
+    right: 160px;
+    top: 35px;
+}
+#character-search {
+    width: 80%;
+    height: 30px;
+}
 #search-btn {
     background-color: #18a0ac;
+    font-size: 13px;
+    position: absolute;
+    top: 30px;
+    left: 170px;
+    width: 80px;
+    height: 35px;
 }
 #search-btn:hover {
-    font-size: 17px;
-}
-.card {
-    width: 80%;
-    float: right;
-    bottom: 210px;
-}
-.card-header {
-    background-color: #373c42;
-    color: white;
+    width: 83px;
+    height: 38px;
 }
 /*-----------*/
 
@@ -127,7 +144,11 @@ footer{
     text-decoration: none;
 }
 .avatarDropdown{
+    position: relative;
     float: right;
+    left: 350px;
+    top: 0;
+    right: 0;
 }
 #avatar{
     border-radius: 50%;
@@ -205,3 +226,16 @@ footer{
     margin: 3px;
 }
 /* --------------*/
+/* Media Queries */
+@media screen and (max-width: 950px) {
+    .navbar {
+        height: 150px;
+    }
+    #avatar{
+        position: absolute;
+        right: 100px;
+        bottom: 30px;
+    }
+    
+  }
+/*---------------*/

@@ -46,21 +46,6 @@ class Home extends Component {
                         <h3>{firstName}</h3>
                         <textarea rows="4" cols="18" placeholder="write a small bio here..."></textarea>
                     </div>
-                    <div className="card mb-4">
-                        <div className="card-header">
-                            <h3><strong>Find a Project</strong></h3>
-                        </div>
-                        <div className="card-body">
-                            <input type="text" id="character-search" className="form-control"/>
-                            <br />
-                                <div className="text-right">
-                                    <button type="submit" className="btn btn-primary btn-md" id="search-btn"><span className="fa fa-search"></span>
-                                        Search
-                                    </button>
-
-                                </div>
-                        </div>
-                    </div>
                 </Wrapper>
                 <Footer />
             </div>
