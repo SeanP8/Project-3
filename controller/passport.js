@@ -1,6 +1,6 @@
 // Passport //
 
-const GitHubStrategy = require('passport-github').Strategy;
+const GitHubStrategy = require('passport-github2').Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const passport = require("passport");
 const bcrypt = require("bcrypt-nodejs");
@@ -26,7 +26,7 @@ passport.use("github", new GitHubStrategy(
         if (existingUser) {
           console.log("Logged In User : " + profile.id);
           console.log("Logged In User : " + existingUser.id);
-          return done(null, existingUser)
+          done(null, existingUser)
         } else {
           db.Auths.create({
             firstName: profile.displayName,
@@ -35,7 +35,7 @@ passport.use("github", new GitHubStrategy(
             authModeID: profile.id
           }).then(function (user) {
             console.log(user.id);
-            return done(null, user);
+            done(null, user);
           });
         }
       });
@@ -70,7 +70,7 @@ passport.use('google', new GoogleStrategy({
           authModeID: profile.id
         }).then(function (user) {
           console.log(user.id);
-         return done(null, user);
+         done(null, user);
         });
       }
 

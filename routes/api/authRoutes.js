@@ -6,17 +6,21 @@ router.route("/auth/github")
 
 router.route("/auth/github/callback")
   .get(passport.authenticate("github"), function (req, res) {
-    console.log("git callback " + req.user.dataValues)
-    res.redirect("http://localhost:3000/home");
+    console.log("git callback " + req.isAuthenticated())
+    
+    res.redirect("/home");
   })
+
+
 
 router.route("/auth/google")
   .get(passport.authenticate("google", { scope: ["profile"] }));
 
 router.route("/auth/google/callback")
   .get(passport.authenticate("google"), function (req, res) {
-    console.log("goo callback " + req.session.passport)
-    res.redirect("http://localhost:3000/home");
+    console.log("goo callback " + req.isAuthenticated())
+
+    res.redirect("/home");
   })
 
   router.route("/api/login")
@@ -29,6 +33,7 @@ router.route("/auth/google/callback")
 
 router.route("/api/current_user")
   .get(function (req, res) {
+    console.log(req.isAuthenticated())
     if(req.user){
       console.log("current_user " + Object.keys(req.user))
     }
