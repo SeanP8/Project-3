@@ -32,6 +32,16 @@ class HomeNav extends Component {
                                 <Link to="/projects" className="dropLinks">Your Projects</Link>
                             </div>
                         </div>
+                        <div className="search-container">
+                            <h6><strong>Find a Project</strong></h6>
+                            <input type="text" id="character-search" className="form-control" />
+                            <br />
+                            <div className="text-right">
+                                <button type="submit" className="btn btn-primary btn-md" id="search-btn"><span className="fa fa-search"></span>
+                                    Search
+                            </button>
+                            </div>
+                        </div>
                         <div className="dropdown avatarDropdown">
                             <button className="btn btn-dark bg-dark dropdown-toggle" type="button" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false"><img id="avatar" src={avatar} alt={firstName} />

@@ -33,20 +33,24 @@ class Home extends Component {
 
         return (
             <div>
-                <HomeNav options={this.state.user}/>
+                <HomeNav options={this.state.user} />
                 <Wrapper>
-                    {display}
+                    <div className="jumbotron jumbotron-fluid">
+                        <div className="container">
+                            <h1 className="display-4">{display}</h1>
+                            <a id="linkToProjects" href="/projects" target="_blank">Add Project Here</a>
+                        </div>
+                    </div>
                     <div className="userInfo">
-                        <img src={avatar} alt={firstName} width="150" height="150"/>
+                        <img src={avatar} alt={firstName} width="150" height="150" />
                         <h3>{firstName}</h3>
                         <textarea rows="4" cols="18" placeholder="write a small bio here..."></textarea>
                     </div>
-                    
                 </Wrapper>
                 <Footer />
             </div>
-        )
-    }
-}
-
-export default Home;
+                    )
+                }
+            }
+            
+            export default Home;
