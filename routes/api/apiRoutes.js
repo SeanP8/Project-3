@@ -290,25 +290,26 @@ router
     });
   });
 
-router
-  .route("/api/projects/:id")
-  .put(function(req, res) {
-    db.Projects.update(req.body, {
-      where: {
-        id: req.body.id
-      }
-    }).then(dbProject => {
-      res.json(dbProject);
-    });
-  })
-  .delete(function(req, res) {
-    db.Projects.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(dbProject => {
-      res.json(dbProject);
-    });
-  });
+
+router.route("/api/projects/:id")
+    .put(function (req, res) {
+        db.Projects.update(req.body, {
+            where: {
+                id: req.params.id
+            }
+        }).then(dbProject => {
+            res.json(dbProject);
+        })
+    })
+    .delete(function (req, res) {
+        db.Projects.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(dbProject => {
+            res.json(dbProject)
+        })
+    })
+
 
 module.exports = router;
