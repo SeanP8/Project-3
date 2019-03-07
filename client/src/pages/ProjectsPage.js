@@ -45,7 +45,7 @@ class Projects extends Component {
         event.currentTarget.reset();
     }
 
-    updateYourProject = (key, id, updatedProject) => {
+    updateUserProject = (key, id, updatedProject) => {
         const projects = { ...this.state.projects };
         projects[key] = updatedProject;
         this.setState({ projects });
@@ -54,7 +54,7 @@ class Projects extends Component {
             .catch(err => console.log(err));
     }
 
-    deleteYourProject = id => {
+    deleteUserProject = id => {
         API.deleteProject(id)
             .then(res => this.loadProjects())
             .catch(err => console.log(err));
@@ -79,8 +79,8 @@ class Projects extends Component {
                                 index={key}
                                 details={this.state.projects[key]}
                                 project={this.state.projects[key]}
-                                deleteYourProject={this.deleteYourProject}
-                                updateYourProject={this.updateYourProject}
+                                deleteUserProject={this.deleteUserProject}
+                                updateUserProject={this.updateUserProject}
                             />)}
                     </div>
                     {/* Modal to add a project */}
