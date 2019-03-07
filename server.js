@@ -9,6 +9,7 @@ require("./controller/passport");
 const session = require("express-session")
 const routes = require("./routes");
 const db = require("./models/");
+const _AUTHS = require("./mock-data/auths.json");
 const app = express();
 
 const PORT = process.env.PORT || 5000;
@@ -17,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(require("cookie-parser")());
+
 app.use(
   session({
     key: "sid",
@@ -55,11 +57,38 @@ app.use(routes);
 // if (process.env.NODE_ENV === "production") {
 // }
 
-var syncOptions = { force: false };
+var syncOptions = { force: true };
 
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
+// db.Projects.belongsTo(db.Auths, { as: "AuthRef", foreignKey: "authId" }); // Adds a foreign key into projects
+// db.Projects.hasMany(db.Review, { as: "All_Reviews" });
+
+// db.Auths.belongsToMany(db.Projects, {
+//   as: "SeeksFunding",
+//   through: "UserProjects"
+// });
+// db.Projects.belongsToMany(db.Auths, { as: "Workers", through: "UserProjects" });
+
+// db.sequelize
+//   .sync()
+//   // .then(() => {
+//   //   db.Projects.create({
+//   //     description: "My first Project"
+//   //   }).then(project => {
+//   //     project.setWorkers([10, 11]);
+//   //   });
+//   // })
+//   // .then(() => {
+//   //   db.Projects.create({
+//   //     description: "Second Project"
+//   // })
+//   .then(function() {
+//     app.listen(PORT, function() {
+//       console.log(`Listening on port ${PORT}`);
+//     });
+//   });
 
 db.sequelize.sync(syncOptions).then(function() {
   app.listen(PORT, function() {
