@@ -1,16 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
   var Projects = sequelize.define("Projects", {
-
-  
-    // name: {
-    //   type: DataTypes.STRING,
-    //   allowNull: true,
-    //   validate: {
-    //     len: [1, 240]
-    //   }
-    // },
- 
-
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -27,23 +16,18 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     image: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING
     },
     authID: {
       type: DataTypes.INTEGER,
       allowNull: false
-
     }
-  
-
   });
 
   Projects.associate = model => {
-
     model.Projects.belongsToMany(model.Auths, {
       as: "Contributers",
       through: "UserProjects"
-
     });
     model.Projects.hasMany(model.Review, { as: "All_Reviews" });
   };
