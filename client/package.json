@@ -12,6 +12,7 @@
     "react-github-login": "^1.0.3",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.5",
+    "reactstrap": "^7.1.0",
     "sequelize": "^4.42.0"
   },
   "proxy": "http://localhost:5000",

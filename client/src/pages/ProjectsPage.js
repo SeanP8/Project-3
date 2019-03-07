@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import HomeNav from "../components/HomeNav";
 import Wrapper from "../components/Wrapper";
 import Footer from "../components/Footer";
-import YourProjects from "../components/YourProjects";
+import EditProject from "../components/EditProject";
 import API from "../utils/API";
 
 class Projects extends Component {
@@ -17,13 +17,13 @@ class Projects extends Component {
         projects: {},
     }
 
-    componentDidMount() { 
-       this.loadProjects();
+    componentDidMount() {
+        this.loadProjects();
     }
     loadProjects = () => {
         API.getUsersProjects()
-        .then( res => this.setState({ projects: res.data })
-        ).catch( err => console.log(err));
+            .then(res => this.setState({ projects: res.data })
+            ).catch(err => console.log(err));
     }
     handleSubmit = event => {
         event.preventDefault();
@@ -39,22 +39,25 @@ class Projects extends Component {
             description: project.description,
             image: project.image
         })
-        .then( res => this.loadProjects())
-        .catch( err => console.log(err));
+            .then(res => this.loadProjects())
+            .catch(err => console.log(err));
 
         event.currentTarget.reset();
     }
-    
-    // updateYourProject = id => {
-    //     API.updateProject(id)
-    //     .then( res => console.log(res))
-    //     .catch( err => console.log(err));
-    // }
+
+    updateYourProject = (key, id, updatedProject) => {
+        const projects = { ...this.state.projects };
+        projects[key] = updatedProject;
+        this.setState({ projects });
+        API.updateProject(id, updatedProject)
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err));
+    }
 
     deleteYourProject = id => {
         API.deleteProject(id)
-        .then( res => this.loadProjects())
-        .catch( err => console.log(err));
+            .then(res => this.loadProjects())
+            .catch(err => console.log(err));
     }
 
     render() {
@@ -71,15 +74,14 @@ class Projects extends Component {
                     </button>
                     {/* Container that will display all your projects */}
                     <div id="projectContainer">
-                        <ul className="project-list">
-                            {Object.keys(this.state.projects).map(key => <YourProjects
+                            {Object.keys(this.state.projects).map(key => <EditProject
                                 key={key}
                                 index={key}
                                 details={this.state.projects[key]}
-                                //updateYourProject = {this.updateYourProject}
-                                deleteYourProject = {this.deleteYourProject}
+                                project={this.state.projects[key]}
+                                deleteYourProject={this.deleteYourProject}
+                                updateYourProject={this.updateYourProject}
                             />)}
-                        </ul>
                     </div>
                     {/* Modal to add a project */}
                     <div className="modal fade" id="project-modal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -139,7 +141,6 @@ class Projects extends Component {
                                         </div>
                                     </form>
                                 </div>
-
                             </div>
                         </div>
                     </div>

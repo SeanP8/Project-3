@@ -7,7 +7,7 @@ const YourProjects = props => {
             <button 
             className="btn btn-outline-danger btn-sm delete-btn" onClick={() => props.deleteYourProject(props.details.id)}>Delete</button>
             <button 
-            className="btn btn-outline-info btn-sm update-btn">Update</button>
+            className="btn btn-outline-info btn-sm update-btn" data-toggle="modal" data-target="#update-project" data-attribute ={props.index}>Update</button>
             <h3 className="project-title">{title}</h3>
             <img src={ image } alt={ title }/>
             <p>{ description }</p>

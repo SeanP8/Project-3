@@ -1,13 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
-
   var Auths = sequelize.define("Auths", {
-    firstName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1, 240]
-      }
-    },
+    firstName: DataTypes.STRING,
+
+    full_name: DataTypes.STRING,
+
     lastName: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -17,7 +13,9 @@ module.exports = function(sequelize, DataTypes) {
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: true
+      validate: {
+        isEmail: true
+      }
     },
     avatar: {
       type: DataTypes.STRING,
@@ -34,18 +32,28 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: true
-        }
+
+    password: {
+      type: DataTypes.STRING,
+      validate: {
+        isAlphanumeric: true
+      }
+    }
+    // }
+    // hooks: {
+    //   beforeCreate: auths => {
+    //     auths.full_name = `${auths.first} ${auths.last}`;
+    //   }
+    // }
   });
   Auths.associate = model => {
-    Auths.belongsToMany(model.Projects, {
-      as: "Funding",
-      through: "FundingList",
-      onDelete: "cascade"
-
+    model.Auths.belongsToMany(model.Projects, {
+      as: "SeeksFunding",
+      through: "UserProjects"
     });
+    // Foreign key of authId will be made in Favorite table
+    model.Auths.hasOne(model.Favorite);
   };
+
   return Auths;
 };
