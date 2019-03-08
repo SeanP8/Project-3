@@ -36,7 +36,8 @@ app.use(express.static("client/build"));
 
 app.use(routes);
 
-var syncOptions = { force: true };
+// if force = true, will drop the db every startup
+var syncOptions = { force: false };
 
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;

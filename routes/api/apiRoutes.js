@@ -2,120 +2,6 @@ const router = require("express").Router();
 const bcrypt = require("bcrypt-nodejs");
 const db = require("../../models");
 
-// // test routes ----------------------------
-// this route will find a user and their projects
-router.route("/api/getUserProjects").get(function (req, res) {
-    db.Auths.findAll({
-        attributes: ["name"],
-        include: [
-            {
-                model: db.Projects,
-                as: "SeeksFunding",
-                attributes: ["description"]
-            }
-        ]
-    })
-        .then(output => {
-            res.json(output);
-        })
-        .catch(error => {
-            console.log(error);
-            res.status(404).send(error);
-        });
-});
-// this route will find all projects and include associated user
-router.route("/api/allProjects").get(function (req, res) {
-    db.Projects.findAll({
-        include: [
-            {
-                model: db.Auths,
-                as: "AuthRef"
-            }
-        ]
-    })
-        .then(post => {
-            res.json(post);
-        })
-        .catch(error => {
-            console.log(error);
-            res.status(404).send(error);
-        });
-});
-// this route will add a contributor to a project
-router.route("/api/addContributers").put(function (req, res) {
-    db.Projects.findById(10)
-        .then(project => {
-            project.addContributers(10);
-        })
-        .then(() => {
-            res.send("Auth added");
-        })
-        .catch(error => {
-            console.log(error);
-            res.status(404).send(error);
-        });
-});
-// this route will get a single project with an associated review and auth
-router.route("/api/singleProject").get(function (req, res) {
-    db.Projects.findById("2", {
-        include: [
-            {
-                model: db.Review,
-                as: "All_Reviews",
-                attributes: ["the_review"]
-            },
-            {
-                model: db.Auths,
-                as: "AuthRef"
-            }
-        ]
-    })
-        .then(post => {
-            res.json(post);
-        })
-        .catch(error => {
-            console.log(error);
-            res.status(404).send(error);
-        });
-});
-
-router.route("/api/findOne").get(function (req, res) {
-    db.Auths.findById("1")
-        .then(user => {
-            res.json(user);
-        })
-        .catch(error => {
-            console.log(error);
-            res.status(404).send(error);
-        });
-});
-
-router.route("/api/update").put(function (req, res) {
-    db.Auths.update(
-        {
-            full_name: "adam's family"
-        },
-        { where: { id: 1 } }
-    ).then(rows => {
-        res.json(rows);
-    });
-});
-
-router.route("/api/remove").delete(function (req, res) {
-    db.Auths.destroy({
-        where: { id: 1 }
-    })
-        .then(() => {
-            res.send("User has been deleted");
-        })
-        .catch(error => {
-            console.log(error);
-            res.status(404).send(error);
-        });
-});
-// Above is Sean's testing route's
-// end test routes -----------------------
-
 // user routes
 router.route("/api/user")
     .get(function (req, res) {
@@ -236,7 +122,7 @@ router.route("/api/projects/:id")
             }
         }).then(dbProject => {
             res.json(dbProject);
-        })
+        });
     })
     .delete(function (req, res) {
         db.Projects.destroy({
@@ -245,7 +131,29 @@ router.route("/api/projects/:id")
             }
         }).then(dbProject => {
             res.json(dbProject)
-        })
-    })
+        });
+    });
+
+router.route("/api/projects/topfive")
+    .get(function (req, res) {
+        db.Projects.findAll({
+            limit: 5,
+            order: [['createdAt', 'DESC']]
+        }).then(dbProjects => {
+            res.json(dbProjects)
+        });
+    });
+
+router.route("/api/projects/search/:q")
+    .get(function (req, res) {
+        db.Projects.findAll(req.body, {
+            order: [[Sequelize.fn('RANDOM')]],
+            where: {
+                attributes: [req.params.q]
+            }
+        }).then(dbProjects => {
+            res.json(dbProjects)
+        });
+    });
 
 module.exports = router;

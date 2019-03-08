@@ -1,8 +1,17 @@
 import axios from "axios";
 
 export default {
+    getCurrentUser: function() {
+        return axios.get("/api/current_user")
+    },
     getAllProjects: function() {
         return axios.get("/api/projects/all");
+    },
+    getTopFiveProjects: function() {
+        return axios.get("/api/projects/topfive")
+    },
+    searchForProjects: function(query) {
+        return axios.get("/api/projects/search/" + query)
     },
     getUsersProjects: function() {
         return axios.get("/api/projects/user");

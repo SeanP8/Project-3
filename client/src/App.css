@@ -20,11 +20,29 @@ h2,h6{
     background-color: #c5c5c5;
     color: black;
     border-radius: 4px;
+    padding: 30px;
+    text-align: center;
     position: relative;
     top: 10px;
 }
+.jumnbotron-avatar{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+.display-4{
+    font-family: 'Cuprum', sans-serif;
+}
+.lead{
+    font-size: 18px;
+} 
 #linkToProjects {
+    font-size: 18px;
+    color: rgb(15, 15, 15)
+}
+#linkToProjects:hover {
     color: whitesmoke;
+    text-decoration: none;
 }
 .search-container {
     float: right;
@@ -32,7 +50,7 @@ h2,h6{
     right: 100px;
     bottom: 20px;
 }
-h6 {
+.searchBar-title {
     color: white;
     position: relative;
     right: 160px;
@@ -54,6 +72,16 @@ h6 {
 #search-btn:hover {
     width: 83px;
     height: 38px;
+}
+.topFiveProjects{
+    background-color: whitesmoke;
+    width: 85%;
+    padding: 10px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    border: 1px solid #343a40;
+    border-radius: 4px;
+    list-style-type: none
 }
 /*-----------*/
 
