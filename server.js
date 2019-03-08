@@ -3,14 +3,13 @@ const express = require("express");
 const passport = require("passport");
 const bodyParser = require("body-parser");
 require("./controller/passport");
-
 const session = require("express-session")
 const routes = require("./routes");
 const db = require("./models/");
 const app = express();
-
-const PORT = process.env.PORT || 5000;
 const cors = require("cors");
+const PORT = process.env.PORT || 5000;
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
