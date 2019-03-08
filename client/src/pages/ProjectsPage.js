@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import HomeNav from "../components/HomeNav";
 import Wrapper from "../components/Wrapper";
 import Footer from "../components/Footer";
@@ -45,20 +45,22 @@ class Projects extends Component {
     event.currentTarget.reset();
   };
 
-  updateYourProject = (key, id, updatedProject) => {
-    const projects = { ...this.state.projects };
-    projects[key] = updatedProject;
-    this.setState({ projects });
-    API.updateProject(id, updatedProject)
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err));
-  };
 
-  deleteYourProject = id => {
-    API.deleteProject(id)
-      .then(res => this.loadProjects())
-      .catch(err => console.log(err));
-  };
+    updateUserProject = (key, id, updatedProject) => {
+        const projects = { ...this.state.projects };
+        projects[key] = updatedProject;
+        this.setState({ projects });
+        API.updateProject(id, updatedProject)
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err));
+    }
+
+    deleteUserProject = id => {
+        API.deleteProject(id)
+            .then(res => this.loadProjects())
+            .catch(err => console.log(err));
+    }
+
 
   render() {
     return (
@@ -150,6 +152,7 @@ class Projects extends Component {
                         placeholder="write a description here..."
                       />
                     </div>
+
                     <div className="form-group">
                       <label id="imgLabel" htmlFor="uploadImage">
                         Upload Image
@@ -161,6 +164,22 @@ class Projects extends Component {
                         className="form-control-file"
                         id="uploadImage"
                       />
+
+                    {/* This button toggles the modal form to add a project */}
+                    <button id="addProject" type="button" className="btn btn-primary" data-toggle="modal" data-target="#project-modal">
+                        + Add Project
+                    </button>
+                    {/* Container that will display all your projects */}
+                    <div id="projectContainer">
+                            {Object.keys(this.state.projects).map(key => <EditProject
+                                key={key}
+                                index={key}
+                                details={this.state.projects[key]}
+                                project={this.state.projects[key]}
+                                deleteUserProject={this.deleteUserProject}
+                                updateUserProject={this.updateUserProject}
+                            />)}
+
                     </div>
                     <div className="modal-footer">
                       <button

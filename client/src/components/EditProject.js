@@ -17,7 +17,7 @@ class EditProject extends Component {
 
     handleChange = event => {
         const updateProject = { ...this.props.project, [event.currentTarget.name]: event.currentTarget.value };
-        this.props.updateYourProject(this.props.index, this.props.project.id, updateProject);
+        this.props.updateUserProject(this.props.index, this.props.project.id, updateProject);
     }
 
     render() {
@@ -27,7 +27,7 @@ class EditProject extends Component {
                 <ul>
                     <li className="project-info">
                         <button
-                            className="btn btn-outline-danger btn-sm delete-btn" onClick={() => this.props.deleteYourProject(this.props.details.id)}>Delete</button>
+                            className="btn btn-outline-danger btn-sm delete-btn" onClick={() => this.props.deleteUserProject(this.props.details.id)}>Delete</button>
                         <button
                             className="btn btn-outline-info btn-sm update-btn" data-toggle="modal" onClick={this.toggle}>Update</button>
                         <h3 className="project-title">{title}</h3>
