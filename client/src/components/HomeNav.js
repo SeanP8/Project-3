@@ -17,6 +17,13 @@ class HomeNav extends Component {
                 }
             })
     }
+
+    // SearchCharacter() {
+    //     Axios.get("/api/projects/all")
+            
+    // }
+
+
     render() {
         const { avatar, firstName } = this.state.user
         return (
