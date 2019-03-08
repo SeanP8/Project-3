@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     authID: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     }
   });
 

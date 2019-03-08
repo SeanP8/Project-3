@@ -19,18 +19,18 @@ module.exports = function(sequelize, DataTypes) {
     },
     avatar: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
         len: [1, 240]
       }
     },
     authMode: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     authModeID: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
 
     password: {
