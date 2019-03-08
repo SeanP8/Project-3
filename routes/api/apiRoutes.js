@@ -1,43 +1,108 @@
 const router = require("express").Router();
 const bcrypt = require("bcrypt-nodejs");
-const db = require('../../models');
+const db = require("../../models");
 
-// User Routes //
-router.route("/api/users")
-    .get(function (req, res) {
-        db.Auths.findAll().then((dbUsers) => {
-            res.send(dbUsers);
-        })
+
+// // This is a test route
+// this route will add a contributor to a project
+router.route("/addContributers").put(function(req, res) {
+  db.Projects.findById(10)
+    .then(project => {
+      project.addContributers(10);
+    })
+    .then(() => {
+      res.send("Auth added");
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(404).send(error);
     });
+});
 
-router.route("/api/user/:id")
-    .get(function (req, res) {
-        db.Auths.findOne({
-            where: {
-                id: req.param.id
-            }
-        }).then((dbUser) => {
-            res.send(dbUser);
-        })
+// this route will find all user's and their projects
+router.route("/getUserProjects").get(function(req, res) {
+  db.Auths.findAll({
+    attributes: ["name"],
+    include: [
+      {
+        model: db.Projects,
+        as: "SeeksFunding",
+        attributes: ["description"]
+      }
+    ]
+  })
+    .then(output => {
+      res.json(output);
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(404).send(error);
     });
+});
+// this route will find all projects and include associated user
+router.route("/allProjects").get(function(req, res) {
+  db.Projects.findAll({
+    include: [
+      {
+        model: db.Auths,
+        as: "AuthRef"
+      }
+    ]
+  })
+    .then(post => {
+      res.json(post);
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(404).send(error);
+    });
+});
+// this route will get a single project with an associated review and auth
+router.route("/singleProject").get(function(req, res) {
+  db.Projects.findById("2", {
+    include: [
+      {
+        model: db.Review,
+        as: "All_Reviews",
+        attributes: ["the_review"]
+      },
+      {
+        model: db.Auths,
+        as: "AuthRef"
+      }
+    ]
+  })
+    .then(post => {
+      res.json(post);
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(404).send(error);
+    });
+});
+router.route("/findOne").get(function(req, res) {
+  db.Auths.findById("1")
+    .then(user => {
+      res.json(user);
 
+// user routes
 router.route("/api/user")
     .get(function (req, res) {
         db.Auths.findOne({
             where: {
                 id: req.body.id
             }
-        }).then((dbUser) => {
+        }).then(dbUser => {
             res.send(dbUser);
-        })
+        });
+
     })
     .post(function (req, res) {
-        console.log(req.body);
         db.Auths.findOne({
             where: {
                 email: req.body.email
             }
-        }).then((dbAuth) => {
+        }).then(dbAuth => {
             if (dbAuth) {
                 res.send("email is taken");
             } else {
@@ -49,34 +114,88 @@ router.route("/api/user")
                     email: req.body.email,
                     authMode: "local",
                     authModeID: Date.now()
-
-                }).then((dbAuth) => {
+                }).then(dbAuth => {
                     res.send(dbAuth);
-                })
+                });
             }
-        })
-    })
+        });
+    });
+
+router.route("/api/users")
+    .get(function (req, res) {
+        db.Auths.findAll().then(dbUsers => {
+            res.send(dbUsers);
+        });
+    });
+
+router.route("/api/user/:id")
+    .get(function (req, res) {
+        db.Auths.findOne({
+            where: {
+                id: req.param.id
+            }
+        }).then(dbUser => {
+            res.send(dbUser);
+        });
+    });
+
+router.route("/api/user/login")
+    .get(function (req, res) {
+        db.Auths.findOne({
+            where: {
+                email: req.params.email
+            }
+        }).then(dbUser => {
+            if (bcrypt.compareSync(req.params.password, dbUser.password)) {
+                req.user = dbUser;
+            } else {
+                res.send(401);
+            }
+        });
+    });
 
 // Project Routes //
+
 router.route("/api/projects/all")
     .get(function (req, res) {
-        db.Projects.findAll()
-            .then(dbProjects => {
-                res.send(dbProjects);
-            })
-    })
+        db.Projects.findAll().then(dbProjects => {
+            res.send(dbProjects);
+        });
+    });
 
 router.route("/api/projects/user")
     .get(function (req, res) {
-        let userId = req.user.id
+        let userId = req.user.id;
         db.Projects.findAll({
             where: {
                 authID: userId
             }
         }).then(dbProjects => {
-            res.send(dbProjects)
-        })
-    })
+            res.send(dbProjects);
+        });
+    });
+
+
+router
+  .route("/api/projects/:id")
+  .put(function(req, res) {
+    db.Projects.update(req.body, {
+      where: {
+        id: req.params.id
+      }
+    }).then(dbProject => {
+      res.json(dbProject);
+    });
+  })
+  .delete(function(req, res) {
+    db.Projects.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(dbProject => {
+      res.json(dbProject);
+    });
+  });
 
 router.route("/api/projects")
     .get(function (req, res) {
@@ -85,8 +204,8 @@ router.route("/api/projects")
                 id: req.body.id
             }
         }).then(dbProject => {
-            res.send(dbProject)
-        })
+            res.send(dbProject);
+        });
     })
     .post(function (req, res) {
         db.Projects.create({
@@ -97,18 +216,18 @@ router.route("/api/projects")
             authID: req.user.id
         }).then(dbProject => {
             res.send(dbProject);
-        })
-    })
+        });
+    });
 
 router.route("/api/projects/:id")
     .put(function (req, res) {
         db.Projects.update(req.body, {
             where: {
-                id: req.body.id
+                id: req.params.id
             }
         }).then(dbProject => {
             res.json(dbProject);
-        })
+        });
     })
     .delete(function (req, res) {
         db.Projects.destroy({
@@ -117,7 +236,29 @@ router.route("/api/projects/:id")
             }
         }).then(dbProject => {
             res.json(dbProject)
-        })
-    })
+        });
+    });
+
+router.route("/api/projects/topfive")
+    .get(function (req, res) {
+        db.Projects.findAll({
+            limit: 5,
+            order: [['createdAt', 'DESC']]
+        }).then(dbProjects => {
+            res.json(dbProjects)
+        });
+    });
+// TODO: modify query, currently throws error.
+router.route("/api/projects/search/:q")
+    .get(function (req, res) {
+        db.Projects.findAll({
+            where: {
+                attributes: [req.params.q]
+            }
+        }).then(dbProjects => {
+            res.json(dbProjects)
+        });
+    });
+
 
 module.exports = router;

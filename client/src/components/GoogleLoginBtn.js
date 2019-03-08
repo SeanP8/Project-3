@@ -1,18 +1,15 @@
 import React from "react";
 
-class GoogleLoginBtn extends React.Component {
+const GoogleLoginBtn = () => {
 
-    handleClick = () => {
-        document.location.href="http://localhost:5000/auth/google"
-    }
-
-    render() {
-        return (
-            <div>
-            <button onClick={this.handleClick} id="googleLogInBtn" type="button" className="btn btn-gplus"><i className="fab fa-google-plus-g pr-1"></i>Google +</button>
-            </div>
-        )
-    }
+    return (
+        <div>
+            <a href="/auth/google">
+                <button id="googleLogInBtn" type="button" className="btn btn-gplus"><i className="fab fa-google-plus-g pr-1"></i>Google +
+                </button>
+            </a>
+        </div>
+    )
 };
 
 export default GoogleLoginBtn;
