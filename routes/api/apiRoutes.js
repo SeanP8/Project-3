@@ -14,7 +14,6 @@ router.route("/api/user")
         });
     })
     .post(function (req, res) {
-        console.log(req.body);
         db.Auths.findOne({
             where: {
                 email: req.body.email
@@ -143,11 +142,10 @@ router.route("/api/projects/topfive")
             res.json(dbProjects)
         });
     });
-
+// TODO: modify query, currently throws error.
 router.route("/api/projects/search/:q")
     .get(function (req, res) {
-        db.Projects.findAll(req.body, {
-            order: [[Sequelize.fn('RANDOM')]],
+        db.Projects.findAll({
             where: {
                 attributes: [req.params.q]
             }

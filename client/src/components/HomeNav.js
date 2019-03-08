@@ -34,7 +34,7 @@ class HomeNav extends Component {
     }
 
     searchProjects = query => {
-        API.projectSearch(query)
+        API.searchForProjects(query)
         .then( res => this.setState({ searchResults: res.data }))
         .catch(err => console.log(err));
     }
