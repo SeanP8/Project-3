@@ -2,6 +2,89 @@ const router = require("express").Router();
 const bcrypt = require("bcrypt-nodejs");
 const db = require("../../models");
 
+
+// // This is a test route
+// this route will add a contributor to a project
+router.route("/addContributers").put(function(req, res) {
+  db.Projects.findById(10)
+    .then(project => {
+      project.addContributers(10);
+    })
+    .then(() => {
+      res.send("Auth added");
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(404).send(error);
+    });
+});
+
+// this route will find all user's and their projects
+router.route("/getUserProjects").get(function(req, res) {
+  db.Auths.findAll({
+    attributes: ["name"],
+    include: [
+      {
+        model: db.Projects,
+        as: "SeeksFunding",
+        attributes: ["description"]
+      }
+    ]
+  })
+    .then(output => {
+      res.json(output);
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(404).send(error);
+    });
+});
+// this route will find all projects and include associated user
+router.route("/allProjects").get(function(req, res) {
+  db.Projects.findAll({
+    include: [
+      {
+        model: db.Auths,
+        as: "AuthRef"
+      }
+    ]
+  })
+    .then(post => {
+      res.json(post);
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(404).send(error);
+    });
+});
+// this route will get a single project with an associated review and auth
+router.route("/singleProject").get(function(req, res) {
+  db.Projects.findById("2", {
+    include: [
+      {
+        model: db.Review,
+        as: "All_Reviews",
+        attributes: ["the_review"]
+      },
+      {
+        model: db.Auths,
+        as: "AuthRef"
+      }
+    ]
+  })
+    .then(post => {
+      res.json(post);
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(404).send(error);
+    });
+});
+router.route("/findOne").get(function(req, res) {
+  db.Auths.findById("1")
+    .then(user => {
+      res.json(user);
+
 // user routes
 router.route("/api/user")
     .get(function (req, res) {
@@ -12,6 +95,7 @@ router.route("/api/user")
         }).then(dbUser => {
             res.send(dbUser);
         });
+
     })
     .post(function (req, res) {
         db.Auths.findOne({
@@ -91,6 +175,28 @@ router.route("/api/projects/user")
         });
     });
 
+
+router
+  .route("/api/projects/:id")
+  .put(function(req, res) {
+    db.Projects.update(req.body, {
+      where: {
+        id: req.params.id
+      }
+    }).then(dbProject => {
+      res.json(dbProject);
+    });
+  })
+  .delete(function(req, res) {
+    db.Projects.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(dbProject => {
+      res.json(dbProject);
+    });
+  });
+
 router.route("/api/projects")
     .get(function (req, res) {
         db.Projects.findOne({
@@ -153,5 +259,6 @@ router.route("/api/projects/search/:q")
             res.json(dbProjects)
         });
     });
+
 
 module.exports = router;

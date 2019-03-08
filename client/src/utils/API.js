@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export default {
+
     getCurrentUser: function() {
         return axios.get("/api/current_user")
     },
@@ -25,4 +26,8 @@ export default {
     deleteProject: function(id) {
         return axios.delete("/api/projects/" + id);
     }  
+
 };
+export function getAllProjects() {
+  return axios.get("/api/projects/all");
+}
