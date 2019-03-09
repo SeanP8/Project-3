@@ -119,6 +119,7 @@ footer{
   }
 #gitHubLoginBtn:hover{
     background-color:rgb(43, 38, 38);
+    text-decoration: none;
   }
 #googleLogInBtn{
     clear: both;
@@ -131,6 +132,7 @@ footer{
   }
 #googleLogInBtn:hover{
     background-color: rgb(187, 55, 37);
+    text-decoration: none;
   }
 /* ---------------------------*/
 /* Form  Flexbox*/
