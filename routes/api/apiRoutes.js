@@ -71,6 +71,7 @@ router.route("/api/user/login")
     });
   });
 
+
 // Project Routes //
 
 router.route("/api/projects/all")
@@ -145,15 +146,18 @@ router.route("/api/projects/topfive")
   });
 // TODO: modify query, currently throws error.
 router.route("/api/projects/search/:q")
-  .get(function (req, res) {
-    db.Projects.findAll({
-      where: {
-        attributes: [req.params.q]
-      }
-    }).then(dbProjects => {
-      res.json(dbProjects)
+    .get(function (req, res) {
+        db.Projects.findAll({
+            where: {
+                description: {
+                  $like: '%' +  req.params.q + '%'
+                }
+            }
+        }).then(dbProjects => {
+            res.json(dbProjects)
+        });
     });
-  });
+
 
 
 module.exports = router;
