@@ -291,4 +291,9 @@ footer{
        bottom: 35px;
     }
 }
+@media screen and (max-width: 500px) {
+    #avatar {
+       bottom: 35px;
+    }
+}
 /*---------------*/

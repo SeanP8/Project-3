@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import HomeNav from "../components/HomeNav";
 import TopFiveProjects from "../components/TopFiveProjects";
 import Wrapper from "../components/Wrapper";
+import ImageInput from "../components/ImageInputForm";
 import Footer from "../components/Footer";
 import API from "../utils/API";
 
@@ -21,9 +22,9 @@ class Home extends Component {
                 })
             }
         })
-        API.getTopFiveProjects().then( res => {
+        API.getTopFiveProjects().then(res => {
             this.setState({ projects: res.data })
-        }).catch( err => console.log(err));
+        }).catch(err => console.log(err));
     }
 
     render() {
@@ -46,15 +47,17 @@ class Home extends Component {
                             <p className="lead">Search for Startups to Endorse or <Link to="/projects" id="linkToProjects">Add A Project</Link> to get Endorsed!</p>
 
                         </div>
-                    </div>
-                    <h1 className="subTitle">New Posts!</h1>
-                    <div className="topFive">
-                    <ul>
-                        {Object.keys(this.state.projects).map( key => <TopFiveProjects
-                            key = {key}
-                            details = {this.state.projects[key]}
-                            />)}
-                    </ul>
+                        </div>
+                        <div>
+                        <h1 className="subTitle">New Posts!</h1>
+                        <div className="topFive">
+                            <ul>
+                                {Object.keys(this.state.projects).map(key => <TopFiveProjects
+                                    key={key}
+                                    details={this.state.projects[key]}
+                                />)}
+                            </ul>
+                        </div>
                     </div>
                 </Wrapper>
                 <Footer />

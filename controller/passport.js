@@ -58,9 +58,7 @@ passport.use('google', new GoogleStrategy({
       where: { authModeId: profile.id }
     }).then(function (existingUser) {
       if (existingUser) {
-        console.log("google USER + " + existingUser.dataValues.firstName)
-        console.log("Logged In User : " + profile.id);
-        console.log("Logged In User : " + existingUser.id);
+  
         done(null, existingUser);
       } else {
         db.Auths.create({
@@ -69,7 +67,6 @@ passport.use('google', new GoogleStrategy({
           authMode: google,
           authModeID: profile.id
         }).then(function (user) {
-          console.log(user.id);
          done(null, user);
         });
       }
@@ -80,7 +77,6 @@ passport.use('google', new GoogleStrategy({
 
 passport.use('local', new LocalStrategy(
   function (username, password, done) {
-    console.log("HYE " + username + " " + password);
     db.Auths.findOne(
       {
         where: {
@@ -89,13 +85,10 @@ passport.use('local', new LocalStrategy(
       }).then(function (user) {
 
         if (user) {
-          console.log("logging " + user.dataValues);
 
           if (bcrypt.compareSync(password, user.password)) {
-            console.log("Ok")
             return done(null, user);
           } else {
-            console.log("NO MATCH")
             done(null, false);
           }
         } else {
@@ -112,8 +105,7 @@ passport.use('local', new LocalStrategy(
 
 // authenticate session persistence
 passport.serializeUser(function (user, done) {
-  console.log('serial')
-  console.log(user.id)
+  
   done(null, user.id)
 });
 

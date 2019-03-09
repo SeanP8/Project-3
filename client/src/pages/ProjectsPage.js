@@ -140,6 +140,7 @@ class Projects extends Component {
                       <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                       <button id="saveProject" type="submit" className="btn btn-primary">Save Project</button>
                     </div>
+                              </div>
                   </form>
                 </div>
               </div>

@@ -35,7 +35,9 @@ class HomeNav extends Component {
 
     searchProjects = query => {
         API.searchForProjects(query)
-        .then( res => this.setState({ searchResults: res.data }))
+        .then( res => this.setState({ searchResults: res.data }, function(){
+            console.log(this.state.searchResults)
+        }))
         .catch(err => console.log(err));
     }
 
@@ -76,6 +78,8 @@ class HomeNav extends Component {
                             </button>
                             <div className="dropdown-menu dropdown-menu-right" aria-labelledby="avatar-dropdown-menu">
                                 <a className="dropdown-item" href="/api/logout">Logout</a>
+                                <a className="dropdown-item" href="/profile">Edit Profile</a>
+
                             </div>
                         </div>
                     </Wrapper>
