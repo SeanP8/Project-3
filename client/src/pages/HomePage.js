@@ -1,26 +1,30 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import HomeNav from "../components/HomeNav";
+import TopFiveProjects from "../components/TopFiveProjects";
 import Wrapper from "../components/Wrapper";
 import ImageInput from "../components/ImageInputForm";
 import Footer from "../components/Footer";
-import axios from "axios";
+import API from "../utils/API";
 
 class Home extends Component {
     state = {
-        user: {}
+        user: {},
+        projects: {}
     };
 
     componentDidMount() {
-        axios.get("/api/current_user").then((response) => {
+        API.getCurrentUser().then(response => {
             const currentUser = response.data;
-            console.log(currentUser);
-            console.log("MOUNT CALL + " + Object.keys(currentUser))
             if (currentUser) {
                 this.setState({
                     user: currentUser
                 })
             }
         })
+        API.getTopFiveProjects().then( res => {
+            this.setState({ projects: res.data })
+        }).catch( err => console.log(err));
     }
 
     render() {
@@ -34,16 +38,25 @@ class Home extends Component {
 
         return (
             <div>
-                <HomeNav options={this.state.user}/>
+                <HomeNav options={this.state.user} />
                 <Wrapper>
-                    {display}
-                    <div className="userInfo">
-                        <img src={avatar} alt={firstName} width="150" height="150"/>
-                        <ImageInput imageName="Avatar"/>
-                        <h3>{firstName}</h3>
-                        <textarea rows="4" cols="18" placeholder="write a small bio here..."></textarea>
+                    <div className="jumbotron jumbotron-fluid">
+                        <div className="container">
+                            <img className="jumnbotron-avatar" src={avatar} alt={firstName} width="150" height="150" />
+                            <h1 className="display-4">{display}</h1>
+                            <p clasName="lead">Search for Startups to Endorse or <Link to="/projects" id="linkToProjects">Add A Project</Link> to get Endorsed!</p>
+
+                        </div>
                     </div>
-                    
+                    <h1 className="subTitle">New Posts!</h1>
+                    <div className="topFive">
+                    <ul>
+                        {Object.keys(this.state.projects).map( key => <TopFiveProjects
+                            key = {key}
+                            details = {this.state.projects[key]}
+                            />)}
+                    </ul>
+                    </div>
                 </Wrapper>
                 <Footer />
             </div>

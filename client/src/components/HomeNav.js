@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Wrapper from "./Wrapper";
-import Axios from "axios";
+import API from "../utils/API";
 
 class HomeNav extends Component {
     state = {
-        user: {}
+        user: {},
+        search: "",
+        searchResults: {}
     };
 
     componentDidMount() {
-        Axios.get("/api/current_user")
+        API.getCurrentUser()
             .then(res => {
                 const currentUser = res.data
                 if (currentUser) {
@@ -17,6 +19,26 @@ class HomeNav extends Component {
                 }
             })
     }
+
+    handleInputChange = event => {
+        const value = event.target.value;
+        const name = event.target.name;
+        this.setState({
+            [name]: value
+        });
+    }
+
+    handleSubmit = event => {
+        event.preventDefault();
+        this.searchProjects(this.state.search);
+    }
+
+    searchProjects = query => {
+        API.searchForProjects(query)
+        .then( res => this.setState({ searchResults: res.data }))
+        .catch(err => console.log(err));
+    }
+
     render() {
         const { avatar, firstName } = this.state.user
         return (
@@ -32,12 +54,28 @@ class HomeNav extends Component {
                                 <Link to="/projects" className="dropLinks">Your Projects</Link>
                             </div>
                         </div>
+                        <div className="search-container">
+                            <h6 className="searchBar-title"><strong>Find a Project</strong></h6>
+                            <input
+                            onChange={this.handleInputChange}
+                            value={this.state.search}
+                            name="search" 
+                            type="text" 
+                            id="character-search" 
+                            className="form-control" />
+                            <br />
+                            <div className="text-right">
+                                <button onClick={this.handleSubmit} type="submit" className="btn btn-primary btn-md" id="search-btn"><span className="fa fa-search"></span>
+                                    Search
+                            </button>
+                            </div>
+                        </div>
                         <div className="dropdown avatarDropdown">
                             <button className="btn btn-dark bg-dark dropdown-toggle" type="button" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false"><img id="avatar" src={avatar} alt={firstName} />
                             </button>
                             <div className="dropdown-menu dropdown-menu-right" aria-labelledby="avatar-dropdown-menu">
-                                <a className="dropdown-item" href="http://localhost:5000/api/logout">Logout</a>
+                                <a className="dropdown-item" href="/api/logout">Logout</a>
                             </div>
                         </div>
                     </Wrapper>

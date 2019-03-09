@@ -90,7 +90,7 @@ passport.use('local', new LocalStrategy(
 
         if (user) {
           console.log("logging " + user.dataValues);
- 
+
           if (bcrypt.compareSync(password, user.password)) {
             console.log("Ok")
             return done(null, user);
@@ -98,12 +98,12 @@ passport.use('local', new LocalStrategy(
             console.log("NO MATCH")
             done(null, false);
           }
-        }else{
-          done(null,null);
+        } else {
+          done(null, null);
         }
 
 
-      }).catch(function(err){
+      }).catch(function (err) {
         console.log(err);
       });
   }
