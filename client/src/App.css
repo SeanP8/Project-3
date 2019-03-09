@@ -217,7 +217,7 @@ footer{
     display: block;
 }
 .projectsDropdown:hover .dropBtn{
-    background-color: #202224
+    background-color: #202224;
 }
 .projectsDropdown:hover .dropdown-content{
     display: block;
@@ -261,11 +261,34 @@ footer{
     .navbar {
         height: 150px;
     }
+    .searchBar-title {
+        color: #343a40;
+    }
+    .jumbotron {
+        position: relative;
+        top: 50px;
+    }
     #avatar{
         position: absolute;
         right: 100px;
         bottom: 30px;
     }
-    
-  }
+    .subTitle {
+        position: relative;
+        left: 120px;
+    }
+    .topFive {
+        position: relative;
+        right: 20px;
+    }
+    .subTitle, .topFive {
+        position: relative;
+        top: 30px;
+    }
+}
+@media screen and (max-width: 500px) {
+    #avatar {
+       bottom: 35px;
+    }
+}
 /*---------------*/
