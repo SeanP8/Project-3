@@ -144,7 +144,7 @@ router.route("/api/projects/topfive")
       res.json(dbProjects)
     });
   });
-// TODO: modify query, currently throws error.
+
 router.route("/api/projects/search/:q")
     .get(function (req, res) {
         db.Projects.findAll({
