@@ -4,12 +4,13 @@ import Pagination from "../components/pagination";
 import { paginate } from "../utils/paginate";
 import API from "../utils/API";
 import { getAllProjects } from "../utils/API";
+import HomeNav from "../components/HomeNav";
 
 class AllProjectsPage extends Component {
   state = {
     projects: [],
     currentPage: 1,
-    pageSize: 3
+    pageSize: 5
   };
   async componentDidMount() {
     const { data: projects } = await getAllProjects();
@@ -30,37 +31,40 @@ class AllProjectsPage extends Component {
 
     const projects = paginate(allProjects, currentPage, pageSize);
     return (
-      <Wrapper>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Link</th>
-              <th>Description</th>
-              <th>image</th>
-            </tr>
-          </thead>
-          <tbody>
-            {projects.map(project => (
+      <div>
+        <HomeNav />
+        <Wrapper>
+          <div>
+            <h1 className="subTitle">Projects</h1>
+          </div>
+          <table className="table">
+            <thead>
               <tr>
-                <td>{project.title}</td>
-                <td>{project.link}</td>
-                <td>{project.description}</td>
-                <td>{project.image}</td>
+                <th>Title</th>
+                <th>Link</th>
+                <th>Description</th>
+                <th>image</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        <div>
-          <h2>All Projects Page</h2>
-        </div>
-        <Pagination
-          itemsCount={count}
-          pageSize={pageSize}
-          onPageChange={this.handlePageChange}
-          currentPage={currentPage}
-        />
-      </Wrapper>
+            </thead>
+            <tbody>
+              {projects.map(project => (
+                <tr>
+                  <td>{project.title}</td>
+                  <td>{project.link}</td>
+                  <td>{project.description}</td>
+                  <td>{project.image}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <Pagination
+            itemsCount={count}
+            pageSize={pageSize}
+            onPageChange={this.handlePageChange}
+            currentPage={currentPage}
+          />
+        </Wrapper>
+      </div>
     );
   }
 }

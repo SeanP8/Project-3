@@ -1,19 +1,14 @@
 require("dotenv").config();
-
-const cookieSession = require("cookie-session");
-
+require("./controller/passport");
 const express = require("express");
 const passport = require("passport");
 const bodyParser = require("body-parser");
-require("./controller/passport");
-
 const session = require("express-session");
+const cors = require("cors");
+const app = express();
 const routes = require("./routes");
 const db = require("./models/");
-
 const seed = require("./models/seed/seed-db");
-
-const app = express();
 
 const PORT = process.env.PORT || 5000;
 const cors = require("cors");
@@ -68,9 +63,7 @@ app.use(passport.session());
 
 app.use(passport.initialize());
 app.use(passport.session());  
-
 app.use(express.static("client/build"));
-
 app.use(routes);
 
 // if force = true, will drop the db every startup
