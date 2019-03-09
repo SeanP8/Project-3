@@ -4,7 +4,11 @@
   "description": "tech developers networking system",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "build": " cd client && npm run build",
+    "heroku-prebuild": "cd client && npm install",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
