@@ -82,9 +82,9 @@ if (process.env.NODE_ENV === "test") {
 
 db.sequelize
   .sync(syncOptions)
-  .then(() => {
-    seed.insert();
-  })
+  // .then(() => {
+  //   seed.insert();
+  // })
   .then(function() {
     app.listen(PORT, function() {
       console.log(`Listening on port ${PORT}`);

@@ -197,6 +197,7 @@ class Projects extends Component {
                         Save Project
                       </button>
                     </div>
+                              </div>
                   </form>
                 </div>
               </div>

@@ -298,7 +298,9 @@ router.route("/api/projects/search/:q")
     .get(function (req, res) {
         db.Projects.findAll({
             where: {
-                attributes: [req.params.q]
+                description: {
+                  $like: '%' +  req.params.q + '%'
+                }
             }
         }).then(dbProjects => {
             res.json(dbProjects)

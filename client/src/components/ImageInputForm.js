@@ -16,11 +16,12 @@ class ImageInputForm extends Component {
 
 
     render() {
+        var {image, action} = this.props;
         return (
-            <Wrapper>
-                <form className="imageForm"  action="/api/add_image" enctype="multipart/form-data" method="post">
+            <div>
+                <form className="imageForm"  action={action} enctype="multipart/form-data" method="post">
                     <div className="form_line">
-                        <label for="photo_image">Change {this.props.imageName}</label>
+                        <label for="photo_image">Change {image}</label>
                         <div className="form_controls">
                             <input id="photo_image" name="image" type="file" />
                             <input id="photo_image_cache" name="image_cache" type="hidden" />
@@ -33,7 +34,7 @@ class ImageInputForm extends Component {
                         </div>
                     </div>
                 </form>
-            </Wrapper>
+            </div>
 
         );
     }

@@ -22,9 +22,9 @@ class Home extends Component {
                 })
             }
         })
-        API.getTopFiveProjects().then( res => {
+        API.getTopFiveProjects().then(res => {
             this.setState({ projects: res.data })
-        }).catch( err => console.log(err));
+        }).catch(err => console.log(err));
     }
 
     render() {
@@ -45,17 +45,18 @@ class Home extends Component {
                             <img className="jumnbotron-avatar" src={avatar} alt={firstName} width="150" height="150" />
                             <h1 className="display-4">{display}</h1>
                             <p clasName="lead">Search for Startups to Endorse or <Link to="/projects" id="linkToProjects">Add A Project</Link> to get Endorsed!</p>
-
                         </div>
-                    </div>
-                    <h1 className="subTitle">New Posts!</h1>
-                    <div className="topFive">
-                    <ul>
-                        {Object.keys(this.state.projects).map( key => <TopFiveProjects
-                            key = {key}
-                            details = {this.state.projects[key]}
-                            />)}
-                    </ul>
+                        </div>
+                        <div>
+                        <h1 className="subTitle">New Posts!</h1>
+                        <div className="topFive">
+                            <ul>
+                                {Object.keys(this.state.projects).map(key => <TopFiveProjects
+                                    key={key}
+                                    details={this.state.projects[key]}
+                                />)}
+                            </ul>
+                        </div>
                     </div>
                 </Wrapper>
                 <Footer />
