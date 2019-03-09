@@ -18,7 +18,7 @@ class ImageInputForm extends Component {
     render() {
         return (
             <Wrapper>
-                <form className="imageForm"  action="http://localhost:5000/api/add_image" enctype="multipart/form-data" method="post">
+                <form className="imageForm"  action="/api/add_image" enctype="multipart/form-data" method="post">
                     <div className="form_line">
                         <label for="photo_image">Change {this.props.imageName}</label>
                         <div className="form_controls">

@@ -14,6 +14,17 @@ const app = express();
 
 const PORT = process.env.PORT || 5000;
 const cors = require("cors");
+app.use(express.static("client/build"));
+app.use(function(req, res, next) {
+  if (req.url != '/favicon.ico') {
+    return next();
+  } else {
+    res.status(200);
+    res.header('Content-Type', 'image/x-icon');
+    res.header('Cache-Control', 'max-age=4294880896');
+    res.end();
+  }
+});
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
@@ -50,7 +61,6 @@ app.use(passport.session());
 // });
 // next();
 // })
-app.use(express.static("client/build"));
 
 app.use(routes);
 
