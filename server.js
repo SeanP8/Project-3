@@ -54,7 +54,7 @@ app.use(passport.session());
 // next();
 // })
 
-);
+//);
 
 app.use(passport.initialize());
 app.use(passport.session());  

@@ -84,7 +84,8 @@ router.route("/findOne").get(function(req, res) {
   db.Auths.findById("1")
     .then(user => {
       res.json(user);
-
+    })
+});
 // user routes
 router.route("/api/user")
     .get(function (req, res) {

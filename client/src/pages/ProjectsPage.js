@@ -164,7 +164,7 @@ class Projects extends Component {
                         className="form-control-file"
                         id="uploadImage"
                       />
-
+                    </div>
                     {/* This button toggles the modal form to add a project */}
                     <button id="addProject" type="button" className="btn btn-primary" data-toggle="modal" data-target="#project-modal">
                         + Add Project
