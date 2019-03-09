@@ -257,21 +257,33 @@ footer{
 }
 /* --------------*/
 /* Media Queries */
-@media screen and (max-width: 950px) {
-    .navbar {
+@media screen and (max-width: 1260px) {
+    #avatar {
+        position: relative;
+        right: 40px;
+    }
+}
+@media screen and (max-width: 960px) {
+     /* NavBar */
+     .navbar {
         height: 150px;
     }
-    .searchBar-title {
-        color: #343a40;
+    .search-container {
+        top: 30px;
+        right: 350px;
     }
+    .searchBar-title {
+        opacity: 0;
+    }
+    #avatar{
+        position: relative;
+        right: 50px;
+        bottom: 20px;
+    }
+    /* Jumbotron & Profile */
     .jumbotron {
         position: relative;
         top: 50px;
-    }
-    #avatar{
-        position: absolute;
-        right: 100px;
-        bottom: 30px;
     }
     .subTitle {
         position: relative;
@@ -286,14 +298,80 @@ footer{
         top: 30px;
     }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 850px) {
+     /* NavBar */
     #avatar {
-       bottom: 35px;
+        position: relative;
+        bottom: 30px;
+        right: 60px;
     }
 }
-@media screen and (max-width: 500px) {
-    #avatar {
-       bottom: 35px;
+@media screen and (max-width: 793px) {
+    /* NavBar */
+   #avatar {
+       position: relative;
+       bottom: 60px;
+    }
+    .search-container {
+        top: 30px;
+        right: 300px;
     }
 }
+@media screen and (max-width: 698px) {
+    /* NavBar */
+    .search-container {
+        top: 10px;
+        right: 150px;
+    }
+}
+@media screen and (max-width: 499px) {
+    /* NavBar */
+    .navbar {
+        height: 150px;
+    }
+    .favoritesLink {
+        position: relative;
+        top: 40px;
+        right: 100px;
+    }
+    .projectsDropdown {
+        position: relative;
+        /* REDO PROJECTS POSITION */
+    }
+    #avatar {
+        position: relative;
+        bottom: 50px;
+        right: 90px;
+    }
+}
+@media screen and (max-width: 430px) {
+    /* NavBar */
+    .navbar {
+        height: 150px;
+    }
+    .favoritesLink {
+        position: relative;
+        top: 40px;
+        right: 100px;
+    }
+    .projectsDropdown {
+        position: relative;
+        left: 140px;
+        bottom: 2px;
+    }
+    .search-container {
+        top: 20px;
+        right: 100px;
+    }
+    #avatar {
+        position: relative;
+        bottom: 70px;
+    }
+    /* Jumbotron & Profile */
+    .subTitle {
+        position: relative;
+        left: 60px;
+    }
+}
+
 /*---------------*/
