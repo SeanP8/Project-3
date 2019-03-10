@@ -256,18 +256,43 @@ footer{
     margin: 3px;
 }
 /* --------------*/
+
 /* Media Queries */
 @media screen and (max-width: 1260px) {
+    /* Navbar */
     #avatar {
         position: relative;
         right: 40px;
     }
+     /* Login Page */
+     #gitHubLoginBtn, #googleLogInBtn {
+        width: 150px;
+    }
 }
 @media screen and (max-width: 960px) {
+    body {
+        padding-top: 100px;
+    }
      /* NavBar */
+     .align-top {
+        width: 100px;
+        height: 70px;
+    }
+    .navbar-brand {
+        font-size: 30px;
+        bottom: 20px;
+    }
+    .homeLink {
+        font-size: 70px;
+    }
      .navbar {
         height: 150px;
     }
+    /* Login Page */
+    #gitHubLoginBtn, #googleLogInBtn {
+        width: 150px;
+    }
+    /* HomePage */
     .search-container {
         top: 30px;
         right: 350px;
@@ -331,6 +356,10 @@ footer{
     }
 }
 @media screen and (max-width: 710px) {
+    body {
+        overflow-x: hidden;
+    }
+    /* Navbar */
     #avatar {
         position: relative;
         bottom: 60px;
@@ -340,14 +369,22 @@ footer{
         right: 300px;
         top: 15px;
     }
-}
-/* @media screen and (max-width: 695px) {
-    .search-container {
+     /* Login Page */
+     .signupContainer {
+         width: 650px;
+     }
+     .loginForm, .loginTitle {
+        width: 417px;
         position: relative;
-        right: 350px;
-        bottom: 30px;
+        top: 600px;
+        right: 570px;
     }
-} */
+    #gitHubLoginBtn, #googleLogInBtn, .GitGoogleTitle {
+        position: relative;
+        top: 620px;
+        right: 530px;
+    }
+}
 @media screen and (max-width: 499px) {
     /* NavBar */
     .navbar {
@@ -373,35 +410,42 @@ footer{
         right: 130px;
         top: 15px;
     }
-}  
-/* @media screen and (max-width: 430px) {
-    /* NavBar */
-    /* .navbar {
-        height: 150px;
-    }
-    .favoritesLink {
+      /* Login Page */
+      .signupContainer {
         position: relative;
-        top: 40px;
-        right: 100px;
+        right: 90px;
+        width: 650px;
     }
-    .projectsDropdown {
+    .loginForm, .loginTitle {
+       width: 417px;
+       position: relative;
+       top: 600px;
+       right: 660px;
+   }
+   #gitHubLoginBtn, #googleLogInBtn, .GitGoogleTitle {
+       position: relative;
+       top: 620px;
+       right: 620px;
+   }
+} 
+@media screen and (max-width: 400px) {
+    /* Login Page */
+    .signupContainer {
         position: relative;
-        left: 140px;
-        bottom: 2px;
+        right: 60px;
+        width: 500px;
     }
-    .search-container {
-        top: 20px;
-        right: 100px;
-    }
-    #avatar {
+    .loginForm, .loginTitle {
+        width: 317px;
         position: relative;
-        bottom: 70px;
+        top: 600px;
+        right: 500px;
     }
-    /* Jumbotron & Profile */
-    /* .subTitle {
+    #gitHubLoginBtn, #googleLogInBtn, .GitGoogleTitle {
         position: relative;
-        left: 60px;
+        top: 620px;
+        right: 470px;
     }
-}  */
+}
 
 /*---------------*/
