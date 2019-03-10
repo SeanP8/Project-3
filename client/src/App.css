@@ -298,32 +298,56 @@ footer{
         top: 30px;
     }
 }
-@media screen and (max-width: 850px) {
-     /* NavBar */
+@media screen and (max-width: 800px) {
     #avatar {
         position: relative;
-        bottom: 30px;
-        right: 60px;
-    }
-}
-@media screen and (max-width: 793px) {
-    /* NavBar */
-   #avatar {
-       position: relative;
-       bottom: 60px;
+        right: 55px;
     }
     .search-container {
         top: 30px;
-        right: 300px;
+        right: 350px;
     }
 }
-@media screen and (max-width: 698px) {
-    /* NavBar */
+@media screen and (max-width: 793px) {
+    #avatar {
+        position: relative;
+    }
+}
+@media screen and (max-width: 777px) {
+    #avatar {
+        position: relative;
+        bottom: 30px;
+    }
+}
+@media screen and (max-width: 776px) {
+    #avatar {
+        position: relative;
+        bottom: 70px;
+        right: 60px;
+    }
     .search-container {
-        top: 10px;
-        right: 150px;
+        position: relative;
+        right: 350px;
     }
 }
+@media screen and (max-width: 710px) {
+    #avatar {
+        position: relative;
+        bottom: 60px;
+    }
+    .search-container {
+        position: relative;
+        right: 300px;
+        top: 15px;
+    }
+}
+/* @media screen and (max-width: 695px) {
+    .search-container {
+        position: relative;
+        right: 350px;
+        bottom: 30px;
+    }
+} */
 @media screen and (max-width: 499px) {
     /* NavBar */
     .navbar {
@@ -332,21 +356,27 @@ footer{
     .favoritesLink {
         position: relative;
         top: 40px;
-        right: 100px;
+        right: 30px;
     }
     .projectsDropdown {
         position: relative;
-        /* REDO PROJECTS POSITION */
-    }
+        right: 210px;
+        top: 39px;
+     }
     #avatar {
         position: relative;
         bottom: 50px;
         right: 90px;
     }
-}
-@media screen and (max-width: 430px) {
+    .search-container {
+        position: relative;
+        right: 130px;
+        top: 15px;
+    }
+}  
+/* @media screen and (max-width: 430px) {
     /* NavBar */
-    .navbar {
+    /* .navbar {
         height: 150px;
     }
     .favoritesLink {
@@ -368,10 +398,10 @@ footer{
         bottom: 70px;
     }
     /* Jumbotron & Profile */
-    .subTitle {
+    /* .subTitle {
         position: relative;
         left: 60px;
     }
-}
+}  */
 
 /*---------------*/
