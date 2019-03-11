@@ -95,7 +95,7 @@ class Projects extends Component {
                   </button>
                 </div>
                 <div className="modal-body">
-                  <form className="add-a-project" onSubmit={this.handleSubmit}>
+                  <form className="add-a-project" /*onSubmit={this.handleSubmit}*/ method="POST" action="/api/projects" encType="multipart/form-data">
                     <div className="form-group">
                       <label htmlFor="inputTitle">Title</label>
                       <input
@@ -140,7 +140,6 @@ class Projects extends Component {
                       <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                       <button id="saveProject" type="submit" className="btn btn-primary">Save Project</button>
                     </div>
-                              </div>
                   </form>
                 </div>
               </div>

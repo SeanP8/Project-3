@@ -39,7 +39,7 @@ class LoginForm extends Form {
       }
     }
     // console.log("jwt " + Object.keys(jwt.data))
-    window.location.href = "http://localhost:3000/home";
+    window.location.href = "/home";
   };
 
   render() {

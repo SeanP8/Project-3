@@ -6,6 +6,7 @@ import Profile from "./pages/ProfilePage";
 import Projects from "./pages/ProjectsPage";
 import Favorites from "./pages/FavoritesPage";
 import AllProjects from "./pages/AllProjectsPage";
+import Search from "./pages/SearchPage";
 import NoMatch from "./components/NoMatch";
 
 
@@ -20,6 +21,7 @@ const ReactRouter = () => {
                     <Route path="/projects" component={Projects}/>
                     <Route path="/favorites" component={Favorites}/>
                     <Route path="/all-projects" component={AllProjects}/>
+                    <Route path="/search" component={Search}></Route>
                     <Route component={NoMatch}/>
                 </Switch>
                 </BrowserRouter>

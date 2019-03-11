@@ -1,5 +1,6 @@
 import axios from "axios";
-
+const cloud_name = "phelan";
+var url = `https://api.cloudinary.com/v1_1/${cloud_name}/upload`;
 export default {
 
     getCurrentUser: function() {
@@ -25,7 +26,11 @@ export default {
     },
     deleteProject: function(id) {
         return axios.delete("/api/projects/" + id);
+    },
+    imageUpload: function(img) {
+        return axios.post(url, img);
     }  
+
 
 };
 export function getAllProjects() {

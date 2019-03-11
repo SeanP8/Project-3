@@ -3,6 +3,8 @@ import Wrapper from "./Wrapper";
 import Joi from "joi-browser";
 import Form from "./Form";
 import * as userService from "../services/userService";
+import { login } from "../services/authService";
+
 
 class RegisterForm extends Form {
   state = {
@@ -29,7 +31,10 @@ class RegisterForm extends Form {
 
       console.log(this.state.data);
       await userService.register(this.state.data).then(user => {
-        window.location = "/home";
+
+        login(this.state.data.email, this.state.data.password).then(function(){
+          window.location.href = "/home";
+        });
 
       });
     } catch (ex) {
