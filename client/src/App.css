@@ -1,0 +1,808 @@
+body{
+    margin-top: 70px;
+    background-image: url("./full-bloom.png");
+    padding-bottom: 100px;
+}
+h1,h3,h4,h5{
+    font-family: 'Nanum Gothic', sans-serif;
+}
+h2,h6{
+    text-align: center;
+    font-family: 'Nanum Gothic', sans-serif;
+    margin-top: 4px;
+}
+
+/* Home Page */
+.navbar {
+    height: 70px;
+}
+.jumbotron {
+    background-color: #c5c5c5;
+    color: black;
+    border-radius: 4px;
+    padding: 30px;
+    text-align: center;
+    position: relative;
+    top: 10px;
+}
+.jumnbotron-avatar{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+.display-4{
+    font-family: 'Cuprum', sans-serif;
+}
+.lead{
+    font-size: 18px;
+} 
+#linkToProjects {
+    font-size: 18px;
+    color: rgb(15, 15, 15)
+}
+#linkToProjects:hover {
+    color: whitesmoke;
+    text-decoration: none;
+}
+.search-container {
+    float: right;
+    position: relative;
+    right: 100px;
+    bottom: 20px;
+}
+.searchBar-title {
+    color: white;
+    position: relative;
+    right: 160px;
+    top: 35px;
+}
+#character-search {
+    width: 80%;
+    height: 30px;
+}
+#search-btn {
+    background-color: #18a0ac;
+    font-size: 13px;
+    position: absolute;
+    top: 30px;
+    left: 170px;
+    width: 80px;
+    height: 35px;
+}
+#search-btn:hover {
+    width: 83px;
+    height: 38px;
+}
+.topFiveProjects{
+    background-color: whitesmoke;
+    width: 85%;
+    padding: 10px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    border: 1px solid #343a40;
+    border-radius: 4px;
+    list-style-type: none
+}
+/*-----------*/
+
+/* Pages Title */
+.subTitle {
+    text-align: left;
+    margin-top: 20px;
+}
+/*-------------*/
+.wrapper{
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+}
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    padding: 20px;
+    margin-top: 20px;
+    color: gainsboro;
+    background-color: #373c42;
+}
+/* OAuth login buttons */
+#gitHubLoginBtn{
+    clear: both;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    background-color: rgb(22, 20, 20);
+    color: whitesmoke;
+    width: 20%;
+  }
+#gitHubLoginBtn:hover{
+    background-color:rgb(43, 38, 38);
+    text-decoration: none;
+  }
+#googleLogInBtn{
+    clear: both;
+    display: block;
+    margin: 0 auto;
+    background-color: rgb(221, 75, 57);
+    color: whitesmoke;
+    width: 20%;
+    margin-bottom: 100px;
+  }
+#googleLogInBtn:hover{
+    background-color: rgb(187, 55, 37);
+    text-decoration: none;
+  }
+/* ---------------------------*/
+/* Form  Flexbox*/
+.flexBox{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.RegisterForm{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+    background-color: #eceff3;
+}
+.loginForm{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+    background-color: #eceff3; 
+}
+/* ---------------------------*/
+/* Nav Links  */
+.favoritesLink{
+    margin-top: 7px;
+    padding: 10px;
+    color: whitesmoke;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 18px;
+}
+.favoritesLink:hover{
+    background-color: #202224;
+    color: whitesmoke;
+    text-decoration: none;
+}
+.avatarDropdown{
+    position: relative;
+    float: right;
+    left: 350px;
+    top: 0;
+    right: 0;
+}
+#avatar{
+    border-radius: 50%;
+    height: 40px;
+    width: 30px;
+}
+.homeLink{
+    margin-top: 6px;
+}
+.dropdown-toggle::after{
+    display: none;
+}
+.projectsDropdown{
+    position: relative;
+    display: inline-block;
+}
+.dropBtn{
+    background-color: #373c42;
+    color: whitesmoke;
+    padding: 10px;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 18px;
+    border: none;
+}
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: whitesmoke;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-content .dropLinks{
+    color: black;
+    padding: 12px;
+    text-decoration: none;
+    display: block;
+}
+.projectsDropdown:hover .dropBtn{
+    background-color: #202224;
+}
+.projectsDropdown:hover .dropdown-content{
+    display: block;
+}
+.dropdown-content .dropLinks:hover{
+    background-color: #dddddd;
+}
+/* ---------------------------*/
+/* Projects Page */
+#addProject, #saveProject {
+    color: whitesmoke;
+    background-color: #18a0ac;
+    border-radius: 4px;
+    border: none;
+    padding: 5px 10px;
+    float: right;
+    font-size: 20px;
+}
+#addProject:hover, #saveProject:hover {
+    font-size: 21px;
+}
+#imgLabel, #uploadImage {
+    margin-left: 20px;
+}
+.project-info {
+    background-color: whitesmoke;
+    width: 75%;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #343a40;
+    border-radius: 4px;
+    list-style-type: none
+}
+.delete-btn, .update-btn{
+    float: right;
+    margin: 3px;
+}
+/* --------------*/
+
+/* Media Queries */
+@media screen and (max-width: 1260px) {
+    /* Navbar */
+    .avatarDropdown {
+        position: relative;
+        left: 340px;
+    }
+     /* Login Page */
+     #gitHubLoginBtn, #googleLogInBtn {
+        width: 150px;
+    }
+}
+@media screen and (max-width: 1230px) {
+    /* Navbar */
+    .avatarDropdown {
+        position: relative;
+        left: 320px;
+    }
+}
+@media screen and (max-width: 1130px) {
+    /* Navbar */
+    .avatarDropdown {
+        position: relative;
+        left: 320px;
+    }
+}
+@media screen and (max-width: 960px) {
+    body {
+        padding-top: 100px;
+        overflow-x: hidden;
+    }
+     /* NavBar */
+     .align-top {
+        width: 70px;
+        height: 50px;
+    }
+    .navbar-brand {
+        position: relative;
+        font-size: 30px;
+        bottom: 20px;
+    }
+    .homeLink {
+        font-size: 30px;
+    }
+     .navbar {
+        height: 150px;
+    }
+    /* Login Page */
+    #gitHubLoginBtn, #googleLogInBtn {
+        width: 150px;
+    }
+    /* HomePage Navbar */
+    .search-container {
+        position: relative;
+        top: 0px;
+        right: 30px;
+    }
+    .searchBar-title {
+        opacity: 0;
+    }
+    .avatarDropdown {
+        position: relative;
+        left: 315px;
+    }
+    /* Jumbotron & Profile */
+    .jumbotron {
+        position: relative;
+        top: 50px;
+    }
+    .subTitle {
+        position: relative;
+        left: 270px;
+    }
+    .topFive {
+        position: relative;
+        right: 20px;
+    }
+    .subTitle, .topFive {
+        position: relative;
+        top: 30px;
+    }
+}
+@media screen and (max-width: 938px) {
+    /* Navbar */
+    .navbar-brand {
+        position: relative;
+        font-size: 30px;
+        bottom: 10px;
+        margin-right: 30px;
+    }
+    /* Homepage Navbar */
+    .search-container {
+        position: absolute;
+        top: 40px;
+        right: 320px;
+    }
+    .avatarDropdown {
+        position: relative;
+        left: 90px;
+        margin-bottom: 50px;
+    }
+    #avatar {
+        height: 60px;
+        width: 50px;
+    }
+    /* Homepage */
+    .subTitle {
+        position: relative;
+        left: 240px;
+    }
+}
+@media screen and (max-width: 844px) {
+    /* Navbar */
+    .navbar-brand {
+        position: relative;
+        font-size: 30px;
+        bottom: 10px;
+        margin-right: 30px;
+    }
+    /* Homepage Navbar */
+    .search-container {
+        position: absolute;
+        top: 40px;
+        right: 280px;
+    }
+    .avatarDropdown {
+        position: relative;
+        left: 90px;
+        margin-bottom: 50px;
+    }
+    /* Homepage */
+    .subTitle {
+        position: relative;
+        left: 210px;
+    }
+    .topFive {
+        position: relative;
+        right: 50px;
+        width: 700px;
+    }
+
+}
+@media screen and (max-width: 791px) {
+     /* NavBar */
+     .align-top {
+        width: 70px;
+        height: 50px;
+    }
+    .navbar-brand {
+        position: relative;
+        font-size: 30px;
+        bottom: 10px;
+        margin-right: 30px;
+    }
+    .homeLink {
+        font-size: 30px;
+    }
+    /* Homepage Navbar */
+    .search-container {
+        position: absolute;
+        top: 50px;
+        right: 250px;
+    }
+    .avatarDropdown {
+        position: relative;
+        left: 90px;
+        margin-bottom: 50px;
+    }
+    /* Homepage */
+    .subTitle {
+        position: relative;
+        left: 200px;
+    }
+    .topFive {
+        position: relative;
+        right: 50px;
+        width: 600px;
+    }
+}
+@media screen and (max-width: 710px) {
+    body {
+        overflow-x: hidden;
+    }
+     /* Login Page */
+     .signupContainer {
+         width: 650px;
+     }
+     .loginForm, .loginTitle {
+        width: 417px;
+        position: relative;
+        top: 600px;
+        right: 570px;
+    }
+    #gitHubLoginBtn, #googleLogInBtn, .GitGoogleTitle {
+        position: relative;
+        top: 620px;
+        right: 530px;
+    }
+     /* Homepage Navbar */
+     .avatarDropdown {
+        position: relative;
+        left: 90px;
+        margin-bottom: 50px;
+    }
+    .search-container {
+        position: absolute;
+        right: 150px;
+        top: 40px;
+    }
+    /*Homepage */
+    .subTitle {
+        position: relative;
+        left: 160px;
+    }
+    .topFive {
+        position: relative;
+        right: 60px;
+        width: 600px;
+    }
+}
+@media screen and (max-width: 682px) {
+    /* Homepage Navbar */
+    .avatarDropdown {
+        position: absolute;
+        left: 490px;
+    }
+}
+@media screen and (max-width: 672px) {
+     /* NavBar */
+    .navbar-brand {
+        font-size: 30px;
+        bottom: 20px;
+        margin-right: 30px;
+        position: relative;
+        right: 30px;
+    }
+    /* Homepage Navbar */
+    .avatarDropdown {
+        position: absolute;
+        left: 480px;
+    }
+    .search-container {
+        position: absolute;
+        right: 150px;
+        top: 30px;
+    }
+     .favoritesLink, .projectsDropdown {
+        position: relative;
+        bottom: 30px;
+        right: 40px;
+    }
+     /* Homepage */
+     .subTitle {
+        position: relative;
+        left: 150px;
+    }
+   
+}
+@media screen and (max-width: 656px) {
+    /* Homepage Navbar */
+    .avatarDropdown {
+        position: absolute;
+        left: 460px;
+    }
+    .projectsDropdown {
+        position: relative;
+        bottom: 20px;
+        right: 40px;
+    }
+}
+@media screen and (max-width: 642px) {
+     /* Navbar */
+     .navbar-brand {
+        font-size: 30px;
+        bottom: 10px;
+        margin-right: 30px;
+        position: relative;
+        right: 30px;
+        bottom: 20px;
+    }
+    /* Homepage Navbar */
+    .avatarDropdown {
+        position: absolute;
+        left: 460px;
+    }
+    .favoritesLink {
+        position: relative;
+        bottom: 20px;
+        right: 40px;
+    }
+      /*Homepage */
+      .subTitle {
+        position: relative;
+        left: 140px;
+    }
+    .topFive {
+        position: relative;
+        right: 80px;
+        width: 600px;
+    }
+}
+@media screen and (max-width: 620px) {
+     /* Homepage Navbar */
+     .avatarDropdown {
+        position: absolute;
+        left: 440px;
+    }
+}
+@media screen and (max-width: 596px) {
+    /* Homepage Navbar */
+    .avatarDropdown {
+        position: absolute;
+        left: 400px;
+    }
+    .favoritesLink {
+        position: relative;
+        top: 10px;
+        right: 160px;
+    }
+    .projectsDropdown {
+        position: relative;
+        bottom: 40px;
+        left: 200px;
+    }
+    .search-container {
+        position: absolute;
+        right: 150px;
+        top: 50px;
+    }
+}
+@media screen and (max-width: 565px) {
+    /* Homepage Navbar */
+    .avatarDropdown {
+        position: absolute;
+        left: 380px;
+    }
+    /*Homepage */
+    .subTitle {
+        position: relative;
+        left: 120px;
+    }
+    .topFive {
+        position: relative;
+        right: 100px;
+        width: 600px;
+    }
+}
+
+@media screen and (max-width: 512px) {
+    /* Homepage navbar */
+    .avatarDropdown {
+        position: absolute;
+        left: 340px;
+    }
+}
+@media screen and (max-width: 499px) {
+    /* NavBar */
+    .navbar {
+        height: 150px;
+    }
+    /* Homepage Navbar */
+    .favoritesLink {
+        position: relative;
+        top: 10px;
+        right: 180px;
+    }
+    .projectsDropdown {
+        position: relative;
+        bottom: 40px;
+        left: 180px;
+    } 
+    .search-container {
+        position: absolute;
+        right: 130px;
+        top: 50px;
+        width: 250px;
+    }
+    #search-btn {
+        position: absolute;
+        left: 210px;
+    }
+      /* Login Page */
+      .signupContainer {
+        position: relative;
+        right: 90px;
+        width: 650px;
+    }
+    .loginForm, .loginTitle {
+       width: 417px;
+       position: relative;
+       top: 600px;
+       right: 660px;
+   }
+   #gitHubLoginBtn, #googleLogInBtn, .GitGoogleTitle {
+       position: relative;
+       top: 620px;
+       right: 620px;
+   }
+  
+    /* Homepage */
+    .subTitle {
+        position: relative;
+        left: 80px;
+    }
+    .topFive {
+        position: relative;
+        right: 110px;
+        width: 550px;
+    }
+} 
+@media screen and (max-width: 491px) {
+    /* Homepage NavBar */
+    .avatarDropdown {
+        position: absolute;
+        left: 300px;
+    }
+    .favoritesLink {
+        position: relative;
+        bottom: 50px;
+        right: 160px;
+    }
+    .projectsDropdown {
+        position: relative;
+        bottom: 40px;
+        left: 190px;
+    } 
+    .search-container {
+        position: absolute;
+        right: 120px;
+        top: 50px;
+        width: 250px;
+    }
+}
+@media screen and (max-width: 475px) {
+     /* Navbar */
+     .navbar-brand {
+        font-size: 30px;
+        bottom: 10px;
+        margin-right: 30px;
+        position: relative;
+        right: 30px;
+        bottom: 35px;
+    }
+    /* Homepage Navbar */
+    .favoritesLink {
+        position: absolute;
+        bottom: 30px;
+        right: 180px;
+    }
+    .projectsDropdown {
+        position: absolute;
+        bottom: 3px;
+        left: 180px;
+    } 
+    .search-container {
+        position: absolute;
+        right: 120px;
+        top: 35px;
+        width: 250px;
+    }
+}
+@media screen and (max-width: 430px) {
+    /* Homepage Navbar */
+    .favoritesLink {
+        position: absolute;
+        bottom: 30px;
+        right: 140px;
+    }
+    .projectsDropdown {
+        position: absolute;
+        bottom: 3px;
+        left: 180px;
+    } 
+    .search-container {
+        position: absolute;
+        right: 80px;
+        top: 35px;
+        width: 250px;
+    }
+    .avatarDropdown {
+        position: absolute;
+        left: 270px;
+    }
+     /* Homepage */
+     .subTitle {
+        position: relative;
+        left: 60px;
+    }
+    .topFive {
+        width: 450px;
+        right: 85px;
+    }
+}
+@media screen and (max-width: 400px) {
+    /* Login Page */
+    .signupContainer {
+        position: relative;
+        right: 60px;
+        width: 500px;
+    }
+    .loginForm, .loginTitle {
+        width: 317px;
+        position: relative;
+        top: 600px;
+        right: 500px;
+    }
+    #gitHubLoginBtn, #googleLogInBtn, .GitGoogleTitle {
+        position: relative;
+        top: 620px;
+        right: 470px;
+    }
+     /* Homepage Navbar */
+     .favoritesLink {
+        position: absolute;
+        bottom: 30px;
+        right: 130px;
+    }
+    .projectsDropdown {
+        position: absolute;
+        bottom: 3px;
+        left: 150px;
+    } 
+    .search-container {
+        position: absolute;
+        right: 50px;
+        top: 35px;
+        width: 250px;
+    }
+    .avatarDropdown {
+        position: absolute;
+        left: 250px;
+    }
+    #avatar {
+        width: 50px;
+        height: 50px;
+    }
+    /* Homepage */
+    .subTitle {
+        position: relative;
+        left: 50px;
+    }
+    .topFive {
+        width: 420px;
+        right: 80px;
+    }
+}
+
+/*---------------*/
