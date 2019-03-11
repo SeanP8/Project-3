@@ -4,7 +4,12 @@
   "description": "tech developers networking system",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --timeout 10000",
+    "watch": "nodemon server",
+    "start": "node server.js",
+    "build": " cd client && npm run build",
+    "heroku-prebuild": "cd client && npm install",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -17,11 +22,29 @@
   },
   "homepage": "https://github.com/SeanP8/Project-3#readme",
   "dependencies": {
+    "axios": "^0.18.0",
+    "bcrypt-nodejs": "0.0.3",
+    "cloudinary": "^1.13.2",
+    "connect-multiparty": "^2.2.0",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
     "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "generic-pool": "^3.6.1",
+    "mysql": "^2.16.0",
     "mysql2": "^1.6.5",
+    "nodemon": "^1.18.10",
     "passport": "^0.4.0",
+    "passport-github": "^1.1.0",
     "passport-github2": "^0.1.11",
     "passport-google-oauth20": "^1.0.0",
+    "passport-local": "^1.0.0",
     "sequelize": "^4.42.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "mocha": "^6.0.2"
   }
 }
