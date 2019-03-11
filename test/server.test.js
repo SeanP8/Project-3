@@ -17,7 +17,12 @@ describe('Projects', () => {
     describe('/GET all projects', () => {
         it('it should GET all the projects', (done) => {
             chai.request(server)
-                .get('/api/projects/all')
+                .get('/api/projects/all',
+                {req:{
+                    isAuthenticated: function(){
+                        return true;
+                    }
+                }})
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('array');
