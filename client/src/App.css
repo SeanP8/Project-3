@@ -217,7 +217,7 @@ footer{
     display: block;
 }
 .projectsDropdown:hover .dropBtn{
-    background-color: #202224
+    background-color: #202224;
 }
 .projectsDropdown:hover .dropdown-content{
     display: block;
@@ -256,16 +256,196 @@ footer{
     margin: 3px;
 }
 /* --------------*/
+
 /* Media Queries */
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1260px) {
+    /* Navbar */
+    #avatar {
+        position: relative;
+        right: 40px;
+    }
+     /* Login Page */
+     #gitHubLoginBtn, #googleLogInBtn {
+        width: 150px;
+    }
+}
+@media screen and (max-width: 960px) {
+    body {
+        padding-top: 100px;
+    }
+     /* NavBar */
+     .align-top {
+        width: 100px;
+        height: 70px;
+    }
+    .navbar-brand {
+        font-size: 30px;
+        bottom: 20px;
+    }
+    .homeLink {
+        font-size: 70px;
+    }
+     .navbar {
+        height: 150px;
+    }
+    /* Login Page */
+    #gitHubLoginBtn, #googleLogInBtn {
+        width: 150px;
+    }
+    /* HomePage */
+    .search-container {
+        top: 30px;
+        right: 350px;
+    }
+    .searchBar-title {
+        opacity: 0;
+    }
+    #avatar{
+        position: relative;
+        right: 50px;
+        bottom: 20px;
+    }
+    /* Jumbotron & Profile */
+    .jumbotron {
+        position: relative;
+        top: 50px;
+    }
+    .subTitle {
+        position: relative;
+        left: 120px;
+    }
+    .topFive {
+        position: relative;
+        right: 20px;
+    }
+    .subTitle, .topFive {
+        position: relative;
+        top: 30px;
+    }
+}
+@media screen and (max-width: 800px) {
+    #avatar {
+        position: relative;
+        right: 55px;
+    }
+    .search-container {
+        top: 30px;
+        right: 350px;
+    }
+}
+@media screen and (max-width: 793px) {
+    #avatar {
+        position: relative;
+    }
+}
+@media screen and (max-width: 777px) {
+    #avatar {
+        position: relative;
+        bottom: 30px;
+    }
+}
+@media screen and (max-width: 776px) {
+    #avatar {
+        position: relative;
+        bottom: 70px;
+        right: 60px;
+    }
+    .search-container {
+        position: relative;
+        right: 350px;
+    }
+}
+@media screen and (max-width: 710px) {
+    body {
+        overflow-x: hidden;
+    }
+    /* Navbar */
+    #avatar {
+        position: relative;
+        bottom: 60px;
+    }
+    .search-container {
+        position: relative;
+        right: 300px;
+        top: 15px;
+    }
+     /* Login Page */
+     .signupContainer {
+         width: 650px;
+     }
+     .loginForm, .loginTitle {
+        width: 417px;
+        position: relative;
+        top: 600px;
+        right: 570px;
+    }
+    #gitHubLoginBtn, #googleLogInBtn, .GitGoogleTitle {
+        position: relative;
+        top: 620px;
+        right: 530px;
+    }
+}
+@media screen and (max-width: 499px) {
+    /* NavBar */
     .navbar {
         height: 150px;
     }
-    #avatar{
-        position: absolute;
-        right: 100px;
-        bottom: 30px;
+    .favoritesLink {
+        position: relative;
+        top: 40px;
+        right: 30px;
     }
-    
-  }
+    .projectsDropdown {
+        position: relative;
+        right: 210px;
+        top: 39px;
+     }
+    #avatar {
+        position: relative;
+        bottom: 50px;
+        right: 90px;
+    }
+    .search-container {
+        position: relative;
+        right: 130px;
+        top: 15px;
+    }
+      /* Login Page */
+      .signupContainer {
+        position: relative;
+        right: 90px;
+        width: 650px;
+    }
+    .loginForm, .loginTitle {
+       width: 417px;
+       position: relative;
+       top: 600px;
+       right: 660px;
+   }
+   #gitHubLoginBtn, #googleLogInBtn, .GitGoogleTitle {
+       position: relative;
+       top: 620px;
+       right: 620px;
+   }
+} 
+@media screen and (max-width: 400px) {
+    /* Login Page */
+    .signupContainer {
+        position: relative;
+        right: 60px;
+        width: 500px;
+    }
+    .loginForm, .loginTitle {
+        width: 317px;
+        position: relative;
+        top: 600px;
+        right: 500px;
+    }
+    #gitHubLoginBtn, #googleLogInBtn, .GitGoogleTitle {
+        position: relative;
+        top: 620px;
+        right: 470px;
+    }
+}
+
 /*---------------*/

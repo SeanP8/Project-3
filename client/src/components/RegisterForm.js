@@ -48,7 +48,7 @@ class RegisterForm extends Form {
 
   render() {
     return (
-      <div>
+      <div className="signupContainer">
         <Wrapper>
           <h2>Sign Up</h2>
           <h6>It's free and always will be</h6>

@@ -28,8 +28,8 @@ class LoginForm extends Form {
       console.log("SUBMIT")
 
       login(data.email, data.password);
-      
-     
+
+
     } catch (error) {
       if (error.response && error.response.status === 400) {
         // clone errors obj
@@ -46,18 +46,22 @@ class LoginForm extends Form {
     return (
       <div>
         <Wrapper>
-          <h2>Login</h2>
-          <h6>Enter you email and password</h6>
-          <hr />
+          <div className="loginTitle">
+            <h2>Login</h2>
+            <h6>Enter you email and password</h6>
+            <hr />
+          </div>
           <form className="loginForm" onSubmit={this.handleSubmit}>
             {this.renderInput("email", "Email")}
             {this.renderInput("password", "Password", "password")}
             {this.renderButton("Login")}
           </form>
-          <hr />
-          <h6>Login with GitHub or Google+</h6>
-          <GitHubLoginBtn/>
-          <GoogleLoginBtn/>
+          <div className="GitGoogleTitle">
+            <hr />
+            <h6>Login with GitHub or Google+</h6>
+          </div>
+          <GitHubLoginBtn />
+          <GoogleLoginBtn />
         </Wrapper>
       </div>
     );
