@@ -117,7 +117,7 @@ router.route("/api/projects")
   .post(function (req, res) {
     console.log("POSTING " + req.body.image)
     multipartMiddleware(req,res, () =>{
-      if(req.files){
+      if(req.files && req.files.image && req.files.image.path){
         var imageFile = req.files.image.path;
         console.log("IMAGE " + imageFile)
         cloudinary.uploader
@@ -136,10 +136,45 @@ router.route("/api/projects")
             });
           }).catch(err => console.log(err))
       
+      } else {
+        req.redirect("/projects")
       }
     })
       
   });
+  router.route("/api/projects/:id/image")
+    .post(function(req, res){
+      multipartMiddleware(req, res, () => {
+        if (!req.files) {
+          console.log("UH OH")
+          res.redirect('/home');
+          return;     
+      }
+
+      var imageFile = req.files.image.path;
+      // Upload file to Cloudinary
+      cloudinary.uploader
+          .upload(imageFile, {tags: 'express_sample'})
+          .then( (image) => {
+              console.log('** file uploaded to Cloudinary service');
+              console.dir(image);
+              console.log(req.user)
+              db.Projects
+              .update({image: image.secure_url}, 
+                {
+                  where: 
+                  {
+                    id: req.params.id,
+                    authID : req.user.id
+                  }
+                })
+              .then(() => {
+                  console.log('** photo saved')
+                  res.redirect("/projects");
+              })
+            })
+      })
+    });
 
 router.route("/api/projects/:id")
   .put(function (req, res) {

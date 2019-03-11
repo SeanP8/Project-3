@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Label, Input, ModalFooter } from 'reactstrap';
+import ImportImageForm from "./ImageInputForm";
+import ImageInputForm from './ImageInputForm';
 
 class EditProject extends Component {
     constructor(props) {
@@ -12,16 +14,24 @@ class EditProject extends Component {
     }
 
     toggle() {
-        this.setState(prevState => ({ modal: !prevState.modal }));
+        console.log("TOGGLE")
+        this.setState({
+            modal: !this.state.modal
+        }, function(){
+            console.log("TOOGGLE2")
+        })
     }
-
+  
     handleChange = event => {
+        console.log("handle change")
+
         const updateProject = { ...this.props.project, [event.currentTarget.name]: event.currentTarget.value };
         this.props.updateUserProject(this.props.index, this.props.project.id, updateProject);
     }
 
     render() {
         const { title, description, image, link } = this.props.details;
+        console.log("HEY!")
         return (
             <div>
                 <ul>
@@ -31,7 +41,7 @@ class EditProject extends Component {
                         <button
                             className="btn btn-outline-info btn-sm update-btn" data-toggle="modal" onClick={this.toggle}>Update</button>
                         <h3 className="project-title">{title}</h3>
-                        <img src={image} alt={title} />
+                        <img className="img img-fluid" src={image} alt={title} />
                         <p>{description}</p>
                         <a className="project-link" href={link ? link : "#"}>See Project</a>
                     </li>
@@ -69,13 +79,17 @@ class EditProject extends Component {
                             placeholder="write a description here...">
                         </textarea>
                         <Label for="inputImage">Upload an Image</Label>
-                        <Input
+                        {/* <Input
                             name="image"
-                            onChange={this.handleChange}
-                            value={this.props.project.image}
+                            onChange={this.handleImageChange}
+                            value={""}
                             type="file"
                             className="form-control-file"
-                            id="uploadImage" />
+                            id="uploadImage" /> */}
+                            <ImageInputForm 
+                                image="Project image:"
+                                action={`/api/projects/${this.props.project.id}/image`}
+                            />
                     </ModalBody>
                     <ModalFooter>
                         <Button color="secondary" onClick={this.toggle}>Close</Button>{' '}

@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha --timeout 10000",
+    "watch": "nodemon server",
     "start": "node server.js",
     "build": " cd client && npm run build",
     "heroku-prebuild": "cd client && npm install",
