@@ -33,7 +33,7 @@ class EditProject extends Component {
                         <h3 className="project-title">{title}</h3>
                         <img src={image} alt={title} />
                         <p>{description}</p>
-                        <a className="project-link" href={link}>See Project</a>
+                        <a className="project-link" href={link ? link : "#"}>See Project</a>
                     </li>
                 </ul>
                 {/* Updating Project modal */}

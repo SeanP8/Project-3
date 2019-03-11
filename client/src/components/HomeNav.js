@@ -30,17 +30,11 @@ class HomeNav extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        this.searchProjects(this.state.search);
+        window.location.href = "/search?q=" + this.state.search;
+        
     }
 
-    searchProjects = query => {
-        API.searchForProjects(query)
-        .then( res => this.setState({ searchResults: res.data }, function(){
-            console.log(this.state.searchResults)
-        }))
-        .catch(err => console.log(err));
-    }
-
+    
     render() {
         const { avatar, firstName } = this.state.user
         return (

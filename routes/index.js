@@ -11,6 +11,7 @@ router.use(function (req, res, next) {
     case "/api/logout":
     break;
     case "/login":
+    case "/api/login":
     case "/auth/google":
     case "/auth/github":
     case "/auth/google/callback":
@@ -24,8 +25,10 @@ router.use(function (req, res, next) {
       if (!req.isAuthenticated()) {
         console.log("Gatekeeper says " + req.isAuthenticated())
         res.redirect("/login");
+        break;
       }
       break;
+      
   }
   next();
 })

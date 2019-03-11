@@ -9,7 +9,7 @@ const cloudinary = require('cloudinary').v2;
 const db = require("../../models");
 cloudinary.config({ 
     cloud_name: process.env.CLOUD_NAME, 
-    api_key: process.env.CLOUD_KEY || 753657786124656   , 
+    api_key: process.env.CLOUD_KEY, 
     api_secret: process.env.CLOUD_SECRET
   });
 
@@ -19,7 +19,7 @@ cloudinary.config({
 
         multipartMiddleware(req, res, () => {
                   // file was not uploaded redirecting to upload 
-        if (!req) {
+        if (!req.files) {
             console.log("UH OH")
             res.redirect('/home');
             return;     
