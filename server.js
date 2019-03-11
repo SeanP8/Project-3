@@ -68,3 +68,4 @@ db.sequelize
       console.log(`Listening on port ${PORT}`);
     });
   });
+  module.exports = app.listen(3000);

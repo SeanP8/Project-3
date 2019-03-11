@@ -11,10 +11,12 @@ router.use(function (req, res, next) {
     case "/api/logout":
     break;
     case "/login":
+    case "/api/login":
     case "/auth/google":
     case "/auth/github":
     case "/auth/google/callback":
     case "/auth/github/callback":
+    case "/api/projects/all":
       if (req.isAuthenticated()) {
         console.log("is already authenticated")
         res.redirect("/home")
@@ -24,8 +26,10 @@ router.use(function (req, res, next) {
       if (!req.isAuthenticated()) {
         console.log("Gatekeeper says " + req.isAuthenticated())
         res.redirect("/login");
+        break;
       }
       break;
+      
   }
   next();
 })
