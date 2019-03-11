@@ -183,6 +183,7 @@ footer{
 #avatar{
     border-radius: 50%;
     height: 40px;
+    width: 30px;
 }
 .homeLink{
     margin-top: 6px;
@@ -260,30 +261,46 @@ footer{
 /* Media Queries */
 @media screen and (max-width: 1260px) {
     /* Navbar */
-    #avatar {
+    .avatarDropdown {
         position: relative;
-        right: 40px;
+        left: 340px;
     }
      /* Login Page */
      #gitHubLoginBtn, #googleLogInBtn {
         width: 150px;
     }
 }
+@media screen and (max-width: 1230px) {
+    /* Navbar */
+    .avatarDropdown {
+        position: relative;
+        left: 320px;
+    }
+}
+@media screen and (max-width: 1130px) {
+    /* Navbar */
+    .avatarDropdown {
+        position: relative;
+        left: 320px;
+    }
+}
 @media screen and (max-width: 960px) {
     body {
         padding-top: 100px;
+        overflow-x: hidden;
     }
      /* NavBar */
      .align-top {
-        width: 100px;
-        height: 70px;
+        width: 70px;
+        height: 50px;
     }
     .navbar-brand {
+        position: relative;
         font-size: 30px;
         bottom: 20px;
     }
     .homeLink {
-        font-size: 70px;
+        font-size: 30px;
     }
      .navbar {
         height: 150px;
@@ -292,18 +309,18 @@ footer{
     #gitHubLoginBtn, #googleLogInBtn {
         width: 150px;
     }
-    /* HomePage */
+    /* HomePage Navbar */
     .search-container {
-        top: 30px;
-        right: 350px;
+        position: relative;
+        top: 0px;
+        right: 30px;
     }
     .searchBar-title {
         opacity: 0;
     }
-    #avatar{
+    .avatarDropdown {
         position: relative;
-        right: 50px;
-        bottom: 20px;
+        left: 315px;
     }
     /* Jumbotron & Profile */
     .jumbotron {
@@ -312,7 +329,7 @@ footer{
     }
     .subTitle {
         position: relative;
-        left: 120px;
+        left: 270px;
     }
     .topFive {
         position: relative;
@@ -323,51 +340,106 @@ footer{
         top: 30px;
     }
 }
-@media screen and (max-width: 800px) {
-    #avatar {
+@media screen and (max-width: 938px) {
+    /* Navbar */
+    .navbar-brand {
         position: relative;
-        right: 55px;
+        font-size: 30px;
+        bottom: 10px;
+        margin-right: 30px;
     }
+    /* Homepage Navbar */
     .search-container {
-        top: 30px;
-        right: 350px;
+        position: absolute;
+        top: 40px;
+        right: 320px;
+    }
+    .avatarDropdown {
+        position: relative;
+        left: 90px;
+        margin-bottom: 50px;
+    }
+    #avatar {
+        height: 60px;
+        width: 50px;
+    }
+    /* Homepage */
+    .subTitle {
+        position: relative;
+        left: 240px;
     }
 }
-@media screen and (max-width: 793px) {
-    #avatar {
+@media screen and (max-width: 844px) {
+    /* Navbar */
+    .navbar-brand {
         position: relative;
+        font-size: 30px;
+        bottom: 10px;
+        margin-right: 30px;
     }
-}
-@media screen and (max-width: 777px) {
-    #avatar {
-        position: relative;
-        bottom: 30px;
-    }
-}
-@media screen and (max-width: 776px) {
-    #avatar {
-        position: relative;
-        bottom: 70px;
-        right: 60px;
-    }
+    /* Homepage Navbar */
     .search-container {
+        position: absolute;
+        top: 40px;
+        right: 280px;
+    }
+    .avatarDropdown {
         position: relative;
-        right: 350px;
+        left: 90px;
+        margin-bottom: 50px;
+    }
+    /* Homepage */
+    .subTitle {
+        position: relative;
+        left: 210px;
+    }
+    .topFive {
+        position: relative;
+        right: 50px;
+        width: 700px;
+    }
+
+}
+@media screen and (max-width: 791px) {
+     /* NavBar */
+     .align-top {
+        width: 70px;
+        height: 50px;
+    }
+    .navbar-brand {
+        position: relative;
+        font-size: 30px;
+        bottom: 10px;
+        margin-right: 30px;
+    }
+    .homeLink {
+        font-size: 30px;
+    }
+    /* Homepage Navbar */
+    .search-container {
+        position: absolute;
+        top: 50px;
+        right: 250px;
+    }
+    .avatarDropdown {
+        position: relative;
+        left: 90px;
+        margin-bottom: 50px;
+    }
+    /* Homepage */
+    .subTitle {
+        position: relative;
+        left: 200px;
+    }
+    .topFive {
+        position: relative;
+        right: 50px;
+        width: 600px;
     }
 }
 @media screen and (max-width: 710px) {
     body {
         overflow-x: hidden;
-    }
-    /* Navbar */
-    #avatar {
-        position: relative;
-        bottom: 60px;
-    }
-    .search-container {
-        position: relative;
-        right: 300px;
-        top: 15px;
     }
      /* Login Page */
      .signupContainer {
@@ -384,31 +456,188 @@ footer{
         top: 620px;
         right: 530px;
     }
+     /* Homepage Navbar */
+     .avatarDropdown {
+        position: relative;
+        left: 90px;
+        margin-bottom: 50px;
+    }
+    .search-container {
+        position: absolute;
+        right: 150px;
+        top: 40px;
+    }
+    /*Homepage */
+    .subTitle {
+        position: relative;
+        left: 160px;
+    }
+    .topFive {
+        position: relative;
+        right: 60px;
+        width: 600px;
+    }
+}
+@media screen and (max-width: 682px) {
+    /* Homepage Navbar */
+    .avatarDropdown {
+        position: absolute;
+        left: 490px;
+    }
+}
+@media screen and (max-width: 672px) {
+     /* NavBar */
+    .navbar-brand {
+        font-size: 30px;
+        bottom: 20px;
+        margin-right: 30px;
+        position: relative;
+        right: 30px;
+    }
+    /* Homepage Navbar */
+    .avatarDropdown {
+        position: absolute;
+        left: 480px;
+    }
+    .search-container {
+        position: absolute;
+        right: 150px;
+        top: 30px;
+    }
+     .favoritesLink, .projectsDropdown {
+        position: relative;
+        bottom: 30px;
+        right: 40px;
+    }
+     /* Homepage */
+     .subTitle {
+        position: relative;
+        left: 150px;
+    }
+   
+}
+@media screen and (max-width: 656px) {
+    /* Homepage Navbar */
+    .avatarDropdown {
+        position: absolute;
+        left: 460px;
+    }
+    .projectsDropdown {
+        position: relative;
+        bottom: 20px;
+        right: 40px;
+    }
+}
+@media screen and (max-width: 642px) {
+     /* Navbar */
+     .navbar-brand {
+        font-size: 30px;
+        bottom: 10px;
+        margin-right: 30px;
+        position: relative;
+        right: 30px;
+        bottom: 20px;
+    }
+    /* Homepage Navbar */
+    .avatarDropdown {
+        position: absolute;
+        left: 460px;
+    }
+    .favoritesLink {
+        position: relative;
+        bottom: 20px;
+        right: 40px;
+    }
+      /*Homepage */
+      .subTitle {
+        position: relative;
+        left: 140px;
+    }
+    .topFive {
+        position: relative;
+        right: 80px;
+        width: 600px;
+    }
+}
+@media screen and (max-width: 620px) {
+     /* Homepage Navbar */
+     .avatarDropdown {
+        position: absolute;
+        left: 440px;
+    }
+}
+@media screen and (max-width: 596px) {
+    /* Homepage Navbar */
+    .avatarDropdown {
+        position: absolute;
+        left: 400px;
+    }
+    .favoritesLink {
+        position: relative;
+        top: 10px;
+        right: 160px;
+    }
+    .projectsDropdown {
+        position: relative;
+        bottom: 40px;
+        left: 200px;
+    }
+    .search-container {
+        position: absolute;
+        right: 150px;
+        top: 50px;
+    }
+}
+@media screen and (max-width: 565px) {
+    /* Homepage Navbar */
+    .avatarDropdown {
+        position: absolute;
+        left: 380px;
+    }
+    /*Homepage */
+    .subTitle {
+        position: relative;
+        left: 120px;
+    }
+    .topFive {
+        position: relative;
+        right: 100px;
+        width: 600px;
+    }
+}
+
+@media screen and (max-width: 512px) {
+    /* Homepage navbar */
+    .avatarDropdown {
+        position: absolute;
+        left: 340px;
+    }
 }
 @media screen and (max-width: 499px) {
     /* NavBar */
     .navbar {
         height: 150px;
     }
+    /* Homepage Navbar */
     .favoritesLink {
         position: relative;
-        top: 40px;
-        right: 30px;
+        top: 10px;
+        right: 180px;
     }
     .projectsDropdown {
         position: relative;
-        right: 210px;
-        top: 39px;
-     }
-    #avatar {
-        position: relative;
-        bottom: 50px;
-        right: 90px;
-    }
+        bottom: 40px;
+        left: 180px;
+    } 
     .search-container {
-        position: relative;
+        position: absolute;
         right: 130px;
-        top: 15px;
+        top: 50px;
+        width: 250px;
+    }
+    #search-btn {
+        position: absolute;
+        left: 210px;
     }
       /* Login Page */
       .signupContainer {
@@ -427,7 +656,101 @@ footer{
        top: 620px;
        right: 620px;
    }
+  
+    /* Homepage */
+    .subTitle {
+        position: relative;
+        left: 80px;
+    }
+    .topFive {
+        position: relative;
+        right: 110px;
+        width: 550px;
+    }
 } 
+@media screen and (max-width: 491px) {
+    /* Homepage NavBar */
+    .avatarDropdown {
+        position: absolute;
+        left: 300px;
+    }
+    .favoritesLink {
+        position: relative;
+        bottom: 50px;
+        right: 160px;
+    }
+    .projectsDropdown {
+        position: relative;
+        bottom: 40px;
+        left: 190px;
+    } 
+    .search-container {
+        position: absolute;
+        right: 120px;
+        top: 50px;
+        width: 250px;
+    }
+}
+@media screen and (max-width: 475px) {
+     /* Navbar */
+     .navbar-brand {
+        font-size: 30px;
+        bottom: 10px;
+        margin-right: 30px;
+        position: relative;
+        right: 30px;
+        bottom: 35px;
+    }
+    /* Homepage Navbar */
+    .favoritesLink {
+        position: absolute;
+        bottom: 30px;
+        right: 180px;
+    }
+    .projectsDropdown {
+        position: absolute;
+        bottom: 3px;
+        left: 180px;
+    } 
+    .search-container {
+        position: absolute;
+        right: 120px;
+        top: 35px;
+        width: 250px;
+    }
+}
+@media screen and (max-width: 430px) {
+    /* Homepage Navbar */
+    .favoritesLink {
+        position: absolute;
+        bottom: 30px;
+        right: 140px;
+    }
+    .projectsDropdown {
+        position: absolute;
+        bottom: 3px;
+        left: 180px;
+    } 
+    .search-container {
+        position: absolute;
+        right: 80px;
+        top: 35px;
+        width: 250px;
+    }
+    .avatarDropdown {
+        position: absolute;
+        left: 270px;
+    }
+     /* Homepage */
+     .subTitle {
+        position: relative;
+        left: 60px;
+    }
+    .topFive {
+        width: 450px;
+        right: 85px;
+    }
+}
 @media screen and (max-width: 400px) {
     /* Login Page */
     .signupContainer {
@@ -445,6 +768,40 @@ footer{
         position: relative;
         top: 620px;
         right: 470px;
+    }
+     /* Homepage Navbar */
+     .favoritesLink {
+        position: absolute;
+        bottom: 30px;
+        right: 130px;
+    }
+    .projectsDropdown {
+        position: absolute;
+        bottom: 3px;
+        left: 150px;
+    } 
+    .search-container {
+        position: absolute;
+        right: 50px;
+        top: 35px;
+        width: 250px;
+    }
+    .avatarDropdown {
+        position: absolute;
+        left: 250px;
+    }
+    #avatar {
+        width: 50px;
+        height: 50px;
+    }
+    /* Homepage */
+    .subTitle {
+        position: relative;
+        left: 50px;
+    }
+    .topFive {
+        width: 420px;
+        right: 80px;
     }
 }
 
