@@ -1,20 +1,19 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Wrapper from "../components/Wrapper";
 import Pagination from "../components/pagination";
 import { paginate } from "../utils/paginate";
 import API from "../utils/API";
-import { getAllProjects } from "../utils/API";
 import HomeNav from "../components/HomeNav";
 
 class AllProjectsPage extends Component {
   state = {
-    projects: [],
+    projects: {},
     currentPage: 1,
     pageSize: 5
   };
-  async componentDidMount() {
-    const { data: projects } = await getAllProjects();
-    this.setState({ projects });
+  componentDidMount() {
+    this.loadProjects();
   }
   loadProjects = () => {
     API.getAllProjects()
@@ -40,19 +39,17 @@ class AllProjectsPage extends Component {
           <table className="table">
             <thead>
               <tr>
-                <th>Title</th>
-                <th>Link</th>
-                <th>Description</th>
-                <th>image</th>
+                <th className="title">Title</th>
+                <th className="link">Link</th>
+                <th className="desc">Description</th>
               </tr>
             </thead>
             <tbody>
               {projects.map(project => (
                 <tr>
                   <td>{project.title}</td>
-                  <td>{project.link}</td>
+                  <td><Link to={"/project/" + project.id}>View Project</Link></td>
                   <td>{project.description}</td>
-                  <td>{project.image}</td>
                 </tr>
               ))}
             </tbody>

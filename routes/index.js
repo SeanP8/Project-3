@@ -16,7 +16,6 @@ router.use(function (req, res, next) {
     case "/auth/github":
     case "/auth/google/callback":
     case "/auth/github/callback":
-    case "/api/projects/all":
       if (req.isAuthenticated()) {
         console.log("is already authenticated")
         res.redirect("/home")
