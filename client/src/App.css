@@ -74,6 +74,7 @@ h2,h6{
     height: 38px;
 }
 .topFiveProjects{
+    position: relative;
     background-color: whitesmoke;
     width: 85%;
     padding: 10px;
@@ -82,6 +83,10 @@ h2,h6{
     border: 1px solid #343a40;
     border-radius: 4px;
     list-style-type: none
+}
+.topFiveImgs {
+    position: relative;
+    width: 950px;
 }
 /*-----------*/
 
@@ -244,6 +249,7 @@ footer{
     margin-left: 20px;
 }
 .project-info {
+    position: relative;
     background-color: whitesmoke;
     width: 75%;
     padding: 10px;
@@ -252,13 +258,61 @@ footer{
     border-radius: 4px;
     list-style-type: none
 }
-.delete-btn, .update-btn{
+.update-btn{
+    /* position: absolute; */
+    left: 730px;
     float: right;
     margin: 3px;
+}
+.delete-btn {
+    /* position: absolute; */
+    left: 800px;
+    margin: 3px;
+    float: right;
 }
 /* --------------*/
 
 /* Media Queries */
+@media screen and (max-width: 1525px) {
+    /* Homepage */
+    .topFiveImgs {
+        position: relative;
+        width: 900px;
+    }
+    /* .update-btn{
+        position: absolute;
+        left: 730px;
+        float: right;
+        margin: 3px;
+    }
+    .delete-btn {
+        position: absolute;
+        left: 800px;
+        float: right;
+        margin: 3px;
+    } */
+}
+@media screen and (max-width: 1425px) {
+    /* Homepage */
+    .topFiveImgs {
+        position: relative;
+        width: 850px;
+    }
+}
+@media screen and (max-width: 1325px) {
+    /* Homepage */
+    .topFiveImgs {
+        position: relative;
+        width: 800px;
+    }
+}
+@media screen and (max-width: 1280px) {
+    /* Homepage */
+    .topFiveImgs {
+        position: relative;
+        width: 775px;
+    }
+}
 @media screen and (max-width: 1260px) {
     /* Navbar */
     .avatarDropdown {
@@ -277,11 +331,60 @@ footer{
         left: 320px;
     }
 }
+@media screen and (max-width: 1225px) {
+    /* Homepage */
+    .topFiveImgs {
+        position: relative;
+        width: 750px;
+    }
+}
+@media screen and (max-width: 1200px) {
+    /* Homepage */
+    .topFiveImgs {
+        position: relative;
+        width: 725px;
+    }
+}
+@media screen and (max-width: 1160px) {
+    /* Homepage */
+    .topFiveImgs {
+        position: relative;
+        width: 700px;
+    }
+}
 @media screen and (max-width: 1130px) {
     /* Navbar */
     .avatarDropdown {
         position: relative;
         left: 320px;
+    }
+}
+@media screen and (max-width: 1125px) {
+    /* Homepage */
+    .topFiveImgs {
+        position: relative;
+        width: 650px;
+    }
+}
+@media screen and (max-width: 1060px) {
+    /* Homepage */
+    .topFiveImgs {
+        position: relative;
+        width: 625px;
+    }
+}
+@media screen and (max-width: 1025px) {
+    /* Homepage */
+    .topFiveImgs {
+        position: relative;
+        width: 600px;
+    }
+}
+@media screen and (max-width: 980px) {
+    /* Homepage */
+    .topFiveImgs {
+        position: relative;
+        width: 575px;
     }
 }
 @media screen and (max-width: 960px) {
@@ -322,7 +425,7 @@ footer{
         position: relative;
         left: 315px;
     }
-    /* Jumbotron & Profile */
+    /* Homepage */
     .jumbotron {
         position: relative;
         top: 50px;
@@ -338,6 +441,26 @@ footer{
     .subTitle, .topFive {
         position: relative;
         top: 30px;
+    }
+    /* Projects Page */
+    #projectsTitle {
+        position: absolute;
+        margin-bottom: 10px;
+    }
+    #projectContainer {
+        position: relative;
+        top: 60px;
+        right: 10px;
+    }
+    #addProject {
+        position: relative;
+        left: 10px;
+    }
+}
+@media screen and (max-width: 952px) {
+    #addProject {
+        position: relative;
+        left: 10px;
     }
 }
 @media screen and (max-width: 938px) {
@@ -367,6 +490,50 @@ footer{
     .subTitle {
         position: relative;
         left: 240px;
+    }
+    .topFiveImgs {
+        position: relative;
+        width: 550px;
+    }
+    /* Projects Page */
+    #projectContainer {
+        position: relative;
+        top: 60px;
+        right: 10px;
+        width: 750px;
+    }
+    #addProject {
+        position: relative;
+        left: 10px;
+    }
+}
+@media screen and (max-width: 926px) {
+    body {
+        padding-bottom: 200px; 
+    }
+    /* Projects Page */
+    #projectContainer {
+        position: relative;
+        top: 60px;
+        right: 10px;
+        width: 750px;
+    }
+    #addProject {
+        position: relative;
+        left: 10px;
+    }
+    /* .update-btn {
+        position: relative;
+        top: 360px;
+    }
+    .delete-btn {
+        position: relative;
+        top: 360px;
+    } */
+    /* Homepage */
+    .topFiveImgs {
+        position: relative;
+        width: 525px;
     }
 }
 @media screen and (max-width: 844px) {
@@ -398,7 +565,30 @@ footer{
         right: 50px;
         width: 700px;
     }
-
+    #projectContainer {
+        position: relative;
+        top: 60px;
+        right: 10px;
+        width: 750px;
+    }
+     /* Projects Page */
+     #projectContainer {
+        position: relative;
+        top: 60px;
+        right: 10px;
+        width: 750px;
+    }
+    /* .update-btn, .delete-btn {
+        position: relative;
+        top: 360px;
+    } */
+}
+@media screen and (max-width: 825px) {
+    /* Homepage */
+    .topFiveImgs {
+        position: relative;
+        width: 500px;
+    }
 }
 @media screen and (max-width: 791px) {
      /* NavBar */
@@ -435,6 +625,24 @@ footer{
         position: relative;
         right: 50px;
         width: 600px;
+    }
+}
+@media screen and (max-width: 779px) {
+    #projectContainer {
+        position: relative;
+        width: 800px;
+    }
+    /* Homepage */
+    .topFiveImgs {
+        position: relative;
+        width: 450px;
+    }
+}
+@media screen and (max-width: 725px) {
+    /* Homepage */
+    .topFiveImgs {
+        position: relative;
+        width: 450px;
     }
 }
 @media screen and (max-width: 710px) {
@@ -559,6 +767,13 @@ footer{
         width: 600px;
     }
 }
+@media screen and (max-width: 625px) {
+    /* Homepage */
+    .topFiveImgs {
+        position: relative;
+        width: 425px;
+    }
+}
 @media screen and (max-width: 620px) {
      /* Homepage Navbar */
      .avatarDropdown {
@@ -604,8 +819,18 @@ footer{
         right: 100px;
         width: 600px;
     }
+    .topFiveImgs {
+        position: relative;
+        width: 425px;
+    }
 }
-
+@media screen and (max-width: 525px) {
+    /* Homepage */
+    .topFiveImgs {
+        position: relative;
+        width: 400px;
+    }
+}
 @media screen and (max-width: 512px) {
     /* Homepage navbar */
     .avatarDropdown {
@@ -690,6 +915,16 @@ footer{
         top: 50px;
         width: 250px;
     }
+    .topFiveImgs {
+        position: relative;
+        width: 400px;
+    }
+}
+@media screen and (max-width: 487px) {
+    .topFiveImgs {
+        position: relative;
+        width: 400px;
+    }
 }
 @media screen and (max-width: 475px) {
      /* Navbar */
@@ -717,6 +952,10 @@ footer{
         right: 120px;
         top: 35px;
         width: 250px;
+    }
+    .topFiveImgs {
+        position: relative;
+        width: 400px;
     }
 }
 @media screen and (max-width: 430px) {
@@ -749,6 +988,13 @@ footer{
     .topFive {
         width: 450px;
         right: 85px;
+    }
+}
+@media screen and (max-width: 425px) {
+    /* Homepage */
+    .topFiveImgs {
+        position: relative;
+        width: 325px;
     }
 }
 @media screen and (max-width: 400px) {
@@ -802,6 +1048,10 @@ footer{
     .topFive {
         width: 420px;
         right: 80px;
+    }
+    .topFiveImgs {
+        position: relative;
+        width: 300px;
     }
 }
 
