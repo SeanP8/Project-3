@@ -41,7 +41,12 @@ class LoginForm extends Form {
     // console.log("jwt " + Object.keys(jwt.data))
     window.location.href = "/home";
   };
-
+  gitHubOnClick() {
+    window.location.href="/auth/github";
+  }
+  googleOnClick() {
+    window.location.href="/auth/google";
+  }
   render() {
     return (
       <div>
@@ -60,8 +65,8 @@ class LoginForm extends Form {
             <hr />
             <h6>Login with GitHub or Google+</h6>
           </div>
-          <GitHubLoginBtn />
-          <GoogleLoginBtn />
+          <GitHubLoginBtn gitHubOnClick={this.gitHubOnClick}/>
+          <GoogleLoginBtn googleOnClick={this.googleOnClick}/>
         </Wrapper>
       </div>
     );

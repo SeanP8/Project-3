@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-import Wrapper from "./Wrapper";
 
 
 class ImageInputForm extends Component {
@@ -29,7 +28,7 @@ class ImageInputForm extends Component {
                     </div>
                     <div className="form_line">
                         <div className="form_controls">
-                            <input name="commit" type="submit" value="Submit Photo" />
+                            <button className="btn btn-info"name="commit" type="submit">Submit Photo</button>
 
                         </div>
                     </div>
