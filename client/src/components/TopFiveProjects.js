@@ -6,7 +6,6 @@ const TopFiveProjects = props => {
     return (
         <li className="topFiveProjects">
             <h3 className="project-title">{title}</h3>
-            {/* <img className="topFiveImgs" src={ image } alt={ title }/> */}
             <img id="topFive" src={ image } alt={ title }/>
             <p>{ description }</p>
             <Link to={"/project/" + id}>View Project</Link>
