@@ -246,6 +246,7 @@ footer{
     margin-left: 20px;
 }
 .project-info {
+    position: relative;
     background-color: whitesmoke;
     width: 75%;
     padding: 10px;
@@ -254,9 +255,15 @@ footer{
     border-radius: 4px;
     list-style-type: none
 }
-.delete-btn, .update-btn{
-    float: right;
+.update-btn {
+    position: absolute;
     margin: 3px;
+    left: 82%;
+}
+.delete-btn {
+    position: absolute;
+    margin: 3px;
+    left: 90%;
 }
 #display-image{
     display: block;
@@ -330,6 +337,17 @@ th.link{
         position: relative;
         width: 96%;
     }
+    /* Your Projects Page */
+    .update-btn {
+        position: absolute;
+        margin: 3px;
+        left: 80%;
+    }
+    .delete-btn {
+        position: absolute;
+        margin: 3px;
+        left: 90%;
+    }
 }
 @media screen and (max-width: 1230px) {
     /* Navbar */
@@ -353,6 +371,17 @@ th.link{
     #topFive{
         position: relative;
         width: 96%;
+    }
+    /* Projects Page */
+    .update-btn {
+        position: absolute;
+        margin: 3px;
+        left: 78%;
+    }
+    .delete-btn {
+        position: absolute;
+        margin: 3px;
+        left: 89%;
     }
 }
 @media screen and (max-width: 960px) {
@@ -393,7 +422,7 @@ th.link{
         position: relative;
         left: 315px;
     }
-    /* Jumbotron & Profile */
+    /* Homepage */
     .jumbotron {
         position: relative;
         top: 50px;
@@ -418,6 +447,26 @@ th.link{
     #topFive{
         position: relative;
         width: 96%;
+    }
+    /* Your Projects Page */
+    .project-info {
+        position: relative;
+        width: 700px;
+        right: 30px;
+    }
+    .update-btn {
+        position: absolute;
+        margin: 3px;
+        left: 80%;
+    }
+    .delete-btn {
+        position: absolute;
+        margin: 3px;
+        left: 90%;
+    }
+    #addProject {
+        position: relative;
+        bottom: 50px;
     }
 }
 @media screen and (max-width: 938px) {
@@ -477,6 +526,22 @@ th.link{
         position: relative;
         right: 50px;
         width: 700px;
+    }
+    /* Your Projects Page */
+    .project-info {
+        position: relative;
+        width: 650px;
+        right: 40px;
+    }
+    .update-btn {
+        position: absolute;
+        margin: 3px;
+        left: 78%;
+    }
+    .delete-btn {
+        position: absolute;
+        margin: 3px;
+        left: 89%;
     }
 }
 @media screen and (max-width: 791px) {
@@ -556,6 +621,22 @@ th.link{
         right: 60px;
         width: 600px;
     }
+     /* Your Projects Page */
+     .project-info {
+        position: relative;
+        width: 600px;
+        right: 70px;
+    }
+    .update-btn {
+        position: absolute;
+        margin: 3px;
+        left: 76%;
+    }
+    .delete-btn {
+        position: absolute;
+        margin: 3px;
+        left: 88%;
+    }
 }
 @media screen and (max-width: 682px) {
     /* Homepage Navbar */
@@ -593,7 +674,17 @@ th.link{
         position: relative;
         left: 150px;
     }
-   
+     /* Your Projects Page */
+     .project-info {
+        width: 550px;
+        right: 80px;
+    }
+    .update-btn {
+        left: 74%;
+    }
+    .delete-btn {
+        left: 87%;
+    }
 }
 @media screen and (max-width: 656px) {
     /* Homepage Navbar */
@@ -644,6 +735,10 @@ th.link{
         position: absolute;
         left: 440px;
     }
+    /* Your Projects Page */
+    #addProject {
+       left: 10px;
+    }
 }
 @media screen and (max-width: 596px) {
     /* Homepage Navbar */
@@ -666,6 +761,17 @@ th.link{
         right: 150px;
         top: 50px;
     }
+     /* Your Projects Page */
+     .project-info {
+        width: 500px;
+        right: 70px;
+    }
+    .update-btn {
+        left: 72%;
+    }
+    .delete-btn {
+        left: 86%;
+    }
 }
 @media screen and (max-width: 565px) {
     /* Homepage Navbar */
@@ -686,6 +792,10 @@ th.link{
     .edit-profile{
         width:90%
     }
+      /* Your Projects Page */
+      #addProject {
+        left: 40px;
+     }
 }
 
 @media screen and (max-width: 512px) {
@@ -694,6 +804,21 @@ th.link{
         position: absolute;
         left: 340px;
     }
+     /* Your Projects Page */
+     .project-info {
+        width: 450px;
+        right: 80px;
+    }
+    .update-btn {
+        left: 70%;
+    }
+    .delete-btn {
+        left: 85%;
+    }
+      /* Your Projects Page */
+      #addProject {
+        left: 30px;
+     }
 }
 @media screen and (max-width: 499px) {
     /* NavBar */
@@ -772,6 +897,17 @@ th.link{
         top: 50px;
         width: 250px;
     }
+    /* Your Projects Page */
+    .project-info {
+        width: 450px;
+        right: 90px;
+    }
+    .update-btn {
+        left: 69%;
+    }
+    .delete-btn {
+        left: 85%;
+    }
 }
 @media screen and (max-width: 475px) {
      /* Navbar */
@@ -799,6 +935,20 @@ th.link{
         right: 120px;
         top: 35px;
         width: 250px;
+    }
+     /* Your Projects Page */
+     .project-info {
+        width: 400px;
+        right: 70px;
+    }
+    .update-btn {
+        left: 66%;
+    }
+    .delete-btn {
+        left: 83%;
+    }
+    #addProject {
+        left: 20px;
     }
 }
 @media screen and (max-width: 430px) {
@@ -831,6 +981,17 @@ th.link{
     .topFive {
         width: 450px;
         right: 85px;
+    }
+     /* Your Projects Page */
+     .project-info {
+        width: 370px;
+        right: 70px;
+    }
+    .update-btn {
+        left: 62%;
+    }
+    .delete-btn {
+        left: 81%;
     }
 }
 @media screen and (max-width: 400px) {
@@ -884,6 +1045,17 @@ th.link{
     .topFive {
         width: 420px;
         right: 80px;
+    }
+     /* Your Projects Page */
+     .project-info {
+        width: 340px;
+        right: 70px;
+    }
+    .update-btn {
+        left: 59%;
+    }
+    .delete-btn {
+        left: 80%;
     }
 }
 /*---------------*/
