@@ -352,7 +352,6 @@ th.link{
 @media screen and (max-width: 1230px) {
     /* Navbar */
     .avatarDropdown {
-        position: relative;
         left: 320px;
     }
      /* Homepage */
@@ -364,7 +363,6 @@ th.link{
 @media screen and (max-width: 1130px) {
     /* Navbar */
     .avatarDropdown {
-        position: relative;
         left: 320px;
     }
     /* Homepage */
@@ -374,13 +372,9 @@ th.link{
     }
     /* Projects Page */
     .update-btn {
-        position: absolute;
-        margin: 3px;
         left: 78%;
     }
     .delete-btn {
-        position: absolute;
-        margin: 3px;
         left: 89%;
     }
 }
@@ -419,7 +413,6 @@ th.link{
         opacity: 0;
     }
     .avatarDropdown {
-        position: relative;
         left: 315px;
     }
     /* Homepage */
@@ -455,13 +448,9 @@ th.link{
         right: 30px;
     }
     .update-btn {
-        position: absolute;
-        margin: 3px;
         left: 80%;
     }
     .delete-btn {
-        position: absolute;
-        margin: 3px;
         left: 90%;
     }
     #addProject {
@@ -484,7 +473,6 @@ th.link{
         right: 320px;
     }
     .avatarDropdown {
-        position: relative;
         left: 90px;
         margin-bottom: 50px;
     }
@@ -494,7 +482,6 @@ th.link{
     }
     /* Homepage */
     .subTitle {
-        position: relative;
         left: 240px;
     }
 }
@@ -508,18 +495,10 @@ th.link{
     }
     /* Homepage Navbar */
     .search-container {
-        position: absolute;
-        top: 40px;
         right: 280px;
-    }
-    .avatarDropdown {
-        position: relative;
-        left: 90px;
-        margin-bottom: 50px;
     }
     /* Homepage */
     .subTitle {
-        position: relative;
         left: 210px;
     }
     .topFive {
@@ -534,13 +513,9 @@ th.link{
         right: 40px;
     }
     .update-btn {
-        position: absolute;
-        margin: 3px;
         left: 78%;
     }
     .delete-btn {
-        position: absolute;
-        margin: 3px;
         left: 89%;
     }
 }
@@ -561,18 +536,11 @@ th.link{
     }
     /* Homepage Navbar */
     .search-container {
-        position: absolute;
         top: 50px;
         right: 250px;
     }
-    .avatarDropdown {
-        position: relative;
-        left: 90px;
-        margin-bottom: 50px;
-    }
     /* Homepage */
     .subTitle {
-        position: relative;
         left: 200px;
     }
     .topFive {
@@ -601,19 +569,12 @@ th.link{
         right: 530px;
     }
      /* Homepage Navbar */
-     .avatarDropdown {
-        position: relative;
-        left: 90px;
-        margin-bottom: 50px;
-    }
     .search-container {
-        position: absolute;
         right: 150px;
         top: 40px;
     }
     /*Homepage */
     .subTitle {
-        position: relative;
         left: 160px;
     }
     .topFive {
@@ -628,13 +589,9 @@ th.link{
         right: 70px;
     }
     .update-btn {
-        position: absolute;
-        margin: 3px;
         left: 76%;
     }
     .delete-btn {
-        position: absolute;
-        margin: 3px;
         left: 88%;
     }
 }
@@ -656,11 +613,9 @@ th.link{
     }
     /* Homepage Navbar */
     .avatarDropdown {
-        position: absolute;
         left: 480px;
     }
     .search-container {
-        position: absolute;
         right: 150px;
         top: 30px;
     }
@@ -671,7 +626,6 @@ th.link{
     }
      /* Homepage */
      .subTitle {
-        position: relative;
         left: 150px;
     }
      /* Your Projects Page */
@@ -689,7 +643,6 @@ th.link{
 @media screen and (max-width: 656px) {
     /* Homepage Navbar */
     .avatarDropdown {
-        position: absolute;
         left: 460px;
     }
     .projectsDropdown {
@@ -709,18 +662,11 @@ th.link{
         bottom: 20px;
     }
     /* Homepage Navbar */
-    .avatarDropdown {
-        position: absolute;
-        left: 460px;
-    }
     .favoritesLink {
-        position: relative;
         bottom: 20px;
-        right: 40px;
     }
       /*Homepage */
       .subTitle {
-        position: relative;
         left: 140px;
     }
     .topFive {
@@ -732,7 +678,6 @@ th.link{
 @media screen and (max-width: 620px) {
      /* Homepage Navbar */
      .avatarDropdown {
-        position: absolute;
         left: 440px;
     }
     /* Your Projects Page */
@@ -743,11 +688,9 @@ th.link{
 @media screen and (max-width: 596px) {
     /* Homepage Navbar */
     .avatarDropdown {
-        position: absolute;
         left: 400px;
     }
     .favoritesLink {
-        position: relative;
         top: 10px;
         right: 160px;
     }
@@ -757,7 +700,6 @@ th.link{
         left: 200px;
     }
     .search-container {
-        position: absolute;
         right: 150px;
         top: 50px;
     }
@@ -776,12 +718,10 @@ th.link{
 @media screen and (max-width: 565px) {
     /* Homepage Navbar */
     .avatarDropdown {
-        position: absolute;
         left: 380px;
     }
     /*Homepage */
     .subTitle {
-        position: relative;
         left: 120px;
     }
     .topFive {
@@ -801,7 +741,6 @@ th.link{
 @media screen and (max-width: 512px) {
     /* Homepage navbar */
     .avatarDropdown {
-        position: absolute;
         left: 340px;
     }
      /* Your Projects Page */
@@ -827,8 +766,6 @@ th.link{
     }
     /* Homepage Navbar */
     .favoritesLink {
-        position: relative;
-        top: 10px;
         right: 180px;
     }
     .projectsDropdown {
@@ -837,7 +774,6 @@ th.link{
         left: 180px;
     } 
     .search-container {
-        position: absolute;
         right: 130px;
         top: 50px;
         width: 250px;
@@ -866,7 +802,6 @@ th.link{
   
     /* Homepage */
     .subTitle {
-        position: relative;
         left: 80px;
     }
     .topFive {
@@ -878,11 +813,9 @@ th.link{
 @media screen and (max-width: 491px) {
     /* Homepage NavBar */
     .avatarDropdown {
-        position: absolute;
         left: 300px;
     }
     .favoritesLink {
-        position: relative;
         bottom: 50px;
         right: 160px;
     }
@@ -892,10 +825,8 @@ th.link{
         left: 190px;
     } 
     .search-container {
-        position: absolute;
         right: 120px;
         top: 50px;
-        width: 250px;
     }
     /* Your Projects Page */
     .project-info {
@@ -931,10 +862,7 @@ th.link{
         left: 180px;
     } 
     .search-container {
-        position: absolute;
-        right: 120px;
         top: 35px;
-        width: 250px;
     }
      /* Your Projects Page */
      .project-info {
@@ -954,8 +882,6 @@ th.link{
 @media screen and (max-width: 430px) {
     /* Homepage Navbar */
     .favoritesLink {
-        position: absolute;
-        bottom: 30px;
         right: 140px;
     }
     .projectsDropdown {
@@ -964,18 +890,13 @@ th.link{
         left: 180px;
     } 
     .search-container {
-        position: absolute;
         right: 80px;
-        top: 35px;
-        width: 250px;
     }
     .avatarDropdown {
-        position: absolute;
         left: 270px;
     }
      /* Homepage */
      .subTitle {
-        position: relative;
         left: 60px;
     }
     .topFive {
@@ -1014,8 +935,6 @@ th.link{
     }
      /* Homepage Navbar */
      .favoritesLink {
-        position: absolute;
-        bottom: 30px;
         right: 130px;
     }
     .projectsDropdown {
@@ -1024,13 +943,9 @@ th.link{
         left: 150px;
     } 
     .search-container {
-        position: absolute;
         right: 50px;
-        top: 35px;
-        width: 250px;
     }
     .avatarDropdown {
-        position: absolute;
         left: 250px;
     }
     #avatar {
@@ -1039,7 +954,6 @@ th.link{
     }
     /* Homepage */
     .subTitle {
-        position: relative;
         left: 50px;
     }
     .topFive {
