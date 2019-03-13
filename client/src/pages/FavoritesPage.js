@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import HomeNav from "../components/HomeNav";
 import Wrapper from "../components/Wrapper";
-import Favorites from "../components/TopFiveProjects";
+import Favorites from "../components/Favorite";
+import Footer from "../components/Footer";
 import API from '../utils/API';
 
 class FavoritesPage extends Component {
@@ -41,6 +42,7 @@ class FavoritesPage extends Component {
                     </ul>
                 </div>
                 </Wrapper>
+                <Footer/>
             </div>
         );
     }

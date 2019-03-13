@@ -74,7 +74,7 @@ h2,h6{
     width: 83px;
     height: 38px;
 }
-.topFiveProjects{
+.topFiveProjects, .favorites-container{
     background-color: whitesmoke;
     width: 85%;
     padding: 10px;
@@ -279,14 +279,15 @@ footer{
 .table{
     border: 1px solid rgba(63, 59, 59, 0.658);
     border-radius: 5px;
+    background-color: whitesmoke;
     padding: 5px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
 th.title{
-    width: 15%
+    width: 13%
 } 
 th.link{
-    width: 7%
+    width: 12%
 }
 .edit-profile{
     width: 50%;
@@ -305,7 +306,7 @@ th.link{
 #photo_image{
     margin-bottom: 10px;
 }
-#topFive{
+.project-image{
     display: block;
     margin: 0 auto;
     margin-bottom: 10px;
@@ -398,7 +399,7 @@ th.link{
         position: relative;
         bottom: 18px;
     }
-    #topFive{
+    .project-image{
         position: relative;
         width: 96%;
     }
