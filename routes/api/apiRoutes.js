@@ -234,10 +234,12 @@ router.route("/api/favorites/user").get(function(req, res) {
 
 router.route("/api/favorites").post(function(req, res) {
   db.Favorite.create({
-    where: {
-      userID: req.user.id,
-      ProjectID: req.body.ProjectID
-    }
+    title: req.body.title,
+    link: req.body.link,
+    description: req.body.description,
+    image: req.body.image,
+    projectID: req.body.id,
+    userID: req.user.id
   }).then(dbFavorite => {
     res.json(dbFavorite);
   });

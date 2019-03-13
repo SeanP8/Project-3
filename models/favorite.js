@@ -1,27 +1,30 @@
-module.exports = (sequelize, Datatypes) => {
+module.exports = (sequelize, DataTypes) => {
 
-  const Favorite = sequelize.define(
-    "Favorite",
-    {
-  //     title: Datatypes.STRING
-  //   },
-
-  //   {
-  //     timestamps: false
-  //   }
-  // );
-  //   Favorite.associate = models => {
-  //     models.Favorite.hasOne(models.Auth);
-  //   };
-      userID : {
-        type: Datatypes.STRING,
-        allowNull: true,
-        defaultValue: 1
+  const Favorite = sequelize.define("Favorite", {
+      title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1, 240]
+        }
       },
-      ProjectID: {
-        type: Datatypes.STRING,
-        allowNull: true,
-        defaultValue: 1
+      link: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      description: {
+        type: DataTypes.TEXT,
+        allowNull: false
+      },
+      image: {
+        type: DataTypes.STRING
+      },
+      projectID: {
+        type:DataTypes.INTEGER
+      },
+      userID: {
+        type: DataTypes.INTEGER,
+        allowNull: true
       }
     });
   return Favorite;

@@ -18,9 +18,14 @@ class DisplayIndividual extends Component {
   }
 
   handleBtnClick = () => {
+    const { title, image, link, description, id} = this.state.project;
     console.log('clicked');
     API.addToFavorites({
-      ProjectID: this.state.project.id
+      title: title,
+      link: link,
+      description: description,
+      image: image,
+      projectId: id
     })
     .then( res => console.log(res.data))
     .catch( err => console.log(err));
@@ -38,7 +43,7 @@ class DisplayIndividual extends Component {
                 <h1 className="display-4">{ title }</h1>
               </div>
             </div>
-            <button id="favorites-btn" onClick={this.handleBtnClick()}><img src={ favoritesLogo } alt="favorite button"/></button>
+            <button id="favorites-btn" onClick={this.handleBtnClick}><img src={ favoritesLogo } alt="favorite button"/></button>
             <img id="display-image" src={ image } className="img-fluid" alt={ title }/>
             <p>{ description }</p>
             <a href={ link }>See Project</a>
