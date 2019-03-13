@@ -67,7 +67,7 @@ class Projects extends Component {
         <HomeNav />
         <Wrapper>
           <div>
-            <h1 className="subTitle">Projects</h1>
+            <h1 id="projectsTitle">Projects</h1>
           </div>
           {/* This button toggles the modal form to add a project */}
           <button id="addProject" type="button" className="btn btn-primary" data-toggle="modal" data-target="#project-modal">
