@@ -9,7 +9,7 @@ class Login extends React.Component {
   componentWillMount(){
     API.getCurrentUser().then(response => {
       console.log(response.data);
-      if(response.data.email){
+      if(response.data.id){
         window.location.href = "/home"
       }
     })
