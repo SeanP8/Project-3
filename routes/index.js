@@ -10,6 +10,7 @@ router.use(function (req, res, next) {
   switch (path) {
     case "/api/logout":
     break;
+    case "/":
     case "/login":
     case "/api/login":
     case "/auth/google":
