@@ -4,6 +4,7 @@ import HomeNav from "../components/HomeNav";
 import Wrapper from "../components/Wrapper";
 import Footer from "../components/Footer";
 import favoritesLogo from "../heartLogo.png";
+import Donate from "../components/DonateButton";
 import API from "../utils/API";
 
 class DisplayIndividual extends Component {
@@ -18,11 +19,12 @@ class DisplayIndividual extends Component {
   }
 
   handleBtnClick = () => {
-    const { title, image, link, description, id} = this.state.project;
+    const { title, image, link, fundLink, description, id} = this.state.project;
     console.log('clicked');
     API.addToFavorites({
       title: title,
       link: link,
+      fundLink: fundLink,
       description: description,
       image: image,
       projectId: id
@@ -32,7 +34,7 @@ class DisplayIndividual extends Component {
   }
 
   render() {
-    const { title, image, link, description } = this.state.project
+    const { title, image, link, fundLink, description } = this.state.project
     return (
       <div>
         <HomeNav />
@@ -44,6 +46,7 @@ class DisplayIndividual extends Component {
               </div>
             </div>
             <button id="favorites-btn" onClick={this.handleBtnClick}><img src={ favoritesLogo } alt="favorite button"/></button>
+            <Donate fundLink={fundLink}/>
             <img id="display-image" src={ image } className="img-fluid" alt={ title }/>
             <p>{ description }</p>
             <a href={ link }>See Project</a>

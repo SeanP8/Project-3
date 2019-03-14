@@ -27,7 +27,10 @@ class LoginForm extends Form {
       const { data } = this.state;
       console.log("SUBMIT")
 
-      login(data.email, data.password);
+      login(data.email, data.password).then(() => {
+        console.log("LOL")
+        window.location.href = "/home";
+      });
 
 
     } catch (error) {
@@ -39,7 +42,7 @@ class LoginForm extends Form {
       }
     }
     // console.log("jwt " + Object.keys(jwt.data))
-    window.location.href = "/home";
+   
   };
   gitHubOnClick() {
     window.location.href="/auth/github";

@@ -11,6 +11,7 @@ class Projects extends Component {
     super(props);
     this.titleRef = React.createRef();
     this.linkRef = React.createRef();
+    this.fundLinkRef = React.createRef();
     this.descriptionRef = React.createRef();
     this.imageRef = React.createRef();
   }
@@ -30,12 +31,14 @@ class Projects extends Component {
     const project = {
       title: this.titleRef.current.value,
       link: this.linkRef.current.value,
+      fundLink: this.fundLinkRef.current.value,
       description: this.descriptionRef.current.value,
       image: this.imageRef.current.value
     };
     API.saveProject({
       title: project.title,
       link: project.link,
+      fundLink: project.fundLink,
       description: project.description,
       image: project.image
     })
@@ -136,8 +139,16 @@ class Projects extends Component {
                         type="text"
                         className="form-control"
                         id="inputTitle"
-                        placeholder="Link to your project"
-                      />
+                        placeholder="Link to your project" />
+                         <label htmlFor="inputFundLink">Link for funding</label>
+                      <input
+                        name="fundLink"
+                        ref={this.fundLinkRef}
+                        type="text"
+                        className="form-control"
+                        id="inputTitle"
+                        placeholder="Link to fund your project" />
+
                     </div>
                     <div className="form-group">
                       <label htmlFor="inputDescription">Description</label>

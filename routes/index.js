@@ -9,7 +9,8 @@ router.use(function(req, res, next) {
   console.log("gatekeeper : " + path);
   switch (path) {
     case "/api/logout":
-      break;
+    break;
+    case "/":
     case "/login":
     case "/api/login":
     case "/auth/google":
