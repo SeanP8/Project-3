@@ -4,7 +4,7 @@ const express = require("express");
 const passport = require("passport");
 const bodyParser = require("body-parser");
 const session = require("express-session");
-const cors = require("cors");
+// const cors = require("cors");
 const app = express();
 const routes = require("./routes");
 const db = require("./models/");
@@ -13,12 +13,12 @@ const seed = require("./models/seed/seed-db");
 const PORT = process.env.PORT || 5000;
 app.use(express.static("client/build"));
 app.use(function(req, res, next) {
-  if (req.url != '/favicon.ico') {
+  if (req.url != "/favicon.ico") {
     return next();
   } else {
     res.status(200);
-    res.header('Content-Type', 'image/x-icon');
-    res.header('Cache-Control', 'max-age=4294880896');
+    res.header("Content-Type", "image/x-icon");
+    res.header("Cache-Control", "max-age=4294880896");
     res.end();
   }
 });
@@ -38,13 +38,12 @@ app.use(
       secure: false
     }
   })
-
 );
 
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.initialize());
-app.use(passport.session());  
+app.use(passport.session());
 app.use(express.static("client/build"));
 app.use(routes);
 // Serve up static assets (usually on heroku)
@@ -52,7 +51,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 // if force = true, will drop the db every startup
-var syncOptions = { force: false };
+var syncOptions = { force: true };
 
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
@@ -68,4 +67,4 @@ db.sequelize
       console.log(`Listening on port ${PORT}`);
     });
   });
-  module.exports = app.listen(3000);
+module.exports = app.listen(3000);

@@ -42,7 +42,7 @@ router
           email: req.body.email,
           authMode: "local",
           authModeID: Date.now()
-        })
+        });
       }
     });
   });
@@ -133,6 +133,7 @@ router
             db.Projects.create({
               title: req.body.title,
               link: req.body.link,
+              fundLink: req.body.fundLink,
               image: image.secure_url,
               description: req.body.description,
               authID: req.user.id
@@ -247,6 +248,7 @@ router.route("/api/favorites").post(function(req, res) {
   db.Favorite.create({
     title: req.body.title,
     link: req.body.link,
+    fundLink: req.body.fundLink,
     description: req.body.description,
     image: req.body.image,
     projectID: req.body.projectId,
