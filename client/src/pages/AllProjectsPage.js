@@ -5,6 +5,7 @@ import Pagination from "../components/pagination";
 import { paginate } from "../utils/paginate";
 import API from "../utils/API";
 import HomeNav from "../components/HomeNav";
+import Footer from "../components/Footer";
 
 class AllProjectsPage extends Component {
   state = {
@@ -61,6 +62,7 @@ class AllProjectsPage extends Component {
             currentPage={currentPage}
           />
         </Wrapper>
+        <Footer/>
       </div>
     );
   }

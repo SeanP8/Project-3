@@ -41,5 +41,14 @@ export default {
     },
     imageUpload: function(img) {
         return axios.post(url, img);
+    },
+    updateUserName: function(data) {
+        return axios.put("/api/user/update", data)
+    },
+    submitComment: function(data) {
+        return axios.post("/api/comments", data);
+    },
+    getComments: function() {
+        return axios.get("/api/comments");
     }
 };
