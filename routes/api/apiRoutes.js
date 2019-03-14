@@ -42,9 +42,7 @@ router
           email: req.body.email,
           authMode: "local",
           authModeID: Date.now()
-        }).then(dbAuth => {
-          res.send(dbAuth);
-        });
+        })
       }
     });
   });
