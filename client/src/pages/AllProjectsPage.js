@@ -1,28 +1,43 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Wrapper from "../components/Wrapper";
 import Pagination from "../components/pagination";
 import { paginate } from "../utils/paginate";
-import API from "../utils/API";
+import API, { saveUserFav } from "../utils/API";
 import { getAllProjects } from "../utils/API";
 import HomeNav from "../components/HomeNav";
+import Favorite from "../components/favorite";
 
 class AllProjectsPage extends Component {
   state = {
     projects: [],
+    data: { favorite: "" },
     currentPage: 1,
     pageSize: 5
   };
   async componentDidMount() {
     const { data: projects } = await getAllProjects();
+    console.log(projects);
     this.setState({ projects });
   }
-  loadProjects = () => {
-    API.getAllProjects()
-      .then(res => this.setState({ projects: res.data }))
-      .catch(err => console.log(err));
-  };
+  // loadProjects = () => {
+  //   API.getAllProjects()
+  //     .then(res => this.setState({ projects: res.data }))
+  //     .catch(err => console.log(err));
+  // };
   handlePageChange = page => {
     this.setState({ currentPage: page });
+  };
+  handleFavorite = async project => {
+    // const { data: projects } = await saveUserFav();
+    const projects = [...this.state.projects];
+    const index = projects.indexOf(project);
+    // console.log(index);
+    projects[index] = { ...projects[index] };
+    projects[index].favorited = !projects[index].favorited;
+    console.log(index);
+    this.setState({ projects });
+    await saveUserFav(index);
   };
 
   render() {
@@ -37,6 +52,7 @@ class AllProjectsPage extends Component {
           <div>
             <h1 className="subTitle">Projects</h1>
           </div>
+          <p>There are {count} tech start ups available for funding!!</p>
           <table className="table">
             <thead>
               <tr>
@@ -44,6 +60,7 @@ class AllProjectsPage extends Component {
                 <th>Link</th>
                 <th>Description</th>
                 <th>image</th>
+                <th />
               </tr>
             </thead>
             <tbody>
@@ -53,6 +70,12 @@ class AllProjectsPage extends Component {
                   <td>{project.link}</td>
                   <td>{project.description}</td>
                   <td>{project.image}</td>
+                  <td>
+                    <Favorite
+                      favorited={project.favorited}
+                      onClick={() => this.handleFavorite(project)}
+                    />
+                  </td>
                 </tr>
               ))}
             </tbody>

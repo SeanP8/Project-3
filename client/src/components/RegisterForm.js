@@ -2,7 +2,7 @@ import React from "react";
 import Wrapper from "./Wrapper";
 import Joi from "joi-browser";
 import Form from "./Form";
-import * as userService from "../services/userService";
+import { addAuth } from "../utils/API";
 
 class RegisterForm extends Form {
   state = {
@@ -21,17 +21,17 @@ class RegisterForm extends Form {
       .label("Email"),
     password: Joi.string()
       .required()
-      .label("Pastname")
+      .label("Password")
   };
 
   doSubmit = async () => {
+    console.log(this.state.data);
+
     try {
-
-      console.log(this.state.data);
-      await userService.register(this.state.data).then(user => {
-        window.location = "/home";
-
-      });
+      const response = await addAuth(this.state.data);
+      console.log(response);
+      // this.props.history.push("/");
+      window.location("/");
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };

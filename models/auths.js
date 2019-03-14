@@ -34,10 +34,10 @@ module.exports = function(sequelize, DataTypes) {
     },
 
     password: {
-      type: DataTypes.STRING,
-      validate: {
-        isAlphanumeric: true
-      }
+      type: DataTypes.STRING
+      // validate: {
+      //   isAlphanumeric: true
+      // }
     }
     // }
     // hooks: {

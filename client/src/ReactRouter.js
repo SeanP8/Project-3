@@ -8,23 +8,22 @@ import Favorites from "./pages/FavoritesPage";
 import AllProjects from "./pages/AllProjectsPage";
 import NoMatch from "./components/NoMatch";
 
-
 const ReactRouter = () => {
-        return (
-            <div>
-                <BrowserRouter>
-                <Switch>
-                    <Route exact path={["/","/login"]} component={Login}/>
-                    <Route path="/home" component={Home}/>
-                    <Route path="/profile" component={Profile} />
-                    <Route path="/projects" component={Projects}/>
-                    <Route path="/favorites" component={Favorites}/>
-                    <Route path="/all-projects" component={AllProjects}/>
-                    <Route component={NoMatch}/>
-                </Switch>
-                </BrowserRouter>
-            </div>
-        );
-    }
+  return (
+    <div>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path={["/", "/login/:authId"]} component={Login} />
+          <Route path="/home" component={Home} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/projects" component={Projects} />
+          <Route path="/favorites" component={Favorites} />
+          <Route path="/all-projects" component={AllProjects} />
+          <Route component={NoMatch} />
+        </Switch>
+      </BrowserRouter>
+    </div>
+  );
+};
 
 export default ReactRouter;
