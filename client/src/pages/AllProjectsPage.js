@@ -7,6 +7,7 @@ import API, { saveUserFav } from "../utils/API";
 import { getAllProjects } from "../utils/API";
 import HomeNav from "../components/HomeNav";
 import Favorite from "../components/favorite";
+import Footer from "../components/Footer";
 
 class AllProjectsPage extends Component {
   state = {
@@ -56,18 +57,18 @@ class AllProjectsPage extends Component {
           <table className="table">
             <thead>
               <tr>
-                <th>Title</th>
-                <th>Link</th>
-                <th>Description</th>
-                <th>image</th>
-                <th />
+                <th className="title">Title</th>
+                <th className="link">Link</th>
+                <th className="desc">Description</th>
               </tr>
             </thead>
             <tbody>
               {projects.map(project => (
                 <tr>
                   <td>{project.title}</td>
-                  <td>{project.link}</td>
+                  <td>
+                    <Link to={"/project/" + project.id}>View Project</Link>
+                  </td>
                   <td>{project.description}</td>
                   <td>{project.image}</td>
                   <td>
@@ -87,6 +88,7 @@ class AllProjectsPage extends Component {
             currentPage={currentPage}
           />
         </Wrapper>
+        <Footer />
       </div>
     );
   }

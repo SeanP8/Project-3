@@ -11,7 +11,6 @@ const db = require("./models/");
 const seed = require("./models/seed/seed-db");
 
 const PORT = process.env.PORT || 5000;
-const cors = require("cors");
 app.use(express.static("client/build"));
 app.use(function(req, res, next) {
   if (req.url != "/favicon.ico") {
@@ -39,31 +38,18 @@ app.use(
       secure: false
     }
   })
-); // cookie sessions middleware
-// app.use(
-//   cookieSession({
-//     maxAge: 24 * 60 * 60 * 1000,
-//     keys: ["my secret Key"],
-//     secure: false
-//   })
-// );
+);
 
 app.use(passport.initialize());
 app.use(passport.session());
-// app.use(function(req,res, next){
-//   res.set({
-//     'Access-Control-Allow-Origin': 'http://localhost:3000',
-//     'Access-Control-Allow-Methods': 'DELETE,GET,PATCH,POST,PUT',
-//     'Access-Control-Allow-Headers': 'Content-Type,Authorization'
-// });
-// next();
-// })
-
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static("client/build"));
 app.use(routes);
-
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 // if force = true, will drop the db every startup
 var syncOptions = { force: true };
 
@@ -81,3 +67,4 @@ db.sequelize
       console.log(`Listening on port ${PORT}`);
     });
   });
+module.exports = app.listen(3000);

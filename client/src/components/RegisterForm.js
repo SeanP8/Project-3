@@ -3,6 +3,8 @@ import Wrapper from "./Wrapper";
 import Joi from "joi-browser";
 import Form from "./Form";
 import { addAuth } from "../utils/API";
+import * as userService from "../services/userService";
+import { login } from "../services/authService";
 
 class RegisterForm extends Form {
   state = {
@@ -25,13 +27,19 @@ class RegisterForm extends Form {
   };
 
   doSubmit = async () => {
-    console.log(this.state.data);
-
     try {
-      const response = await addAuth(this.state.data);
-      console.log(response);
-      // this.props.history.push("/");
-      window.location("/");
+      console.log(this.state.data);
+      await userService.register(this.state.data).then(user => {
+        login(this.state.data.email, this.state.data.password).then(function() {
+          window.location.href = "/home";
+        });
+
+        // try {
+        //   const response = await addAuth(this.state.data);
+        //   console.log(response);
+        //   // this.props.history.push("/");
+        //   window.location("/");
+      });
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
@@ -43,7 +51,7 @@ class RegisterForm extends Form {
 
   render() {
     return (
-      <div>
+      <div className="signupContainer">
         <Wrapper>
           <h2>Sign Up</h2>
           <h6>It's free and always will be</h6>

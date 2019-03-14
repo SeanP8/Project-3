@@ -66,7 +66,7 @@ class Projects extends Component {
         <HomeNav />
         <Wrapper>
           <div>
-            <h1 className="subTitle">Projects</h1>
+            <h1 id="projectsTitle">Projects</h1>
           </div>
           {/* This button toggles the modal form to add a project */}
           <button
@@ -116,7 +116,7 @@ class Projects extends Component {
                   </button>
                 </div>
                 <div className="modal-body">
-                  <form className="add-a-project" onSubmit={this.handleSubmit}>
+                  <form className="add-a-project" /*onSubmit={this.handleSubmit}*/ method="POST" action="/api/projects" encType="multipart/form-data">
                     <div className="form-group">
                       <label htmlFor="inputTitle">Title</label>
                       <input
