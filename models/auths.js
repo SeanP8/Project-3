@@ -32,22 +32,15 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true
     },
-
     password: {
-      type: DataTypes.STRING
-      
+      type: DataTypes.STRING  
     }
-    // }
-    // hooks: {
-    //   beforeCreate: auths => {
-    //     auths.full_name = `${auths.first} ${auths.last}`;
-    //   }
-    // }
   });
   Auths.associate = model => {
     model.Auths.belongsToMany(model.Projects, {
       as: "SeeksFunding",
-      through: "UserProjects"
+      through: "UserProjects",
+      onDelete: "cascade"
     });
     // Foreign key of authId will be made in Favorite table
     model.Auths.hasOne(model.Favorite);

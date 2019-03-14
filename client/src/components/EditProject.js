@@ -35,7 +35,7 @@ class EditProject extends Component {
                         <button
                             className="btn btn-outline-info btn-sm update-btn" data-toggle="modal" onClick={this.toggle}>Update</button>
                         <h3 className="project-title">{title}</h3>
-                        <img className="img img-fluid" src={image} alt={title} />
+                        <img className="project-image" src={image} alt={title} />
                         <p>{description}</p>
                         <Link to={"/project/" + id}>View Project</Link>
                     </li>

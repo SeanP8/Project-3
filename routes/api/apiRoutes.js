@@ -47,6 +47,19 @@ router
     });
   });
 
+router.route("/api/user/update").put(function(req, res) {
+  db.Auths.update(
+    { firstName: req.body.name },
+    {
+      where: {
+        id: req.user.id
+      }
+    }
+  ).then(dbAuth => {
+    res.send(dbAuth);
+  });
+});
+
 router.route("/api/users").get(function(req, res) {
   db.Auths.findAll().then(dbUsers => {
     res.send(dbUsers);
@@ -238,7 +251,7 @@ router.route("/api/favorites").post(function(req, res) {
     fundLink: req.body.fundLink,
     description: req.body.description,
     image: req.body.image,
-    projectID: req.body.id,
+    projectID: req.body.projectId,
     userID: req.user.id
   }).then(dbFavorite => {
     res.json(dbFavorite);
