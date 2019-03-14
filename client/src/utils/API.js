@@ -30,14 +30,14 @@ export default {
     getProject: function(id) {
         return axios.get("/api/project/" + id);
     },
-    addToFavorites: function(data) {
-        return axios.post("/api/favorites", data);
+    addToFavorites: function(id) {
+        return axios.post("/api/favorites", {projectID: id});
     },
     getUsersFavorites: function() {
-        return axios.get("/api/favorites/user");
+        return axios.get("/api/favorites/");
     },
     deleteFavorite: function(id) {
-        return axios.delete("/api/favorites/" + id);
+        return axios.delete("/api/favorites/", {projectID: id});
     },
     imageUpload: function(img) {
         return axios.post(url, img);

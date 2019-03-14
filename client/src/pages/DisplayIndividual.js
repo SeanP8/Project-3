@@ -9,32 +9,51 @@ import API from "../utils/API";
 
 class DisplayIndividual extends Component {
   state = {
-    project: {}
+    project: {},
+    favorites: []
   };
 
   componentDidMount() {
     API.getProject(this.props.match.params.id)
       .then(res => this.setState({ project: res.data }))
       .catch(err => console.log(err));
+    this.getFavorites();
   }
 
-  handleBtnClick = () => {
-    const { title, image, link, fundLink, description, id} = this.state.project;
+  getFavorites = () => {
+    API.getUsersFavorites().then((res)=> this.setState({favorites: res.data.map(datum => datum.projectID)}));
+  }
+
+  addFavorite = () => {
+    API.addToFavorites(this.state.project.id).then(() =>{ 
+      console.log("ADDED");
+      this.getFavorites()});
+  }
+
+  deleteThisFavorite = () => {
+    console.log("DELETED");
+    API.deleteFavorite(this.state.project.id).then(() => {this.getFavorites()});
+  }
+   
+
+  handleBtnClick = (e) => {
+    e.preventDefault();
+    const projectID = this.state.project.id;
+    const { favorites } = this.state;
+    console.log(projectID)
     console.log('clicked');
-    API.addToFavorites({
-      title: title,
-      link: link,
-      fundLink: fundLink,
-      description: description,
-      image: image,
-      projectId: id
-    })
-    .then( res => console.log(res.data))
-    .catch( err => console.log(err));
+    if(favorites.includes(projectID)){
+      this.deleteThisFavorite();
+    }else{
+      this.addFavorite();
+    }
   }
 
   render() {
-    const { title, image, link, fundLink, description } = this.state.project
+    const { title, image, link, fundLink, description } = this.state.project;
+    const projectID = this.state.project.id;
+    const {favorites} = this.state;
+    console.log(favorites)
     return (
       <div>
         <HomeNav />
@@ -45,7 +64,7 @@ class DisplayIndividual extends Component {
                 <h1 className="display-4">{ title }</h1>
               </div>
             </div>
-            <button id="favorites-btn" onClick={this.handleBtnClick}><img src={ favoritesLogo } alt="favorite button"/></button>
+            <button id="favorites-btn" style={ favorites.includes(projectID) ? { background: "green"} : {background: "red"}} onClick={this.handleBtnClick}><img src={ favoritesLogo } alt="favorite button"/></button>
             <Donate fundLink={fundLink}/>
             <img id="display-image" src={ image } className="img-fluid" alt={ title }/>
             <p>{ description }</p>

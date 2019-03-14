@@ -118,7 +118,9 @@ class Projects extends Component {
                         className="form-control"
                         id="inputTitle"
                         placeholder="Link to your project" />
-                         <label htmlFor="inputFundLink">Link for funding</label>
+                        </div>
+                    <div className="form-group">
+                      <label htmlFor="inputFundLink">Link for funding</label>
                       <input
                         name="fundLink"
                         ref={this.fundLinkRef}

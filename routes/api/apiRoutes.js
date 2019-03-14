@@ -16,7 +16,7 @@ cloudinary.config({
 // user routes
 router
   .route("/api/user")
-  .get(function(req, res) {
+  .get(function (req, res) {
     db.Auths.findOne({
       where: {
         id: req.body.id
@@ -25,7 +25,7 @@ router
       res.send(dbUser);
     });
   })
-  .post(function(req, res) {
+  .post(function (req, res) {
     db.Auths.findOne({
       where: {
         email: req.body.email
@@ -47,7 +47,7 @@ router
     });
   });
 
-router.route("/api/user/update").put(function(req, res) {
+router.route("/api/user/update").put(function (req, res) {
   db.Auths.update(
     { firstName: req.body.name },
     {
@@ -60,13 +60,13 @@ router.route("/api/user/update").put(function(req, res) {
   });
 });
 
-router.route("/api/users").get(function(req, res) {
+router.route("/api/users").get(function (req, res) {
   db.Auths.findAll().then(dbUsers => {
     res.send(dbUsers);
   });
 });
 
-router.route("/api/user/:id").get(function(req, res) {
+router.route("/api/user/:id").get(function (req, res) {
   db.Auths.findOne({
     where: {
       id: req.param.id
@@ -76,7 +76,7 @@ router.route("/api/user/:id").get(function(req, res) {
   });
 });
 
-router.route("/api/user/login").get(function(req, res) {
+router.route("/api/user/login").get(function (req, res) {
   db.Auths.findOne({
     where: {
       email: req.params.email
@@ -92,13 +92,13 @@ router.route("/api/user/login").get(function(req, res) {
 
 // Project Routes //
 
-router.route("/api/projects/all").get(function(req, res) {
+router.route("/api/projects/all").get(function (req, res) {
   db.Projects.findAll().then(dbProjects => {
     res.json(dbProjects);
   });
 });
 
-router.route("/api/projects/user").get(function(req, res) {
+router.route("/api/projects/user").get(function (req, res) {
   let userId = req.user.id;
   db.Projects.findAll({
     where: {
@@ -111,7 +111,7 @@ router.route("/api/projects/user").get(function(req, res) {
 
 router
   .route("/api/projects")
-  .get(function(req, res) {
+  .get(function (req, res) {
     db.Projects.findOne({
       where: {
         id: req.body.id
@@ -120,7 +120,7 @@ router
       res.send(dbProject);
     });
   })
-  .post(function(req, res) {
+  .post(function (req, res) {
     console.log("POSTING " + req.body.image);
     multipartMiddleware(req, res, () => {
       if (req.files && req.files.image && req.files.image.path) {
@@ -148,7 +148,7 @@ router
       }
     });
   });
-router.route("/api/projects/:id/image").post(function(req, res) {
+router.route("/api/projects/:id/image").post(function (req, res) {
   multipartMiddleware(req, res, () => {
     if (!req.files) {
       console.log("UH OH");
@@ -182,7 +182,7 @@ router.route("/api/projects/:id/image").post(function(req, res) {
 
 router
   .route("/api/projects/:id")
-  .put(function(req, res) {
+  .put(function (req, res) {
     db.Projects.update(req.body, {
       where: {
         id: req.params.id,
@@ -192,7 +192,7 @@ router
       res.json(dbProject);
     });
   })
-  .delete(function(req, res) {
+  .delete(function (req, res) {
     db.Projects.destroy({
       where: {
         id: req.params.id,
@@ -203,7 +203,7 @@ router
     });
   });
 
-router.route("/api/projects/topfive").get(function(req, res) {
+router.route("/api/projects/topfive").get(function (req, res) {
   db.Projects.findAll({
     limit: 5,
     order: [["createdAt", "DESC"]]
@@ -212,7 +212,7 @@ router.route("/api/projects/topfive").get(function(req, res) {
   });
 });
 
-router.route("/api/projects/search/:q").get(function(req, res) {
+router.route("/api/projects/search/:q").get(function (req, res) {
   db.Projects.findAll({
     where: {
       description: {
@@ -224,7 +224,7 @@ router.route("/api/projects/search/:q").get(function(req, res) {
   });
 });
 
-router.route("/api/project/:id").get(function(req, res) {
+router.route("/api/project/:id").get(function (req, res) {
   db.Projects.findOne({
     where: {
       id: req.params.id
@@ -234,38 +234,45 @@ router.route("/api/project/:id").get(function(req, res) {
   });
 });
 
-router.route("/api/favorites/user").get(function(req, res) {
-  db.Favorite.findAll({
-    where: {
-      userID: req.user.id
-    }
-  }).then(dbFavorite => {
-    res.json(dbFavorite);
-  });
-});
+router.route("/api/favorites")
+  .get(function (req, res) {
+    db.Favorite.findAll({
+      attributes: ["projectID"],
+      where: {
+        userID: req.user.id
+      }
+    }).then(dbFavorite => {
+      res.send(dbFavorite);
+    });
+  })
+  .post(function (req, res) {
+    console.log(req.body)
+    db.Favorite.findOrCreate(
+      {
+        where: {
+          projectID: req.body.projectID,
+          userID: req.user.id
+        },
+        defaults: {
+          // title: req.body.title,
+          // link: req.body.link,
+          // fundLink: req.body.fundLink,
+          // description: req.body.description,
+          // image: req.body.image,
+          projectID: req.body.projectID,
+          userID: req.user.id
+        }
+      })
+  })
+  .delete(function (req, res) {
+    console.log(req.body)
+    db.Favorite.destroy({
+      where: {
+        userID: req.user.id,
+        projectID: req.body.projectID
+      }
+    })
+  });;
 
-router.route("/api/favorites").post(function(req, res) {
-  db.Favorite.create({
-    title: req.body.title,
-    link: req.body.link,
-    fundLink: req.body.fundLink,
-    description: req.body.description,
-    image: req.body.image,
-    projectID: req.body.projectId,
-    userID: req.user.id
-  }).then(dbFavorite => {
-    res.json(dbFavorite);
-  });
-});
-
-router.route("/api/favorites/:id").delete(function(req, res) {
-  db.Favorite.destroy({
-    where: {
-      id: req.params.id
-    }
-  }).then(dbFavorite => {
-    res.json(dbFavorite);
-  });
-});
 
 module.exports = router;
