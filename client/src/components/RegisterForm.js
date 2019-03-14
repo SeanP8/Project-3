@@ -2,9 +2,9 @@ import React from "react";
 import Wrapper from "./Wrapper";
 import Joi from "joi-browser";
 import Form from "./Form";
+import { addAuth } from "../utils/API";
 import * as userService from "../services/userService";
 import { login } from "../services/authService";
-
 
 class RegisterForm extends Form {
   state = {
@@ -23,19 +23,22 @@ class RegisterForm extends Form {
       .label("Email"),
     password: Joi.string()
       .required()
-      .label("Pastname")
+      .label("Password")
   };
 
   doSubmit = async () => {
     try {
-
       console.log(this.state.data);
       await userService.register(this.state.data).then(user => {
-
-        login(this.state.data.email, this.state.data.password).then(function(){
+        login(this.state.data.email, this.state.data.password).then(function() {
           window.location.href = "/home";
         });
 
+        // try {
+        //   const response = await addAuth(this.state.data);
+        //   console.log(response);
+        //   // this.props.history.push("/");
+        //   window.location("/");
       });
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {

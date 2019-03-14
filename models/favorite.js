@@ -1,5 +1,15 @@
-module.exports = (sequelize, DataTypes) => {
+// module.exports = (sequelize, Datatypes) => {
+// const Favorite = sequelize.define(
+//   "Favorite",
+//   {
+//     favorite: Datatypes.BOOLEAN
+//   },
 
+//   {
+//     timestamps: false
+//   }
+// );
+module.exports = (sequelize, DataTypes) => {
   const Favorite = sequelize.define("Favorite", {
       // title: {
       //   type: DataTypes.STRING,
@@ -19,13 +29,14 @@ module.exports = (sequelize, DataTypes) => {
       // image: {
       //   type: DataTypes.STRING
       // },
-      projectID: {
-        type:DataTypes.INTEGER
-      },
-      userID: {
-        type: DataTypes.INTEGER,
-        allowNull: true
-      }
-    });
+
+    projectID: {
+      type: DataTypes.INTEGER
+    },
+    userID: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    }
+  });
   return Favorite;
 };

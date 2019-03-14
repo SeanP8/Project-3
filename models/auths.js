@@ -33,7 +33,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     password: {
-      type: DataTypes.STRING  
+      type: DataTypes.STRING
     }
   });
   Auths.associate = model => {
