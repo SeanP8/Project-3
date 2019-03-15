@@ -66,7 +66,7 @@ export default {
   submitComment: function(data) {
     return axios.post("/api/comments", data);
   },
-  getComments: function() {
-    return axios.get("/api/comments");
+  getComments: function(id) {
+    return axios.get("/api/comments/" + id);
   }
 };

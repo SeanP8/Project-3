@@ -20,7 +20,7 @@ class CommentForm extends React.Component {
   }
 
   loadComments = () => {
-    API.getComments()
+    API.getComments(this.props.projectId)
     .then(res => this.setState({ comments: res.data }))
     .catch(err => console.log(err));
   }
@@ -36,7 +36,8 @@ class CommentForm extends React.Component {
     API.submitComment({
       image: avatar,
       name: firstName,
-      comment: newComment
+      comment: newComment,
+      ProjectId: this.props.projectId
     })
       .then(res => this.loadComments())
       .catch(err => console.log(err));

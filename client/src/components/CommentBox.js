@@ -1,11 +1,11 @@
 import React from 'react';
 import CommentForm from './CommentForm';
 
-const CommentBox = () => {
+const CommentBox = props => {
     return (
         <div className="commentBox">
             <h2 className="comment-title">Comments</h2>
-            <CommentForm/>       
+            <CommentForm projectId = {props.project}/>       
         </div>
     );
 };
