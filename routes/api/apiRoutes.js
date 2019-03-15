@@ -98,11 +98,11 @@ router.route("/api/projects/all").get(function (req, res) {
   });
 });
 
-router.route("/api/projects/user").get(function (req, res) {
-  let userId = req.user.id;
+router.route("/api/projects/favorites").get(function (req, res) {
+  console.log(req.query)
   db.Projects.findAll({
     where: {
-      authID: userId
+      id: req.query.ids
     }
   }).then(dbProjects => {
     res.send(dbProjects);
@@ -112,9 +112,9 @@ router.route("/api/projects/user").get(function (req, res) {
 router
   .route("/api/projects")
   .get(function (req, res) {
-    db.Projects.findOne({
+    db.Projects.findAll({
       where: {
-        id: req.body.id
+        authID: req.user.id
       }
     }).then(dbProject => {
       res.send(dbProject);
@@ -199,6 +199,11 @@ router
         authID: req.user.id
       }
     }).then(dbProject => {
+      db.Favorite.destroy({
+        where: {
+          projectID: dbProject.id
+        }
+      })
       res.json(dbProject);
     });
   });
@@ -215,6 +220,9 @@ router.route("/api/projects/topfive").get(function (req, res) {
 router.route("/api/projects/search/:q").get(function (req, res) {
   db.Projects.findAll({
     where: {
+      title: {
+        $like: "%" + req.params.q + "%"
+      },
       description: {
         $like: "%" + req.params.q + "%"
       }
@@ -262,16 +270,25 @@ router.route("/api/favorites")
           projectID: req.body.projectID,
           userID: req.user.id
         }
+      }).then((req, res) => {
+        res.send(200);
       })
+      .catch(err => res.send(err))
+
   })
+
+router.route("/api/favorites/:id")
   .delete(function (req, res) {
-    console.log(req.body)
+    console.log(req.params)
     db.Favorite.destroy({
       where: {
         userID: req.user.id,
-        projectID: req.body.projectID
+        projectID: req.params.id
       }
+    }).then((req, res) => {
+      res.send(200);
     })
+    .catch(err => res.send(err))
   });;
 
 

@@ -27,12 +27,22 @@ class DisplayIndividual extends Component {
   addFavorite = () => {
     API.addToFavorites(this.state.project.id).then(() =>{ 
       console.log("ADDED");
-      this.getFavorites()});
+      this.getFavorites()}
+    ).catch((err) => {
+      console.log("ADDED ERR");
+      this.getFavorites()
+    });
   }
 
   deleteThisFavorite = () => {
-    console.log("DELETED");
-    API.deleteFavorite(this.state.project.id).then(() => {this.getFavorites()});
+    API.deleteFavorite(this.state.project.id).then(() => {
+      console.log("DELETED " + this.state.project.id);
+      this.getFavorites();
+    })
+    .catch((err) => {
+      console.log("DELETED ERR " + this.state.project.id);
+      this.getFavorites();
+    });
   }
    
 
@@ -54,6 +64,14 @@ class DisplayIndividual extends Component {
     const projectID = this.state.project.id;
     const {favorites} = this.state;
     console.log(favorites)
+
+    if(link){
+     let http = link.slice(0,7).toLowerCase();
+     let https = link.slice(0, 8).toLowerCase();
+     if(http !== "http://" && https !== "https://"){
+         link = "https://" + link;
+     }
+    }
     return (
       <div>
         <HomeNav />
@@ -61,6 +79,7 @@ class DisplayIndividual extends Component {
           <div>
             <div className="jumbotron jumbotron-fluid">
               <div className="container">
+              
                 <h1 className="display-4">{ title }</h1>
               </div>
             </div>
