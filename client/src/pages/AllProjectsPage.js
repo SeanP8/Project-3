@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import Wrapper from "../components/Wrapper";
 import Pagination from "../components/pagination";
 import { paginate } from "../utils/paginate";
+// import API, { saveUserFav } from "../utils/API";
 import { getAllProjects } from "../utils/API";
 import HomeNav from "../components/HomeNav";
+import Favorite from "../components/FavoriteComp";
 import Footer from "../components/Footer";
 
 class AllProjectsPage extends Component {
@@ -24,10 +26,10 @@ class AllProjectsPage extends Component {
     this.setState({ currentPage: page });
   };
   // handleFavorite = async project => {
-  //   const { data: projects } = await saveUserFav();
+  //   // const { data: projects } = await saveUserFav();
   //   const projects = [...this.state.projects];
   //   const index = projects.indexOf(project);
-  //   console.log(index);
+  //   // console.log(index);
   //   projects[index] = { ...projects[index] };
   //   projects[index].favorited = !projects[index].favorited;
   //   console.log(index);
@@ -62,6 +64,13 @@ class AllProjectsPage extends Component {
                     <Link to={"/project/" + project.id}>View Project</Link>
                   </td>
                   <td>{project.description}</td>
+                  <td>{project.image}</td>
+                  <td>
+                    {/* <Favorite
+                      favorited={project.favorited}
+                      onClick={() => this.handleFavorite(project)}
+                    /> */}
+                  </td>
                 </tr>
               ))}
             </tbody>

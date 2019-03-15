@@ -10,27 +10,69 @@ import CommentBox from "../components/CommentBox";
 
 class DisplayIndividual extends Component {
   state = {
-    project: {}
+    project: {},
+    favorites: []
   };
 
   componentDidMount() {
     API.getProject(this.props.match.params.id)
       .then(res => this.setState({ project: res.data }))
       .catch(err => console.log(err));
+    this.getFavorites();
   }
 
-  handleBtnClick = () => {
-    const {id} = this.state.project;
-    console.log('clicked');
-    API.addToFavorites({
-      projectID: id
+  getFavorites = () => {
+    API.getUsersFavorites().then((res)=> this.setState({favorites: res.data.map(datum => datum.projectID)}));
+  }
+
+  addFavorite = () => {
+    API.addToFavorites(this.state.project.id).then(() =>{ 
+      console.log("ADDED");
+      this.getFavorites()}
+    ).catch((err) => {
+      console.log("ADDED ERR");
+      this.getFavorites()
+    });
+  }
+
+  deleteThisFavorite = () => {
+    API.deleteFavorite(this.state.project.id).then(() => {
+      console.log("DELETED " + this.state.project.id);
+      this.getFavorites();
     })
-    .then( res => console.log(res.data))
-    .catch( err => console.log(err));
+    .catch((err) => {
+      console.log("DELETED ERR " + this.state.project.id);
+      this.getFavorites();
+    });
+  }
+   
+
+  handleBtnClick = (e) => {
+    e.preventDefault();
+    const projectID = this.state.project.id;
+    const { favorites } = this.state;
+    console.log(projectID)
+    console.log('clicked');
+    if(favorites.includes(projectID)){
+      this.deleteThisFavorite();
+    }else{
+      this.addFavorite();
+    }
   }
 
   render() {
-    const { title, image, link, fundLink, description } = this.state.project
+    const { title, image, link, fundLink, description } = this.state.project;
+    const projectID = this.state.project.id;
+    const {favorites} = this.state;
+    console.log(favorites)
+
+    if(link){
+     let http = link.slice(0,7).toLowerCase();
+     let https = link.slice(0, 8).toLowerCase();
+     if(http !== "http://" && https !== "https://"){
+         link = "https://" + link;
+     }
+    }
     return (
       <div>
         <HomeNav />
@@ -38,10 +80,11 @@ class DisplayIndividual extends Component {
           <div>
             <div className="jumbotron jumbotron-fluid">
               <div className="container">
+              
                 <h1 className="display-4">{ title }</h1>
               </div>
             </div>
-            <button id="favorites-btn" onClick={this.handleBtnClick}><img src={ favoritesLogo } alt="favorite button"/></button>
+            <button id="favorites-btn" style={ favorites.includes(projectID) ? { background: "green"} : {background: "red"}} onClick={this.handleBtnClick}><img src={ favoritesLogo } alt="favorite button"/></button>
             <Donate fundLink={fundLink}/>
             <img id="display-image" src={ image } className="img-fluid" alt={ title }/>
             <p>{ description }</p>

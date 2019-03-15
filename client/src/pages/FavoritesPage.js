@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import HomeNav from "../components/HomeNav";
 import Wrapper from "../components/Wrapper";
-import Favorites from "../components/Favorite";
+import Favorites from "../components/FavoriteComp";
 import Footer from "../components/Footer";
 import API from '../utils/API';
 
 class FavoritesPage extends Component {
-    state = {
-        favorites: {}
+    constructor(props){
+        super(props);
+        this.state = {
+            favorites: []
+        }
+        this.loadFavorites = this.loadFavorites.bind(this);
     }
+  
 
     componentDidMount() {
         this.loadFavorites();
@@ -17,16 +22,17 @@ class FavoritesPage extends Component {
     loadFavorites = () => {
         API.getUsersFavorites()
         .then( res => {
-            console.log(res.data);
-            this.setState({ favorites: res.data });
+            console.log(res.data);   
+            API.getUsersFavProjects(res.data.map(datum => datum.projectID))
+            .then(favs => {
+                console.log(favs.data);
+                this.setState({favorites: favs.data})
+            });
         })
         .catch( err => console.log(err));
     }
-    deleteFavorite = id => {
-        API.deleteFavorite(id)
-        .then( res => this.loadFavorites())
-        .catch( err => console.log(err));
-    }
+
+  
 
     render() {
         return (
@@ -36,12 +42,13 @@ class FavoritesPage extends Component {
                 <div>
                     <h1 className="subTitle">Favorites</h1>
                     <ul>
-                        {Object.keys(this.state.favorites).map( key => <Favorites
+                        {this.state.favorites.map((fav, key) => {
+                            console.log(fav);
+                        return <Favorites
                             key={key}
-                            index={key}
-                            details={this.state.favorites[key]}
-                            deleteFavorite={this.deleteFavorite}
-                            />)}
+                            loadFavorites={this.loadFavorites}
+                            details={fav}
+                            />})}
                     </ul>
                 </div>
                 </Wrapper>
