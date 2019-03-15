@@ -4,7 +4,7 @@ const express = require("express");
 const passport = require("passport");
 const bodyParser = require("body-parser");
 const session = require("express-session");
-// const cors = require("cors");
+const cors = require("cors");
 const app = express();
 const routes = require("./routes");
 const db = require("./models/");
@@ -51,7 +51,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 // if force = true, will drop the db every startup
-var syncOptions = { force: true };
+var syncOptions = { force: false };
 
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;

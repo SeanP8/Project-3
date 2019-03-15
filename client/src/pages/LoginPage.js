@@ -8,7 +8,6 @@ import API from "../utils/API";
 class Login extends React.Component {
   componentWillMount(){
     API.getCurrentUser().then(response => {
-      console.log(response.data);
       if(response.data.id){
         window.location.href = "/home"
       }
