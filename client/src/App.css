@@ -82,7 +82,6 @@ h2,h6{
     border: 1px solid #343a40;
     border-radius: 4px;
     list-style-type: none;
-    list-style-type: none;
     overflow: hidden;
 }
 /*-----------*/
@@ -253,7 +252,8 @@ footer{
     margin: 10px;
     border: 1px solid #343a40;
     border-radius: 4px;
-    list-style-type: none
+    list-style-type: none;
+    overflow: hidden
 }
 .update-btn {
     position: absolute;
@@ -317,8 +317,34 @@ th.link{
     display: block;
     margin: 0 auto;
     margin-bottom: 10px;
+}
+.commentForm{
+    margin: 0 auto;
+}
+.commentBox{
     position: relative;
-    width: 96%;
+    margin : 0 auto;
+    margin-top: 10px;
+    background-color: #eceff3;
+    border: 1px solid rgba(63, 59, 59, 0.658);
+    border-radius: 5px;
+    padding: 10px;
+    width: 80%;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+.comment-textbox{
+    width: 60%;
+    margin-left: 20%;
+    border-radius: 5px;
+}
+.commentList{
+    margin-top: 20px;
+    height: 500px;
+    overflow-y: scroll;
+}
+.author-name{
+    font-weight: 800;
+    margin: 0 5px 0 3px;
 }
 /* --------------*/
 
@@ -429,11 +455,19 @@ th.link{
         position: relative;
         right: 20px;
     }
-    .subTitle, .topFive {
+    .subTitle{
+        position: relative;
+        top: 20px;
+    }
+    .topFive{
         position: relative;
         top: 30px;
     }
-    #favorites-btn{
+    .sublead{
+        margin-top: 20px;
+        margin-bottom: 5px;
+    }
+    #favorites-btn, .donateBtn{
         display: block;
         position: relative;
         bottom: 18px;
@@ -594,6 +628,12 @@ th.link{
     }
     .delete-btn {
         left: 88%;
+    }
+    .comment-textbox{
+        margin-left: 15%
+    }
+    .commentBox{
+        width: 100%;
     }
 }
 @media screen and (max-width: 682px) {
@@ -877,7 +917,7 @@ th.link{
         left: 83%;
     }
     #addProject {
-        left: 20px;
+        left: 40px;
     }
 }
 @media screen and (max-width: 430px) {

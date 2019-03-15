@@ -262,11 +262,6 @@ router.route("/api/favorites")
           userID: req.user.id
         },
         defaults: {
-          // title: req.body.title,
-          // link: req.body.link,
-          // fundLink: req.body.fundLink,
-          // description: req.body.description,
-          // image: req.body.image,
           projectID: req.body.projectID,
           userID: req.user.id
         }
@@ -292,4 +287,20 @@ router.route("/api/favorites/:id")
   });;
 
 
+router
+  .route("/api/comments")
+  .post(function(req, res) {
+    db.Review.create({
+      image: req.body.image,
+      name: req.body.name,
+      comment: req.body.comment
+    }).then(dbReview => {
+      res.json(dbReview);
+    });
+  })
+  .get(function(req, res) {
+    db.Review.findAll({ order: [["createdAt", "DESC"]] }).then(dbReview =>
+      res.json(dbReview)
+    );
+  });
 module.exports = router;

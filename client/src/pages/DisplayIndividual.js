@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import favoritesLogo from "../heartLogo.png";
 import Donate from "../components/DonateButton";
 import API from "../utils/API";
+import CommentBox from "../components/CommentBox";
 
 class DisplayIndividual extends Component {
   state = {
@@ -90,6 +91,7 @@ class DisplayIndividual extends Component {
             <a href={ link }>See Project</a>
             <Link id="back-anchor" to="/all-projects">← Back</Link>
           </div>
+          <CommentBox/>
         </Wrapper>
         <Footer />
       </div>

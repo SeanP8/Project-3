@@ -2,7 +2,6 @@ import React from "react";
 import Wrapper from "./Wrapper";
 import Joi from "joi-browser";
 import Form from "./Form";
-import { addAuth } from "../utils/API";
 import * as userService from "../services/userService";
 import { login } from "../services/authService";
 
@@ -33,12 +32,6 @@ class RegisterForm extends Form {
         login(this.state.data.email, this.state.data.password).then(function() {
           window.location.href = "/home";
         });
-
-        // try {
-        //   const response = await addAuth(this.state.data);
-        //   console.log(response);
-        //   // this.props.history.push("/");
-        //   window.location("/");
       });
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
