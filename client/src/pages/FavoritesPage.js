@@ -16,7 +16,10 @@ class FavoritesPage extends Component {
 
     loadFavorites = () => {
         API.getUsersFavorites()
-        .then( res => this.setState({ favorites: res.data }))
+        .then( res => {
+            console.log(res.data);
+            this.setState({ favorites: res.data });
+        })
         .catch( err => console.log(err));
     }
     deleteFavorite = id => {

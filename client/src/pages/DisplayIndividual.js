@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import favoritesLogo from "../heartLogo.png";
 import Donate from "../components/DonateButton";
 import API from "../utils/API";
+import CommentBox from "../components/CommentBox";
 
 class DisplayIndividual extends Component {
   state = {
@@ -19,15 +20,10 @@ class DisplayIndividual extends Component {
   }
 
   handleBtnClick = () => {
-    const { title, image, link, fundLink, description, id} = this.state.project;
+    const {id} = this.state.project;
     console.log('clicked');
     API.addToFavorites({
-      title: title,
-      link: link,
-      fundLink: fundLink,
-      description: description,
-      image: image,
-      projectId: id
+      projectID: id
     })
     .then( res => console.log(res.data))
     .catch( err => console.log(err));
@@ -52,6 +48,7 @@ class DisplayIndividual extends Component {
             <a href={ link }>See Project</a>
             <Link id="back-anchor" to="/all-projects">← Back</Link>
           </div>
+          <CommentBox/>
         </Wrapper>
         <Footer />
       </div>

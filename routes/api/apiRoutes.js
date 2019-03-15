@@ -236,6 +236,7 @@ router.route("/api/project/:id").get(function(req, res) {
 
 router.route("/api/favorites/user").get(function(req, res) {
   db.Favorite.findAll({
+    attributes: ["project"],
     where: {
       userID: req.user.id
     }
@@ -244,19 +245,31 @@ router.route("/api/favorites/user").get(function(req, res) {
   });
 });
 
-router.route("/api/favorites").post(function(req, res) {
-  db.Favorite.create({
-    title: req.body.title,
-    link: req.body.link,
-    fundLink: req.body.fundLink,
-    description: req.body.description,
-    image: req.body.image,
-    projectID: req.body.projectId,
-    userID: req.user.id
-  }).then(dbFavorite => {
-    res.json(dbFavorite);
+router
+  .route("/api/favorites")
+  .get(function(req, res) {
+    db.Favorite.findAll({
+      attributes: ["projectID"],
+      where: {
+        userID: req.user.id
+      }
+    }).then(dbFavorite => {
+      res.send(dbFavorite);
+    });
+  })
+  .post(function(req, res) {
+    console.log(req.body);
+    db.Favorite.findOrCreate({
+      where: {
+        projectID: req.body.projectID,
+        userID: req.user.id
+      },
+      defaults: {
+        projectID: req.body.projectID,
+        userID: req.user.id
+      }
+    });
   });
-});
 
 router.route("/api/favorites/:id").delete(function(req, res) {
   db.Favorite.destroy({
@@ -268,4 +281,20 @@ router.route("/api/favorites/:id").delete(function(req, res) {
   });
 });
 
+router
+  .route("/api/comments")
+  .post(function(req, res) {
+    db.Review.create({
+      image: req.body.image,
+      name: req.body.name,
+      comment: req.body.comment
+    }).then(dbReview => {
+      res.json(dbReview);
+    });
+  })
+  .get(function(req, res) {
+    db.Review.findAll({ order: [["createdAt", "DESC"]] }).then(dbReview =>
+      res.json(dbReview)
+    );
+  });
 module.exports = router;

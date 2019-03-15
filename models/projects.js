@@ -33,7 +33,7 @@ module.exports = function(sequelize, DataTypes) {
       as: "Contributers",
       through: "UserProjects"
     });
-    model.Projects.hasMany(model.Review, { as: "All_Reviews" });
+    model.Projects.hasMany(model.Review);
   };
 
   return Projects;
