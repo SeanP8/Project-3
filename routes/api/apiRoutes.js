@@ -262,11 +262,6 @@ router.route("/api/favorites")
           userID: req.user.id
         },
         defaults: {
-          // title: req.body.title,
-          // link: req.body.link,
-          // fundLink: req.body.fundLink,
-          // description: req.body.description,
-          // image: req.body.image,
           projectID: req.body.projectID,
           userID: req.user.id
         }
