@@ -62,7 +62,6 @@ class DisplayIndividual extends Component {
 
   render() {
     const { title, image, link, fundLink, description, id } = this.state.project;
-    const projectID = this.state.project.id;
     const {favorites} = this.state;
     console.log(favorites)
 
@@ -84,7 +83,7 @@ class DisplayIndividual extends Component {
                 <h1 className="display-4">{ title }</h1>
               </div>
             </div>
-            <button id="favorites-btn" style={ favorites.includes(projectID) ? { background: "green"} : {background: "red"}} onClick={this.handleBtnClick}><img src={ favoritesLogo } alt="favorite button"/></button>
+            <button id="favorites-btn" onClick={this.handleBtnClick}><img src={ favoritesLogo } alt="favorite button"/></button>
             <Donate fundLink={fundLink}/>
             <img id="display-image" src={ image } className="img-fluid" alt={ title }/>
             <p>{ description }</p>
