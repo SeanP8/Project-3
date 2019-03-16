@@ -7,7 +7,7 @@ import favoritesLogo from "../heartLogo.png";
 import deleteLogo from "../trashCanSmall.png";
 import Donate from "../components/DonateButton";
 import API from "../utils/API";
-import CommentBox from "../components/CommentBox";
+import CommentForm from "../components/CommentForm";
 
 class DisplayIndividual extends Component {
   state = {
@@ -83,7 +83,7 @@ class DisplayIndividual extends Component {
             <a href={ link }>See Project</a>
             <Link id="back-anchor" to="/all-projects">← Back</Link>
           </div>
-          <CommentBox project={id}/>
+          <CommentForm project={id}/>
         </Wrapper>
         <Footer />
       </div>
