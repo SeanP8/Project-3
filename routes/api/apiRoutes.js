@@ -220,12 +220,15 @@ router.route("/api/projects/topfive").get(function(req, res) {
 router.route("/api/projects/search/:q").get(function(req, res) {
   db.Projects.findAll({
     where: {
-      title: {
-        $like: "%" + req.params.q + "%"
-      },
-      description: {
-        $like: "%" + req.params.q + "%"
-      }
+      $or: [
+     
+          {title: {
+            like: "%" + req.params.q + "%"
+          }},
+          {description: {
+            like: "%" + req.params.q + "%"
+          }}
+      ]
     }
   }).then(dbProjects => {
     res.json(dbProjects);
