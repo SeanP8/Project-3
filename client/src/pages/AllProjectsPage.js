@@ -12,7 +12,7 @@ class AllProjectsPage extends Component {
     projects: [],
     data: { favorite: "" },
     currentPage: 1,
-    pageSize: 5
+    pageSize: 2
   };
   async componentDidMount() {
     const { data: projects } = await getAllProjects();
@@ -33,35 +33,43 @@ class AllProjectsPage extends Component {
       <div>
         <HomeNav />
         <Wrapper>
-            <h1 className="subTitle">Projects</h1>
-            <p className="sublead">There are {count} tech start ups available for funding!!</p>
-            <table className="table" id="allProjects">
-              <thead>
+          <h1 className="subTitle">Projects</h1>
+          <p className="sublead">
+            There are {count} tech start ups available for funding!!
+          </p>
+          <table className="table" id="allProjects">
+            <thead>
+              <tr>
+                <th className="title">Title</th>
+                <th className="link">Link</th>
+                <th className="desc">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {projects.map(project => (
                 <tr>
-                  <th className="title">Title</th>
-                  <th className="link">Link</th>
-                  <th className="desc">Description</th>
+                  <td>{project.title}</td>
+                  <td>
+                    <Link to={"/project/" + project.id}>View Project</Link>
+                  </td>
+                  <td>{project.description}</td>
+                  <td>
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      style={{ width: 300, height: 300 }}
+                    />
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                {projects.map(project => (
-                  <tr>
-                    <td>{project.title}</td>
-                    <td>
-                      <Link to={"/project/" + project.id}>View Project</Link>
-                    </td>
-                    <td>{project.description}</td>
-                    <td><img src={project.image} alt={project.title} style={{ width: 300, height: 300 }} /></td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <Pagination
-              itemsCount={count}
-              pageSize={pageSize}
-              onPageChange={this.handlePageChange}
-              currentPage={currentPage}
-            />
+              ))}
+            </tbody>
+          </table>
+          <Pagination
+            itemsCount={count}
+            pageSize={pageSize}
+            onPageChange={this.handlePageChange}
+            currentPage={currentPage}
+          />
         </Wrapper>
         <Footer />
       </div>
