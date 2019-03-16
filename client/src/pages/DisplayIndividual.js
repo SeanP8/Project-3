@@ -16,9 +16,9 @@ class DisplayIndividual extends Component {
 
   componentDidMount() {
     API.getProject(this.props.match.params.id)
-      .then(res => this.setState({ project: res.data }))
+      .then(res => this.setState({ project: res.data },  this.getFavorites))
       .catch(err => console.log(err));
-    this.getFavorites();
+   
   }
 
   getFavorites = () => {
@@ -61,10 +61,10 @@ class DisplayIndividual extends Component {
   }
 
   render() {
-    const { title, image, link, fundLink, description, id } = this.state.project;
+    let { title, image, link, fundLink, description, id } = this.state.project;
     const projectID = this.state.project.id;
     const {favorites} = this.state;
-    console.log(favorites)
+    console.log("RENDER " + id);
 
     if(link){
      let http = link.slice(0,7).toLowerCase();
@@ -91,7 +91,10 @@ class DisplayIndividual extends Component {
             <a href={ link }>See Project</a>
             <Link id="back-anchor" to="/all-projects">← Back</Link>
           </div>
-          <CommentBox project={id}/>
+          {
+            console.log("HOHOHO " + id)
+          }
+          <CommentBox projectId={id}/>
         </Wrapper>
         <Footer />
       </div>

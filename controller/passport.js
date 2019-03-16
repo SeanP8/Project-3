@@ -77,22 +77,24 @@ passport.use('google', new GoogleStrategy({
 
 passport.use('local', new LocalStrategy(
   function (username, password, done) {
+    console.log("HEYA")
     db.Auths.findOne(
       {
         where: {
           email: username
         }
       }).then(function (user) {
-
+        console.log(user);
         if (user) {
 
           if (bcrypt.compareSync(password, user.password)) {
             return done(null, user);
           } else {
-            done(null, false);
+           return done(null, false);
           }
         } else {
-          done(null, null);
+          console.log(done)
+          return done(null, null);
         }
 
 
