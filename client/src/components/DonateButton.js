@@ -16,7 +16,7 @@ class DonateButton extends Component {
        }
         return (
             <div>
-                <a target="_blank" rel="noopener noreferrer" href={link}><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" alt="donate"/></a>
+                <a target="_blank" rel="noopener noreferrer" className="donateBtn" href={link}><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" alt="donate"/></a>
             </div>
         );
     }
