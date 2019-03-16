@@ -42,8 +42,7 @@ module.exports = function(sequelize, DataTypes) {
       through: "UserProjects",
       onDelete: "cascade"
     });
-    // Foreign key of authId will be made in Favorite table
-    model.Auths.hasOne(model.Favorite);
+    Auths.hasOne(model.Favorite);
   };
 
   return Auths;

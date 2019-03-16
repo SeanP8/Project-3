@@ -11,6 +11,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
+    fundLink: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     description: {
       type: DataTypes.TEXT,
       allowNull: false
@@ -29,7 +33,7 @@ module.exports = function(sequelize, DataTypes) {
       as: "Contributers",
       through: "UserProjects"
     });
-    model.Projects.hasMany(model.Review, { as: "All_Reviews" });
+    model.Projects.hasMany(model.Review);
   };
 
   return Projects;

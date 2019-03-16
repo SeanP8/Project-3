@@ -8,7 +8,7 @@ class EditProject extends Component {
         super(props);
         this.state = {
             modal: false,
-            backdrop: true
+            backdrop: true,
         };
         this.toggle = this.toggle.bind(this);
     }
@@ -62,6 +62,15 @@ class EditProject extends Component {
                             className="form-control"
                             id="inputTitle"
                             placeholder="Link to your project" />
+                             <Label for="inputLink">Funding Link</Label>
+                        <Input
+                            name="fundLink"
+                            onChange={this.handleChange}
+                            value={this.props.project.fundLink}
+                            type="text"
+                            className="form-control"
+                            id="inputTitle"
+                            placeholder="Link to fund your project" />
                         <Label for="inputDescription">Description</Label>
                         <textarea
                             name="description"
