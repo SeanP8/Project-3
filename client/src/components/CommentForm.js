@@ -9,7 +9,7 @@ class CommentForm extends React.Component {
     comments: {}
   };
 
-  componentDidMount() {
+  componentWillReceiveProps() {
     API.getCurrentUser().then(res => {
       const currentUser = res.data;
       if (currentUser) {

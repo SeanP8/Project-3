@@ -17,9 +17,10 @@ class DisplayIndividual extends Component {
 
   componentDidMount() {
     API.getProject(this.props.match.params.id)
-      .then(res => this.setState({ project: res.data },  this.getFavorites))
+      .then(res => this.setState({ project: res.data }))
       .catch(err => console.log(err));
    
+      this.getFavorites();
   }
 
   getFavorites = () => {
@@ -56,6 +57,7 @@ class DisplayIndividual extends Component {
   }
 
   render() {
+
     let { title, image, link, fundLink, description, id } = this.state.project;
     const { favorites } = this.state;
     if(link){
