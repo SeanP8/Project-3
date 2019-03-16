@@ -4,6 +4,7 @@ import HomeNav from "../components/HomeNav";
 import Wrapper from "../components/Wrapper";
 import Footer from "../components/Footer";
 import favoritesLogo from "../heartLogo.png";
+import deleteLogo from "../trashCanSmall.png";
 import Donate from "../components/DonateButton";
 import API from "../utils/API";
 import CommentBox from "../components/CommentBox";
@@ -56,7 +57,7 @@ class DisplayIndividual extends Component {
 
   render() {
     let { title, image, link, fundLink, description, id } = this.state.project;
-
+    const { favorites } = this.state;
     if(link){
      let http = link.slice(0,7).toLowerCase();
      let https = link.slice(0, 8).toLowerCase();
@@ -75,17 +76,14 @@ class DisplayIndividual extends Component {
                 <h1 className="display-4">{ title }</h1>
               </div>
             </div>
-            <button id="favorites-btn" onClick={this.handleBtnClick}><img src={ favoritesLogo } alt="favorite button"/></button>
+            <button id="favorites-btn" onClick={this.handleBtnClick}><img src={favorites.includes(id) ? deleteLogo : favoritesLogo } alt="favorite button"/></button>
             <Donate fundLink={fundLink}/>
             <img id="display-image" src={ image } className="img-fluid" alt={ title }/>
             <p>{ description }</p>
             <a href={ link }>See Project</a>
             <Link id="back-anchor" to="/all-projects">← Back</Link>
           </div>
-          {
-            console.log("HOHOHO " + id)
-          }
-          <CommentBox projectId={id}/>
+          <CommentBox project={id}/>
         </Wrapper>
         <Footer />
       </div>
