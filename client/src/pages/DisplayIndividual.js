@@ -16,9 +16,9 @@ class DisplayIndividual extends Component {
 
   componentDidMount() {
     API.getProject(this.props.match.params.id)
-      .then(res => this.setState({ project: res.data }))
+      .then(res => this.setState({ project: res.data },  this.getFavorites))
       .catch(err => console.log(err));
-    this.getFavorites();
+   
   }
 
   getFavorites = () => {
@@ -27,21 +27,17 @@ class DisplayIndividual extends Component {
 
   addFavorite = () => {
     API.addToFavorites(this.state.project.id).then(() =>{ 
-      console.log("ADDED");
       this.getFavorites()}
     ).catch((err) => {
-      console.log("ADDED ERR");
       this.getFavorites()
     });
   }
 
   deleteThisFavorite = () => {
     API.deleteFavorite(this.state.project.id).then(() => {
-      console.log("DELETED " + this.state.project.id);
       this.getFavorites();
     })
     .catch((err) => {
-      console.log("DELETED ERR " + this.state.project.id);
       this.getFavorites();
     });
   }
@@ -51,8 +47,6 @@ class DisplayIndividual extends Component {
     e.preventDefault();
     const projectID = this.state.project.id;
     const { favorites } = this.state;
-    console.log(projectID)
-    console.log('clicked');
     if(favorites.includes(projectID)){
       this.deleteThisFavorite();
     }else{
@@ -61,9 +55,7 @@ class DisplayIndividual extends Component {
   }
 
   render() {
-    const { title, image, link, fundLink, description, id } = this.state.project;
-    const {favorites} = this.state;
-    console.log(favorites)
+    let { title, image, link, fundLink, description, id } = this.state.project;
 
     if(link){
      let http = link.slice(0,7).toLowerCase();
@@ -90,7 +82,10 @@ class DisplayIndividual extends Component {
             <a href={ link }>See Project</a>
             <Link id="back-anchor" to="/all-projects">← Back</Link>
           </div>
-          <CommentBox project={id}/>
+          {
+            console.log("HOHOHO " + id)
+          }
+          <CommentBox projectId={id}/>
         </Wrapper>
         <Footer />
       </div>
