@@ -8,7 +8,7 @@ class EditProject extends Component {
         super(props);
         this.state = {
             modal: false,
-            backdrop: true
+            backdrop: true,
         };
         this.toggle = this.toggle.bind(this);
     }
