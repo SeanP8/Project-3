@@ -32,36 +32,36 @@ class AllProjectsPage extends Component {
     return (
       <div>
         <HomeNav />
-        <Wrapper>    
+        <Wrapper>
             <h1 className="subTitle">Projects</h1>
-          <p className="sublead">There are {count} tech start ups available for funding!!</p>
-          <table className="table">
-            <thead>
-              <tr>
-                <th className="title">Title</th>
-                <th className="link">Link</th>
-                <th className="desc">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              {projects.map(project => (
+            <p className="sublead">There are {count} tech start ups available for funding!!</p>
+            <table className="table" id="allProjects">
+              <thead>
                 <tr>
-                  <td>{project.title}</td>
-                  <td>
-                    <Link to={"/project/" + project.id}>View Project</Link>
-                  </td>
-                  <td>{project.description}</td>
-                  <td><img src={project.image} alt={project.title} style={{width: 300, height: 300}}/></td>
+                  <th className="title">Title</th>
+                  <th className="link">Link</th>
+                  <th className="desc">Description</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-          <Pagination
-            itemsCount={count}
-            pageSize={pageSize}
-            onPageChange={this.handlePageChange}
-            currentPage={currentPage}
-          />
+              </thead>
+              <tbody>
+                {projects.map(project => (
+                  <tr>
+                    <td>{project.title}</td>
+                    <td>
+                      <Link to={"/project/" + project.id}>View Project</Link>
+                    </td>
+                    <td>{project.description}</td>
+                    <td><img src={project.image} alt={project.title} style={{ width: 300, height: 300 }} /></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <Pagination
+              itemsCount={count}
+              pageSize={pageSize}
+              onPageChange={this.handlePageChange}
+              currentPage={currentPage}
+            />
         </Wrapper>
         <Footer />
       </div>

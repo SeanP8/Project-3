@@ -317,6 +317,7 @@ th.link{
     display: block;
     margin: 0 auto;
     margin-bottom: 10px;
+    width: 100%;
 }
 .commentForm{
     margin: 0 auto;
@@ -426,6 +427,9 @@ th.link{
      .navbar {
         height: 150px;
     }
+    footer {
+        z-index: 1;
+    }
     /* Login Page */
     #gitHubLoginBtn, #googleLogInBtn {
         width: 150px;
@@ -491,6 +495,10 @@ th.link{
     #addProject {
         position: relative;
         bottom: 50px;
+    }
+    /* All Projects */
+    #allProjects {
+        width: 800px;
     }
 }
 @media screen and (max-width: 938px) {
@@ -634,6 +642,9 @@ th.link{
     }
     .commentBox{
         width: 100%;
+    }
+    #allProjects {
+        width: 600px;
     }
 }
 @media screen and (max-width: 682px) {
@@ -875,9 +886,11 @@ th.link{
         right: 90px;
     }
     .update-btn {
+        top: 89%;
         left: 69%;
     }
     .delete-btn {
+        top: 89%;
         left: 85%;
     }
 }
@@ -917,7 +930,7 @@ th.link{
         left: 83%;
     }
     #addProject {
-        left: 40px;
+        left: 20px;
     }
 }
 @media screen and (max-width: 430px) {
@@ -950,9 +963,11 @@ th.link{
         right: 70px;
     }
     .update-btn {
+        top: 87%;
         left: 62%;
     }
     .delete-btn {
+        top: 87%;
         left: 81%;
     }
 }
