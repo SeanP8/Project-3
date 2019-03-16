@@ -599,16 +599,17 @@ th.link{
      /* Login Page */
      .signupContainer {
          width: 650px;
+         position: relative;
+         top: 600px;
      }
      .loginForm, .loginTitle {
         width: 417px;
         position: relative;
-        top: 600px;
         right: 570px;
     }
     #gitHubLoginBtn, #googleLogInBtn, .GitGoogleTitle {
         position: relative;
-        top: 620px;
+        top: 10px;
         right: 530px;
     }
      /* Homepage Navbar */
@@ -836,20 +837,13 @@ th.link{
     }
       /* Login Page */
       .signupContainer {
-        position: relative;
-        right: 90px;
-        width: 650px;
+        right: 80px;
     }
     .loginForm, .loginTitle {
-       width: 417px;
-       position: relative;
-       top: 600px;
        right: 660px;
    }
    #gitHubLoginBtn, #googleLogInBtn, .GitGoogleTitle {
-       position: relative;
-       top: 620px;
-       right: 620px;
+       right: 610px;
    }
   
     /* Homepage */
@@ -972,21 +966,18 @@ th.link{
     }
 }
 @media screen and (max-width: 400px) {
-    /* Login Page */
+   /* Login Page */
     .signupContainer {
-        position: relative;
-        right: 60px;
         width: 500px;
+        top: 600px;
+        right: 60px;
     }
     .loginForm, .loginTitle {
         width: 317px;
-        position: relative;
-        top: 600px;
         right: 500px;
     }
     #gitHubLoginBtn, #googleLogInBtn, .GitGoogleTitle {
-        position: relative;
-        top: 620px;
+        top: 10px;
         right: 470px;
     }
      /* Homepage Navbar */
