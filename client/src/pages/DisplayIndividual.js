@@ -61,7 +61,7 @@ class DisplayIndividual extends Component {
   }
 
   render() {
-    const { title, image, link, fundLink, description } = this.state.project;
+    const { title, image, link, fundLink, description, id } = this.state.project;
     const projectID = this.state.project.id;
     const {favorites} = this.state;
     console.log(favorites)
@@ -91,7 +91,7 @@ class DisplayIndividual extends Component {
             <a href={ link }>See Project</a>
             <Link id="back-anchor" to="/all-projects">← Back</Link>
           </div>
-          <CommentBox/>
+          <CommentBox project={id}/>
         </Wrapper>
         <Footer />
       </div>
