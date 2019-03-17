@@ -83,7 +83,7 @@ class DisplayIndividual extends Component {
             <a href={ link }>See Project</a>
             <Link id="back-anchor" to="/all-projects">← Back</Link>
           </div>
-          <CommentForm project={id}/>
+          <CommentForm project={this.props.match.params.id}/>
         </Wrapper>
         <Footer />
       </div>
