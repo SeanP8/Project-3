@@ -93,7 +93,6 @@ passport.use('local', new LocalStrategy(
            return done(null, false);
           }
         } else {
-          console.log(done)
           return done(null, null);
         }
 

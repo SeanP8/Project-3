@@ -4,7 +4,6 @@ class DonateButton extends Component {
 
 
     render(){
-        console.log(this.props.fundLink)
         let link = "#";
        if(this.props.fundLink){
         link = this.props.fundLink;

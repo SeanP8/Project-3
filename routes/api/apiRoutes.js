@@ -85,7 +85,7 @@ router.route("/api/user/login").get(function(req, res) {
     if (bcrypt.compareSync(req.params.password, dbUser.password)) {
       req.user = dbUser;
     } else {
-      res.send(401);
+      res.sendStatus(401);
     }
   });
 });
@@ -144,7 +144,7 @@ router
           })
           .catch(err => console.log(err));
       } else {
-        req.redirect("/projects");
+        res.redirect("/projects");
       }
     });
   });
@@ -241,7 +241,11 @@ router.route("/api/project/:id").get(function(req, res) {
       id: req.params.id
     }
   }).then(dbProject => {
-    res.json(dbProject);
+    if(dbProject){
+      res.json(dbProject);  
+    }else{
+      res.sendStatus(404)
+    }
   });
 });
 
@@ -270,7 +274,7 @@ router
       }
     })
       .then((req, res) => {
-        res.send(200);
+        res.sendStatus(200);
       })
       .catch(err => res.send(err));
   });
@@ -284,26 +288,44 @@ router.route("/api/favorites/:id").delete(function(req, res) {
     }
   })
     .then((req, res) => {
-      res.send(200);
+      res.sendStatus(200);
     })
     .catch(err => res.send(err));
 });
 
 router.route("/api/comments").post(function(req, res) {
-  db.Review.create({
-    image: req.body.image,
-    name: req.body.name,
-    comment: req.body.comment,
-    ProjectId: req.body.ProjectId
-  }).then(dbReview => {
-    res.json(dbReview);
-  });
+  if(req.body.ProjectId){
+    db.Review.create({
+      image: req.body.image,
+      name: req.body.name,
+      comment: req.body.comment,
+      ProjectId: req.body.ProjectId
+    }).then(dbReview => {
+      res.json(dbReview);
+    });
+  }else{
+    res.sendStatus(404)
+  }
 });
 
 router.route("/api/comments/:id").get(function(req, res) {
-  db.Review.findAll({
-    order: [["createdAt", "DESC"]],
-    where: { ProjectId: req.params.id }
-  }).then(dbReview => res.json(dbReview));
+  if(req.params.id){
+    db.Projects.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then((dbProject) => {
+      if(dbProject){
+        db.Review.findAll({
+          order: [["createdAt", "DESC"]],
+          where: { ProjectId: req.params.id }
+        }).then(dbReview => res.json(dbReview));
+      } else {
+        res.json({})
+      }
+    })
+  }else{
+    res.json({})
+  }
 });
 module.exports = router;
