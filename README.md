@@ -10,7 +10,8 @@ This is a MERN stack app to showcase tech startup projects, business plans, or a
     3. To get the google and github OAuths operating, you'll need to create an app on each of their developer sites. 
     GitHub: https://github.com/settings/developers
     Google: https://console.developers.google.com/ 
-    . Once you create an app, add the app id, app secret, and callbackURL to your .env file. Those will be your CLIENT_ID, CLIENT_SECRET and CALLBACK_URL for passport. 
+    
+    Once you create an app, add the app id, app secret, and callbackURL to your .env file. Those will be your CLIENT_ID, CLIENT_SECRET and CALLBACK_URL for passport. 
     4. Images are uploaded via cloudinary. Cloudinary has an amazing free tier plan, so to get images to upload head over to https://cloudinary.com/ and set up an account. you'll want to enter your CLOUD_KEY, CLOUD_SECRET and CLOUD_NAME to your env file.
 
     By now your env file should looks something like this:
