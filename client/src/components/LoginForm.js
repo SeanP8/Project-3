@@ -30,6 +30,9 @@ class LoginForm extends Form {
       login(data.email, data.password).then(() => {
         console.log("LOL")
         window.location.href = "/home";
+      })
+      .catch(err => {
+        document.getElementById("loginErr").innerHTML = "Invalid email or password."
       });
 
 
@@ -60,6 +63,7 @@ class LoginForm extends Form {
             <hr />
           </div>
           <form className="loginForm" onSubmit={this.handleSubmit}>
+            <div id="loginErr"></div>
             {this.renderInput("email", "Email")}
             {this.renderInput("password", "Password", "password")}
             {this.renderButton("Login")}
