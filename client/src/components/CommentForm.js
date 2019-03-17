@@ -20,9 +20,11 @@ class CommentForm extends React.Component {
   }
 
   loadComments = () => {
+    console.log("loading comments...");
     API.getComments(this.props.project)
-    .then(res => this.setState({ comments: res.data }))
+    .then(res => {console.log(res.data); this.setState({ comments: res.data })})
     .catch(err => console.log(err));
+    console.log("HEY, comments should be loaded");
   }
 
   handleChange = event => {
@@ -39,7 +41,7 @@ class CommentForm extends React.Component {
       comment: newComment,
       ProjectId: this.props.project
     })
-      .then(res => this.loadComments())
+      .then(res => {console.log(`comment: ${res.data}`); this.loadComments()})
       .catch(err => console.log(err));
       this.setState({ message: "" });
   }
