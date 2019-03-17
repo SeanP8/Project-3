@@ -294,7 +294,7 @@ router.route("/api/favorites/:id").delete(function(req, res) {
 });
 
 router.route("/api/comments").post(function(req, res) {
-  if(req.body.projectId){
+  if(req.body.ProjectId){
     db.Review.create({
       image: req.body.image,
       name: req.body.name,

@@ -41,7 +41,7 @@ class CommentForm extends React.Component {
       comment: newComment,
       ProjectId: this.props.project
     })
-      .then(res => {console.log(`comment: ${res.data}`); this.loadComments()})
+      .then(res => {console.log(`comment: ${JSON.stringify(res.data)}`); this.loadComments()})
       .catch(err => console.log(err));
       this.setState({ message: "" });
   }
