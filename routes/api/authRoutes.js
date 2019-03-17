@@ -21,10 +21,9 @@ router.route("/auth/google/callback")
 
 
 router.route("/api/login")
-  .post(passport.authenticate('local', {
-    successRedirect: '/home',
-    failureRedirect: '/login'
-  }));
+  .post(passport.authenticate('local'), function(req, res){
+    res.redirect("/home");
+  });
 
 router.route("/api/current_user")
   .get(function (req, res) {
