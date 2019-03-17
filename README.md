@@ -11,7 +11,7 @@ This is a MERN stack app to showcase tech startup projects, business plans, or a
     GitHub: https://github.com/settings/developers
     Google: https://console.developers.google.com/ 
     . Once you create an app, add the app id, app secret, and callbackURL to your .env file. Those will be your CLIENT_ID, CLIENT_SECRET and CALLBACK_URL for passport. 
-    4. Images are uploaded via cloudinary. Cloudinary has an amazing free tier plan, so to get images to upload head over to https://cloudinary.com/ and set up an account. you'll want to enter your CLOUD_KEY, CLOUD_SECRET and CLOUD_NAME to your env file.
+    4. Images are uploaded via cloudinary. Cloudinary has an amazing free tier plan, so to get images to upload head over to https://cloudinary.com/ and set up an account. You'll want to enter your CLOUD_KEY, CLOUD_SECRET and CLOUD_NAME to your env file.
 
     By now your env file should looks something like this:
 
@@ -54,7 +54,7 @@ module.exports = {
 Now in terminal run sequelize init:config. This will automatically create a folder 'config' with file 'config.js'. Export this fille by adding module.exports = , to the top of the config file. Add your credentials to .env file and reference them to the config.js file. For deployment to heroku, make sure in the production is has: 'use_env_variable': 'JAWSDB_URL'. Now back in the terminal write sequelize init:models and a 'models' folder will be generated with a 'index.js' file included. Sequelize is now setup and can move forward to creating tables for the DB.
 - Models
 
-There are four models used: auths, projects, favorite, reviews. The auth model is where the user data will be stores. Fields include firstname, lastname, email, avatar, authMode, authModeID, and password. This table has an associate to projects model as one Auth may have many Projects. The Projects model is where the data for each project will be stored. The fields include a title, link, description, image, and authID.
+There are four models used: auths, projects, favorites, and reviews. The auth model is where the user data will be stored. Fields include firstname, lastname, email, avatar, authMode, authModeID, and password. This table has an associate to projects model as one Auth may have many Projects. The Projects model is where the data for each project will be stored. The fields include a title, link, description, image, and authID.
 - Routes
 
 There are auth routes that handle the authentication for passport and redirects. In this application we build a RESTful API which containes multiple get, post, put, and delete routes. There are user routes that handle post request for new users and this will post to the endpoint and add to the DB. Implement get request to see if user's email exists in local login, verify and redirect. There are also routes for the projects. Routes that get all the projects, the users projects, post a new project, update an exsiting project, or delete a project. There are also project routes that will return the last five projects added to the db, and a route to query the DB by word search. 
