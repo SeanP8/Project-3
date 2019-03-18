@@ -98,6 +98,7 @@ class DisplayIndividual extends Component {
   };
 
   render() {
+
     let { title, image, link, fundLink, description, id } = this.state.project;
     const { favorites } = this.state;
     if (link) {

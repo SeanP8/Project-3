@@ -57,7 +57,7 @@ class LoginForm extends Form {
             <hr />
           </div>
           <form className="loginForm" onSubmit={this.handleSubmit}>
-            <div id="loginErr"></div>
+            <div className="errorText" id="loginErr"></div>
             {this.renderInput("email", "Email")}
             {this.renderInput("password", "Password", "password")}
             {this.renderButton("Login")}

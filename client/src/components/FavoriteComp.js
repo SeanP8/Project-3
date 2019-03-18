@@ -17,7 +17,7 @@ const Favorite = props => {
       <button id="favorites-btn" onClick={(e) => {
         e.preventDefault();
         deleteThisFavorite(id);
-      }}><img src={deleteLogo} alt="favorite button" /></button>
+      }}><img src={deleteLogo} alt="favorite button" id="deleteLogo" /></button>
 
       <h3 className="project-title">{title}</h3>
       <img className="project-image" src={image} alt={title} />

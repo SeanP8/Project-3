@@ -36,6 +36,11 @@ h2,h6{
 .lead{
     font-size: 18px;
 } 
+
+.errorText {
+    color: red;
+   }
+
 #linkToProjects {
     font-size: 18px;
     color: rgb(15, 15, 15)
@@ -483,7 +488,7 @@ th.link{
     /* Your Projects Page */
     .project-info {
         position: relative;
-        width: 700px;
+        width: 650px;
         right: 30px;
     }
     .update-btn {
@@ -499,6 +504,15 @@ th.link{
     /* All Projects */
     #allProjects {
         width: 800px;
+    }
+    /* Favorites Page */
+    .favorites-container {
+        position: relative;
+        top: 30px;
+    }
+    #deleteLogo {
+        position: relative;
+        top: 20px;
     }
 }
 @media screen and (max-width: 938px) {
@@ -520,8 +534,8 @@ th.link{
         margin-bottom: 50px;
     }
     #avatar {
-        height: 60px;
-        width: 50px;
+        height: 40px;
+        width: 35px;
     }
     /* Homepage */
     .subTitle {
@@ -590,6 +604,10 @@ th.link{
         position: relative;
         right: 50px;
         width: 600px;
+    }
+      /* Favorites Page */
+      .favorites-container {
+        width: 100%;
     }
 }
 @media screen and (max-width: 710px) {
@@ -967,6 +985,7 @@ th.link{
 }
 @media screen and (max-width: 400px) {
    /* Login Page */
+
     .signupContainer {
         width: 500px;
         top: 600px;
