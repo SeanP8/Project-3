@@ -29,7 +29,6 @@ class RegisterForm extends Form {
   };
 
   doSubmit = async () => {
-    console.log(this.state.data);
 
     var data = this.state.data;
     
@@ -39,7 +38,6 @@ class RegisterForm extends Form {
     }else{
       userService.register(value)
       .then(response => {
-         console.log(response.data);
          if(response.data.email){
           login(response.data.email, this.state.data.password)
           .then(function () {
