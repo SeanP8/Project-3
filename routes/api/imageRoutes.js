@@ -15,12 +15,10 @@ cloudinary.config({
 
   router.route("/api/add_image")
     .post(function(req, res){
-        console.log("1" + req.user)
 
         multipartMiddleware(req, res, () => {
                   // file was not uploaded redirecting to upload 
         if (!req.files) {
-            console.log("UH OH")
             res.redirect('/home');
             return;     
         }
@@ -30,13 +28,10 @@ cloudinary.config({
         cloudinary.uploader
             .upload(imageFile, {tags: 'express_sample'})
             .then( (image) => {
-                console.log('** file uploaded to Cloudinary service');
                 console.dir(image);
-                console.log(req.user)
                 db.Auths
                 .update({avatar: image.secure_url}, {where: {id : req.user.id}})
                 .then(() => {
-                    console.log('** photo saved')
                     res.redirect("/home");
                 })
               })

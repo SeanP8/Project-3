@@ -101,7 +101,6 @@ router.route("/api/projects/all").get(function(req, res) {
 });
 
 router.route("/api/projects/favorites").get(function(req, res) {
-  console.log(req.query);
   db.Projects.findAll({
     where: {
       id: req.query.ids
@@ -123,15 +122,12 @@ router
     });
   })
   .post(function(req, res) {
-    console.log("POSTING " + req.body.image);
     multipartMiddleware(req, res, () => {
       if (req.files && req.files.image && req.files.image.path) {
         var imageFile = req.files.image.path;
-        console.log("IMAGE " + imageFile);
         cloudinary.uploader
           .upload(imageFile, { tags: "project_image" })
           .then(image => {
-            console.log(image.secure_url);
             db.Projects.create({
               title: req.body.title,
               link: req.body.link,
@@ -140,7 +136,6 @@ router
               description: req.body.description,
               authID: req.user.id
             }).then(dbProject => {
-              console.log("SAVED PROJECT");
               res.redirect("/projects");
             });
           })
@@ -153,7 +148,6 @@ router
 router.route("/api/projects/:id/image").post(function(req, res) {
   multipartMiddleware(req, res, () => {
     if (!req.files) {
-      console.log("UH OH");
       res.redirect("/home");
       return;
     }
@@ -163,9 +157,7 @@ router.route("/api/projects/:id/image").post(function(req, res) {
     cloudinary.uploader
       .upload(imageFile, { tags: "express_sample" })
       .then(image => {
-        console.log("** file uploaded to Cloudinary service");
         console.dir(image);
-        console.log(req.user);
         db.Projects.update(
           { image: image.secure_url },
           {
@@ -175,7 +167,6 @@ router.route("/api/projects/:id/image").post(function(req, res) {
             }
           }
         ).then(() => {
-          console.log("** photo saved");
           res.redirect("/projects");
         });
       });
@@ -264,7 +255,6 @@ router
     });
   })
   .post(function(req, res) {
-    console.log(req.body);
     db.Favorite.findOrCreate({
       where: {
         projectID: req.body.projectID,
@@ -282,7 +272,6 @@ router
   });
 
 router.route("/api/favorites/:id").delete(function(req, res) {
-  console.log(req.params);
   db.Favorite.destroy({
     where: {
       userID: req.user.id,

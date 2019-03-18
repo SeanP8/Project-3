@@ -19,7 +19,6 @@ router.use(function(req, res, next) {
     case "/auth/google/callback":
     case "/auth/github/callback":
       if (req.isAuthenticated()) {
-        console.log("is already authenticated");
         res.redirect("/home");
       }
       break;
@@ -43,7 +42,6 @@ router.use(imageRoutes);
 
 // If no API routes are hit, send the React app
 router.use(function(req, res) {
-  console.log(req.path);
   if (!res.headersSent) {
     res.sendFile(path.join(__dirname, "../client/build/index.html"));
   }

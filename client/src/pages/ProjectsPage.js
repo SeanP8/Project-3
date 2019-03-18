@@ -119,7 +119,7 @@ class Projects extends Component {
                   </button>
                 </div>
                 <div className="modal-body">
-                  <form className="add-a-project" /*onSubmit={this.handleSubmit}*/ method="POST" action="/api/projects" encType="multipart/form-data">
+                  <form className="add-a-project" method="POST" action="/api/projects" encType="multipart/form-data">
                     <div className="form-group">
                       <label htmlFor="inputTitle">Title</label>
                       <input

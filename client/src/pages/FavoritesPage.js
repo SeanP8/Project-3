@@ -21,11 +21,9 @@ class FavoritesPage extends Component {
 
     loadFavorites = () => {
         API.getUsersFavorites()
-        .then( res => {
-            console.log(res.data);   
+        .then( res => { 
             API.getUsersFavProjects(res.data.map(datum => datum.projectID))
             .then(favs => {
-                console.log(favs.data);
                 this.setState({favorites: favs.data})
             });
         })
@@ -43,7 +41,6 @@ class FavoritesPage extends Component {
                     <h1 className="subTitle">Favorites</h1>
                     <ul>
                         {this.state.favorites.map((fav, key) => {
-                            console.log(fav);
                         return <Favorites
                             key={key}
                             loadFavorites={this.loadFavorites}
