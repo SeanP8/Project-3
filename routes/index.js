@@ -12,6 +12,7 @@ router.use(function(req, res, next) {
     break;
     case "/":
     case "/login":
+    case "/api/user":
     case "/api/login":
     case "/auth/google":
     case "/auth/github":
