@@ -12,7 +12,6 @@ class SearchPage extends Component {
     searchProjects = query => {
         API.searchForProjects(query)
         .then( res => this.setState({ searchResults: res.data }, function(){
-            console.log(this.state.searchResults)
         }))
         .catch(err => console.log(err));
     }

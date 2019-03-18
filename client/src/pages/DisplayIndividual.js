@@ -7,13 +7,12 @@ import favoritesLogo from "../heartLogo.png";
 import deleteLogo from "../trashCanSmall.png";
 import Donate from "../components/DonateButton";
 import API from "../utils/API";
-//import CommentForm from "../components/CommentForm";
 import Comment from "../components/Comment";
 
 class DisplayIndividual extends Component {
   state = {
     project: {},
-    favorites: [],  
+    favorites: [],
     user: {},
     comments: {},
     message: ""
@@ -41,14 +40,11 @@ class DisplayIndividual extends Component {
   };
 
   loadComments = () => {
-    console.log("loading comments...");
     API.getComments(this.state.project.id)
       .then(res => {
-        console.log(res.data);
         this.setState({ comments: res.data });
       })
       .catch(err => console.log(err));
-    console.log("HEY, comments should be loaded");
   };
 
   handleChange = event => {
@@ -65,10 +61,7 @@ class DisplayIndividual extends Component {
       comment: newComment,
       ProjectId: this.state.project.id
     })
-      .then(res => {
-        console.log(`comment: ${JSON.stringify(res.data)}`);
-        this.loadComments();
-      })
+      .then(res => this.loadComments())
       .catch(err => console.log(err));
     this.setState({ message: "" });
   };
@@ -143,28 +136,31 @@ class DisplayIndividual extends Component {
               ← Back
             </Link>
           </div>
-          {/* <CommentForm project={this.props.match.params.id} /> */}
-          <div className="commentBox"> 
-        <h2 className="comment-title">Comments</h2>
-        <form className="commentForm" onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            name="message"
-            className="comment-textbox"
-            placeholder="write a comment..."
-            value={this.state.message}
-            onChange={this.handleChange}
-          />
-          <button type="submit" id="postcmt" className="btn btn-sm btn-outline-success">
-            POST
-          </button>
-        </form>
-        <div className="commentList">
-          {Object.keys(this.state.comments).map(key => (
-            <Comment key={key} details={this.state.comments[key]} />
-          ))}
-        </div>
-      </div>
+          <div className="commentBox">
+            <h2 className="comment-title">Comments</h2>
+            <form className="commentForm" onSubmit={this.handleSubmit}>
+              <input
+                type="text"
+                name="message"
+                className="comment-textbox"
+                placeholder="write a comment..."
+                value={this.state.message}
+                onChange={this.handleChange}
+              />
+              <button
+                type="submit"
+                id="postcmt"
+                className="btn btn-sm btn-outline-success"
+              >
+                POST
+              </button>
+            </form>
+            <div className="commentList">
+              {Object.keys(this.state.comments).map(key => (
+                <Comment key={key} details={this.state.comments[key]} />
+              ))}
+            </div>
+          </div>
         </Wrapper>
         <Footer />
       </div>

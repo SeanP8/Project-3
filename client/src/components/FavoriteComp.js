@@ -7,7 +7,6 @@ import API from "../utils/API";
 const Favorite = props => {
   const { title, description, image, id } = props.details;
   let deleteThisFavorite = (id) => {
-    console.log(id);
     API.deleteFavorite(id)
       .then(res => props.loadFavorites())
       .catch(err => console.log(err));

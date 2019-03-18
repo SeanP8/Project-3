@@ -27,7 +27,6 @@ class RegisterForm extends Form {
 
   doSubmit = async () => {
     try {
-      console.log(this.state.data);
       await userService.register(this.state.data).then(user => {
         login(this.state.data.email, this.state.data.password).then(function() {
           window.location.href = "/home";

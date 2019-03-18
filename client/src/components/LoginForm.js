@@ -22,37 +22,31 @@ class LoginForm extends Form {
   };
 
   doSubmit = async () => {
-    // var jwt;
     try {
       const { data } = this.state;
-      console.log("SUBMIT")
-
       login(data.email, data.password).then(() => {
-        console.log("LOL")
         window.location.href = "/home";
       })
       .catch(err => {
         document.getElementById("loginErr").innerHTML = "Invalid email or password."
       });
-
-
     } catch (error) {
       if (error.response && error.response.status === 400) {
-        // clone errors obj
         const errors = { ...this.state.errors };
         errors.username = error.response.data;
         this.setState({ errors });
       }
     }
-    // console.log("jwt " + Object.keys(jwt.data))
-   
   };
+
   gitHubOnClick() {
     window.location.href="/auth/github";
-  }
+  };
+
   googleOnClick() {
     window.location.href="/auth/google";
-  }
+  };
+  
   render() {
     return (
       <div>
