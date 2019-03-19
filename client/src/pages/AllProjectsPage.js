@@ -16,7 +16,6 @@ class AllProjectsPage extends Component {
   };
   async componentDidMount() {
     const { data: projects } = await getAllProjects();
-    console.log(projects);
     this.setState({ projects });
   }
 

@@ -8,6 +8,8 @@ const cors = require("cors");
 const app = express();
 const routes = require("./routes");
 const db = require("./models/");
+const flash = require("connect-flash");
+
 
 const PORT = process.env.PORT || 5000;
 app.use(express.static("client/build"));
@@ -41,8 +43,7 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(flash());
 app.use(express.static("client/build"));
 app.use(routes);
 // Serve up static assets (usually on heroku)

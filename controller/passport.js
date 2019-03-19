@@ -19,13 +19,10 @@ passport.use("github", new GitHubStrategy(
       callbackURL: process.env.GITHUB_CALLBACK_URL
     },
     function (accessToken, refreshToken, profile, done) {
-      console.log(profile);
       db.Auths.findOne({
         where: { authModeID: profile.id }
       }).then(function (existingUser) {
         if (existingUser) {
-          console.log("Logged In User : " + profile.id);
-          console.log("Logged In User : " + existingUser.id);
           done(null, existingUser)
         } else {
           db.Auths.create({
@@ -34,7 +31,6 @@ passport.use("github", new GitHubStrategy(
             authMode: github,
             authModeID: profile.id
           }).then(function (user) {
-            console.log(user.id);
             done(null, user);
           });
         }
@@ -53,7 +49,6 @@ passport.use('google', new GoogleStrategy({
 },
   // passport callback function
   function (accessToken, refreshToken, profile, done) {
-    console.log(profile);
     db.Auths.findOne({
       where: { authModeId: profile.id }
     }).then(function (existingUser) {
@@ -77,14 +72,12 @@ passport.use('google', new GoogleStrategy({
 
 passport.use('local', new LocalStrategy(
   function (username, password, done) {
-    console.log("HEYA")
     db.Auths.findOne(
       {
         where: {
           email: username
         }
       }).then(function (user) {
-        console.log(user);
         if (user) {
 
           if (bcrypt.compareSync(password, user.password)) {
@@ -93,7 +86,6 @@ passport.use('local', new LocalStrategy(
            return done(null, false);
           }
         } else {
-          console.log(done)
           return done(null, null);
         }
 
@@ -112,13 +104,11 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(function (id, done) {
-  console.log("deserial = " + id);
   db.Auths.findOne({
     where: {
       id: id
     }
   }).then(function (user) {
-    console.log("deserial")
     done(null, user);
   });
 });

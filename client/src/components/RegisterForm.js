@@ -12,12 +12,15 @@ class RegisterForm extends Form {
   };
   schema = {
     firstname: Joi.string()
+      .alphanum().min(3).max(30)
       .required()
       .label("Firstname"),
     lastname: Joi.string()
+      .alphanum().min(3).max(30)
       .required()
       .label("Lastname"),
     email: Joi.string()
+      .email({ minDomainAtoms: 2 })
       .required()
       .label("Email"),
     password: Joi.string()
@@ -26,19 +29,28 @@ class RegisterForm extends Form {
   };
 
   doSubmit = async () => {
-    try {
-      console.log(this.state.data);
-      await userService.register(this.state.data).then(user => {
-        login(this.state.data.email, this.state.data.password).then(function() {
-          window.location.href = "/home";
-        });
+
+    var data = this.state.data;
+    
+    const { error, value } = Joi.validate(data, this.schema)
+    if(error){
+      console.log(error);
+    }else{
+      userService.register(value)
+      .then(response => {
+         if(response.data.email){
+          login(response.data.email, this.state.data.password)
+          .then(function () {
+            window.location.href = "/home";
+          })
+          .catch(err => console.log(err));
+         }else{
+           document.getElementById("emailErr").innerHTML = response.data;
+         }
+        })
+      .catch((err) => {
+        console.log(err);
       });
-    } catch (ex) {
-      if (ex.response && ex.response.status === 400) {
-        const errors = { ...this.state.errors };
-        errors.username = ex.response.data;
-        this.setState({ errors });
-      }
     }
   };
 
@@ -52,6 +64,7 @@ class RegisterForm extends Form {
           <form className="RegisterForm" onSubmit={this.handleSubmit}>
             {this.renderInput("firstname", "Firstname")}
             {this.renderInput("lastname", "Lastname")}
+            <div className="errorText" id="emailErr"></div>
             {this.renderInput("email", "Email")}
             {this.renderInput("password", "Password", "password")}
             {this.renderButton("Register")}

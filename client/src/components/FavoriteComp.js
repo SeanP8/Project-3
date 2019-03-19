@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import favoritesLogo from "../heartLogo.png"
+import deleteLogo from "../trashCanSmall.png"
 import API from "../utils/API";
 
 
 const Favorite = props => {
   const { title, description, image, id } = props.details;
   let deleteThisFavorite = (id) => {
-    console.log(id);
     API.deleteFavorite(id)
       .then(res => props.loadFavorites())
       .catch(err => console.log(err));
@@ -15,10 +14,10 @@ const Favorite = props => {
 
   return (
     <li className="favorites-container">
-      <button id="favorites-btn" style={{ background: "green" }} onClick={(e) => {
+      <button id="favorites-btn" onClick={(e) => {
         e.preventDefault();
         deleteThisFavorite(id);
-      }}><img src={favoritesLogo} alt="favorite button" /></button>
+      }}><img src={deleteLogo} alt="favorite button" id="deleteLogo" /></button>
 
       <h3 className="project-title">{title}</h3>
       <img className="project-image" src={image} alt={title} />

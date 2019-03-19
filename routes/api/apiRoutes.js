@@ -42,6 +42,8 @@ router
           email: req.body.email,
           authMode: "local",
           authModeID: Date.now()
+        }).then(dbAuth => {
+          res.send(dbAuth);
         });
       }
     });
@@ -85,7 +87,7 @@ router.route("/api/user/login").get(function(req, res) {
     if (bcrypt.compareSync(req.params.password, dbUser.password)) {
       req.user = dbUser;
     } else {
-      res.send(401);
+      res.sendStatus(401);
     }
   });
 });
@@ -99,7 +101,6 @@ router.route("/api/projects/all").get(function(req, res) {
 });
 
 router.route("/api/projects/favorites").get(function(req, res) {
-  console.log(req.query);
   db.Projects.findAll({
     where: {
       id: req.query.ids
@@ -121,15 +122,12 @@ router
     });
   })
   .post(function(req, res) {
-    console.log("POSTING " + req.body.image);
     multipartMiddleware(req, res, () => {
       if (req.files && req.files.image && req.files.image.path) {
         var imageFile = req.files.image.path;
-        console.log("IMAGE " + imageFile);
         cloudinary.uploader
           .upload(imageFile, { tags: "project_image" })
           .then(image => {
-            console.log(image.secure_url);
             db.Projects.create({
               title: req.body.title,
               link: req.body.link,
@@ -138,20 +136,18 @@ router
               description: req.body.description,
               authID: req.user.id
             }).then(dbProject => {
-              console.log("SAVED PROJECT");
               res.redirect("/projects");
             });
           })
           .catch(err => console.log(err));
       } else {
-        req.redirect("/projects");
+        res.redirect("/projects");
       }
     });
   });
 router.route("/api/projects/:id/image").post(function(req, res) {
   multipartMiddleware(req, res, () => {
     if (!req.files) {
-      console.log("UH OH");
       res.redirect("/home");
       return;
     }
@@ -161,9 +157,7 @@ router.route("/api/projects/:id/image").post(function(req, res) {
     cloudinary.uploader
       .upload(imageFile, { tags: "express_sample" })
       .then(image => {
-        console.log("** file uploaded to Cloudinary service");
         console.dir(image);
-        console.log(req.user);
         db.Projects.update(
           { image: image.secure_url },
           {
@@ -173,7 +167,6 @@ router.route("/api/projects/:id/image").post(function(req, res) {
             }
           }
         ).then(() => {
-          console.log("** photo saved");
           res.redirect("/projects");
         });
       });
@@ -220,12 +213,15 @@ router.route("/api/projects/topfive").get(function(req, res) {
 router.route("/api/projects/search/:q").get(function(req, res) {
   db.Projects.findAll({
     where: {
-      title: {
-        $like: "%" + req.params.q + "%"
-      },
-      description: {
-        $like: "%" + req.params.q + "%"
-      }
+      $or: [
+     
+          {title: {
+            like: "%" + req.params.q + "%"
+          }},
+          {description: {
+            like: "%" + req.params.q + "%"
+          }}
+      ]
     }
   }).then(dbProjects => {
     res.json(dbProjects);
@@ -238,7 +234,11 @@ router.route("/api/project/:id").get(function(req, res) {
       id: req.params.id
     }
   }).then(dbProject => {
-    res.json(dbProject);
+    if(dbProject){
+      res.json(dbProject);  
+    }else{
+      res.sendStatus(404)
+    }
   });
 });
 
@@ -255,7 +255,6 @@ router
     });
   })
   .post(function(req, res) {
-    console.log(req.body);
     db.Favorite.findOrCreate({
       where: {
         projectID: req.body.projectID,
@@ -267,13 +266,12 @@ router
       }
     })
       .then((req, res) => {
-        res.send(200);
+        res.sendStatus(200);
       })
       .catch(err => res.send(err));
   });
 
 router.route("/api/favorites/:id").delete(function(req, res) {
-  console.log(req.params);
   db.Favorite.destroy({
     where: {
       userID: req.user.id,
@@ -281,26 +279,44 @@ router.route("/api/favorites/:id").delete(function(req, res) {
     }
   })
     .then((req, res) => {
-      res.send(200);
+      res.sendStatus(200);
     })
     .catch(err => res.send(err));
 });
 
 router.route("/api/comments").post(function(req, res) {
-  db.Review.create({
-    image: req.body.image,
-    name: req.body.name,
-    comment: req.body.comment,
-    ProjectId: req.body.ProjectId
-  }).then(dbReview => {
-    res.json(dbReview);
-  });
+  if(req.body.ProjectId){
+    db.Review.create({
+      image: req.body.image,
+      name: req.body.name,
+      comment: req.body.comment,
+      ProjectId: req.body.ProjectId
+    }).then(dbReview => {
+      res.json(dbReview);
+    });
+  }else{
+    res.sendStatus(404)
+  }
 });
 
 router.route("/api/comments/:id").get(function(req, res) {
-  db.Review.findAll({
-    order: [["createdAt", "DESC"]],
-    where: { ProjectId: req.params.id }
-  }).then(dbReview => res.json(dbReview));
+  if(req.params.id){
+    db.Projects.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then((dbProject) => {
+      if(dbProject){
+        db.Review.findAll({
+          order: [["createdAt", "DESC"]],
+          where: { ProjectId: req.params.id }
+        }).then(dbReview => res.json(dbReview));
+      } else {
+        res.json({})
+      }
+    })
+  }else{
+    res.json({})
+  }
 });
 module.exports = router;

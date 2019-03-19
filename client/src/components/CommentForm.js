@@ -9,7 +9,7 @@ class CommentForm extends React.Component {
     comments: {}
   };
 
-  componentDidMount() {
+  componentWillReceiveProps() {
     API.getCurrentUser().then(res => {
       const currentUser = res.data;
       if (currentUser) {
@@ -20,7 +20,7 @@ class CommentForm extends React.Component {
   }
 
   loadComments = () => {
-    API.getComments(this.props.projectId)
+    API.getComments(this.props.project)
     .then(res => this.setState({ comments: res.data }))
     .catch(err => console.log(err));
   }
@@ -37,7 +37,7 @@ class CommentForm extends React.Component {
       image: avatar,
       name: firstName,
       comment: newComment,
-      ProjectId: this.props.projectId
+      ProjectId: this.props.project
     })
       .then(res => this.loadComments())
       .catch(err => console.log(err));
@@ -46,7 +46,8 @@ class CommentForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="commentBox"> 
+        <h2 className="comment-title">Comments</h2>
         <form className="commentForm" onSubmit={this.handleSubmit}>
           <input
             type="text"
