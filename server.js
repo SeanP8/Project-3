@@ -10,11 +10,10 @@ const routes = require("./routes");
 const db = require("./models/");
 const flash = require("connect-flash");
 
-
 const PORT = process.env.PORT || 5000;
 app.use(express.static("client/build"));
 app.use(function(req, res, next) {
-  if (req.url != "/favicon.ico") {
+  if (req.url !== "/favicon.ico") {
     return next();
   } else {
     res.status(200);
@@ -57,11 +56,9 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
-db.sequelize
-  .sync(syncOptions)
-  .then(function() {
-    app.listen(PORT, function() {
-      console.log(`Listening on port ${PORT}`);
-    });
+db.sequelize.sync(syncOptions).then(function() {
+  app.listen(PORT, function() {
+    console.log(`Listening on port ${PORT}`);
   });
+});
 module.exports = app.listen(3000);
