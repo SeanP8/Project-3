@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable camelcase */
 const router = require("express").Router();
 const bcrypt = require("bcrypt-nodejs");
 const db = require("../../models");
@@ -214,13 +216,16 @@ router.route("/api/projects/search/:q").get(function(req, res) {
   db.Projects.findAll({
     where: {
       $or: [
-     
-          {title: {
+        {
+          title: {
             like: "%" + req.params.q + "%"
-          }},
-          {description: {
+          }
+        },
+        {
+          description: {
             like: "%" + req.params.q + "%"
-          }}
+          }
+        }
       ]
     }
   }).then(dbProjects => {
@@ -234,10 +239,10 @@ router.route("/api/project/:id").get(function(req, res) {
       id: req.params.id
     }
   }).then(dbProject => {
-    if(dbProject){
-      res.json(dbProject);  
-    }else{
-      res.sendStatus(404)
+    if (dbProject) {
+      res.json(dbProject);
+    } else {
+      res.sendStatus(404);
     }
   });
 });
@@ -285,7 +290,7 @@ router.route("/api/favorites/:id").delete(function(req, res) {
 });
 
 router.route("/api/comments").post(function(req, res) {
-  if(req.body.ProjectId){
+  if (req.body.ProjectId) {
     db.Review.create({
       image: req.body.image,
       name: req.body.name,
@@ -294,29 +299,29 @@ router.route("/api/comments").post(function(req, res) {
     }).then(dbReview => {
       res.json(dbReview);
     });
-  }else{
-    res.sendStatus(404)
+  } else {
+    res.sendStatus(404);
   }
 });
 
 router.route("/api/comments/:id").get(function(req, res) {
-  if(req.params.id){
+  if (req.params.id) {
     db.Projects.findOne({
       where: {
         id: req.params.id
       }
-    }).then((dbProject) => {
-      if(dbProject){
+    }).then(dbProject => {
+      if (dbProject) {
         db.Review.findAll({
           order: [["createdAt", "DESC"]],
           where: { ProjectId: req.params.id }
         }).then(dbReview => res.json(dbReview));
       } else {
-        res.json({})
+        res.json({});
       }
-    })
-  }else{
-    res.json({})
+    });
+  } else {
+    res.json({});
   }
 });
 module.exports = router;

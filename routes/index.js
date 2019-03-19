@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+/* eslint-disable prettier/prettier */
 const path = require("path");
 const router = require("express").Router();
 const authRoutes = require("./api/authRoutes");
@@ -9,7 +11,7 @@ router.use(function(req, res, next) {
   console.log("gatekeeper : " + path);
   switch (path) {
     case "/api/logout":
-    break;
+      break;
     case "/":
     case "/login":
     case "/api/user":
@@ -29,7 +31,6 @@ router.use(function(req, res, next) {
         break;
       }
       break;
-      
   }
   next();
 });
