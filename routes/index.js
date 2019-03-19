@@ -1,5 +1,4 @@
 /* eslint-disable indent */
-/* eslint-disable prettier/prettier */
 const path = require("path");
 const router = require("express").Router();
 const authRoutes = require("./api/authRoutes");

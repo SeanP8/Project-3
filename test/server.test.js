@@ -2,13 +2,11 @@
 process.env.NODE_ENV = "test";
 const dotenv = require("dotenv");
 dotenv.load();
-const sequelize = require("sequelize");
 const db = require("../models");
 //Require the dev-dependencies
 const chai = require("chai");
 const chaiHttp = require("chai-http");
 const server = require("../server");
-const should = chai.should();
 const expect = chai.expect;
 
 chai.use(chaiHttp);
@@ -59,8 +57,7 @@ describe("Projects", () => {
           let responseBody = res.body;
           expect(err).to.be.null;
           expect(responseStatus).to.equal(200);
-          expect(responseBody)
-            .to.be.an("object")
+          expect(responseBody).to.be.an("object");
           done();
         });
     });

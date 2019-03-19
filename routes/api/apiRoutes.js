@@ -137,9 +137,7 @@ router
               image: image.secure_url,
               description: req.body.description,
               authID: req.user.id
-            }).then(dbProject => {
-              res.redirect("/projects");
-            });
+            }).then(res.redirect("/projects"));
           })
           .catch(err => console.log(err));
       } else {

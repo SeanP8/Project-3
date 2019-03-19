@@ -5,6 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha --timeout 10000",
+    "lint": "eslint **/*.js --quiet",
+    "fix": "eslint --fix .",
     "watch": "nodemon server",
     "start": "node server.js",
     "build": " cd client && npm run build",
@@ -50,6 +52,10 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-http": "^2.0.1",
-    "mocha": "^6.0.2"
+    "eslint": "^5.15.3",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "mocha": "^6.0.2",
+    "prettier": "^1.16.4"
   }
 }
