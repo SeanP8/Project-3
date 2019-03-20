@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "tech developers networking system",
   "main": "server.js",
+  "engines": {
+    "node": "8.11.4"
+  },
   "scripts": {
     "test": "mocha",
     "lint": "eslint **/*.js --quiet",
