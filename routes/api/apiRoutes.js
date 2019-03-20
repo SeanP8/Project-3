@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable camelcase */
 const router = require("express").Router();
 const bcrypt = require("bcrypt-nodejs");
 const db = require("../../models");
