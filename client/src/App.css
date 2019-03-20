@@ -1,0 +1,1041 @@
+body{
+    margin-top: 70px;
+    background-image: url("./full-bloom.png");
+    padding-bottom: 100px;
+}
+h1,h3,h4,h5{
+    font-family: 'Nanum Gothic', sans-serif;
+}
+h2,h6{
+    text-align: center;
+    font-family: 'Nanum Gothic', sans-serif;
+    margin-top: 4px;
+}
+/* Home Page */
+.navbar {
+    height: 70px;
+}
+.jumbotron {
+    background-color: #c5c5c5;
+    color: black;
+    border-radius: 4px;
+    padding: 30px;
+    text-align: center;
+    position: relative;
+    top: 10px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+.jumnbotron-avatar{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+.display-4{
+    font-family: 'Cuprum', sans-serif;
+}
+.lead{
+    font-size: 18px;
+} 
+
+.errorText {
+    color: red;
+   }
+
+#linkToProjects {
+    font-size: 18px;
+    color: rgb(15, 15, 15)
+}
+#linkToProjects:hover {
+    color: whitesmoke;
+    text-decoration: none;
+}
+.search-container {
+    float: right;
+    position: relative;
+    right: 100px;
+    bottom: 20px;
+}
+.searchBar-title {
+    color: white;
+    position: relative;
+    right: 160px;
+    top: 35px;
+}
+#character-search {
+    width: 80%;
+    height: 30px;
+}
+#search-btn {
+    background-color: #18a0ac;
+    font-size: 13px;
+    position: absolute;
+    top: 30px;
+    left: 170px;
+    width: 80px;
+    height: 35px;
+}
+#search-btn:hover {
+    width: 83px;
+    height: 38px;
+}
+.topFiveProjects, .favorites-container{
+    background-color: whitesmoke;
+    width: 85%;
+    padding: 10px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    border: 1px solid #343a40;
+    border-radius: 4px;
+    list-style-type: none;
+    overflow: hidden;
+}
+/*-----------*/
+
+/* Pages Title */
+.subTitle {
+    text-align: left;
+    margin-top: 20px;
+}
+/*-------------*/
+.wrapper{
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+}
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    padding: 20px;
+    margin-top: 20px;
+    color: gainsboro;
+    background-color: #373c42;
+}
+/* OAuth login buttons */
+#gitHubLoginBtn{
+    clear: both;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    background-color: rgb(22, 20, 20);
+    color: whitesmoke;
+    width: 20%;
+  }
+#gitHubLoginBtn:hover{
+    background-color:rgb(43, 38, 38);
+    text-decoration: none;
+  }
+#googleLogInBtn{
+    clear: both;
+    display: block;
+    margin: 0 auto;
+    background-color: rgb(221, 75, 57);
+    color: whitesmoke;
+    width: 20%;
+    margin-bottom: 100px;
+  }
+#googleLogInBtn:hover{
+    background-color: rgb(187, 55, 37);
+    text-decoration: none;
+  }
+/* ---------------------------*/
+/* Form  Flexbox*/
+.flexBox{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.RegisterForm{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+    background-color: #eceff3;
+}
+.loginForm{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+    background-color: #eceff3; 
+}
+/* ---------------------------*/
+/* Nav Links  */
+.favoritesLink{
+    margin-top: 7px;
+    padding: 10px;
+    color: whitesmoke;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 18px;
+}
+.favoritesLink:hover{
+    background-color: #202224;
+    color: whitesmoke;
+    text-decoration: none;
+}
+.avatarDropdown{
+    position: relative;
+    float: right;
+    left: 350px;
+    top: 0;
+    right: 0;
+}
+#avatar{
+    border-radius: 50%;
+    height: 35px;
+    width: 30px;
+}
+.homeLink{
+    margin-top: 6px;
+}
+.dropdown-toggle::after{
+    display: none;
+}
+.projectsDropdown{
+    position: relative;
+    display: inline-block;
+}
+.dropBtn{
+    background-color: #373c42;
+    color: whitesmoke;
+    padding: 10px;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 18px;
+    border: none;
+}
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: whitesmoke;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-content .dropLinks{
+    color: black;
+    padding: 12px;
+    text-decoration: none;
+    display: block;
+}
+.projectsDropdown:hover .dropBtn{
+    background-color: #202224;
+}
+.projectsDropdown:hover .dropdown-content{
+    display: block;
+}
+.dropdown-content .dropLinks:hover{
+    background-color: #dddddd;
+}
+/* ---------------------------*/
+/* Projects Page */
+#addProject, #saveProject {
+    color: whitesmoke;
+    background-color: #18a0ac;
+    border-radius: 4px;
+    border: none;
+    padding: 5px 10px;
+    float: right;
+    font-size: 20px;
+}
+#addProject:hover, #saveProject:hover {
+    font-size: 21px;
+}
+#imgLabel, #uploadImage {
+    margin-left: 20px;
+}
+.project-info {
+    position: relative;
+    background-color: whitesmoke;
+    width: 75%;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #343a40;
+    border-radius: 4px;
+    list-style-type: none;
+    overflow: hidden
+}
+.update-btn {
+    position: absolute;
+    margin: 3px;
+    left: 82%;
+}
+.delete-btn {
+    position: absolute;
+    margin: 3px;
+    left: 90%;
+}
+#display-image{
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+#back-anchor{
+    clear: both;
+    float: right;
+}
+#favorites-btn{
+    float: right;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    transition: transform .2s;
+}
+#favorites-btn:hover{
+    transform: scale(1.2);
+}
+.table{
+    border: 1px solid rgba(63, 59, 59, 0.658);
+    border-radius: 5px;
+    background-color: whitesmoke;
+    padding: 5px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+th.title{
+    width: 13%
+} 
+th.link{
+    width: 12%
+}
+.edit-profile{
+    width: 50%;
+    background-color: #eceff3;
+    border: 1px solid rgba(63, 59, 59, 0.658);
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    margin: 0 auto;
+    margin-top: 100px;
+
+}
+#inputName{
+    margin-bottom: 10px;
+}
+#photo_image{
+    margin-bottom: 10px;
+}
+.project-image{
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.commentForm{
+    margin: 0 auto;
+}
+.commentBox{
+    position: relative;
+    margin : 0 auto;
+    margin-top: 10px;
+    background-color: #eceff3;
+    border: 1px solid rgba(63, 59, 59, 0.658);
+    border-radius: 5px;
+    padding: 10px;
+    width: 80%;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+.comment-textbox{
+    width: 60%;
+    margin-left: 20%;
+    border-radius: 5px;
+}
+.commentList{
+    margin-top: 20px;
+    height: 500px;
+    overflow-y: scroll;
+}
+.author-name{
+    font-weight: 800;
+    margin: 0 5px 0 3px;
+}
+/* --------------*/
+
+/* Media Queries */
+@media screen and (max-width: 1260px) {
+    /* Navbar */
+    .avatarDropdown {
+        position: relative;
+        left: 340px;
+    }
+     /* Login Page */
+     #gitHubLoginBtn, #googleLogInBtn {
+        width: 150px;
+    }
+     /* Homepage */
+     #topFive{
+        position: relative;
+        width: 96%;
+    }
+    /* Your Projects Page */
+    .update-btn {
+        position: absolute;
+        margin: 3px;
+        left: 80%;
+    }
+    .delete-btn {
+        position: absolute;
+        margin: 3px;
+        left: 90%;
+    }
+}
+@media screen and (max-width: 1230px) {
+    /* Navbar */
+    .avatarDropdown {
+        left: 320px;
+    }
+     /* Homepage */
+     #topFive{
+        position: relative;
+        width: 96%;
+    }
+}
+@media screen and (max-width: 1130px) {
+    /* Navbar */
+    .avatarDropdown {
+        left: 320px;
+    }
+    /* Homepage */
+    #topFive{
+        position: relative;
+        width: 96%;
+    }
+    /* Projects Page */
+    .update-btn {
+        left: 78%;
+    }
+    .delete-btn {
+        left: 89%;
+    }
+}
+@media screen and (max-width: 960px) {
+    body {
+        padding-top: 100px;
+        overflow-x: hidden;
+    }
+     /* NavBar */
+     .align-top {
+        width: 70px;
+        height: 50px;
+    }
+    .navbar-brand {
+        position: relative;
+        font-size: 30px;
+        bottom: 20px;
+    }
+    .homeLink {
+        font-size: 30px;
+    }
+     .navbar {
+        height: 150px;
+    }
+    footer {
+        z-index: 1;
+    }
+    /* Login Page */
+    #gitHubLoginBtn, #googleLogInBtn {
+        width: 150px;
+    }
+    /* HomePage Navbar */
+    .search-container {
+        position: relative;
+        top: 0px;
+        right: 30px;
+    }
+    .searchBar-title {
+        opacity: 0;
+    }
+    .avatarDropdown {
+        left: 315px;
+    }
+    /* Homepage */
+    .jumbotron {
+        position: relative;
+        top: 50px;
+    }
+    .subTitle {
+        position: relative;
+        left: 270px;
+    }
+    .topFive {
+        position: relative;
+        right: 20px;
+    }
+    .subTitle{
+        position: relative;
+        top: 20px;
+    }
+    .topFive{
+        position: relative;
+        top: 30px;
+    }
+    .sublead{
+        margin-top: 20px;
+        margin-bottom: 5px;
+    }
+    #favorites-btn, .donateBtn{
+        display: block;
+        position: relative;
+        bottom: 18px;
+    }
+    .project-image{
+        position: relative;
+        width: 96%;
+    }
+    /* Your Projects Page */
+    .project-info {
+        position: relative;
+        width: 650px;
+        right: 30px;
+    }
+    .update-btn {
+        left: 80%;
+    }
+    .delete-btn {
+        left: 90%;
+    }
+    #addProject {
+        position: relative;
+        bottom: 50px;
+    }
+    /* All Projects */
+    #allProjects {
+        width: 800px;
+    }
+    /* Favorites Page */
+    .favorites-container {
+        position: relative;
+        top: 30px;
+    }
+    #deleteLogo {
+        position: relative;
+        top: 20px;
+    }
+}
+@media screen and (max-width: 938px) {
+    /* Navbar */
+    .navbar-brand {
+        position: relative;
+        font-size: 30px;
+        bottom: 10px;
+        margin-right: 30px;
+    }
+    /* Homepage Navbar */
+    .search-container {
+        position: absolute;
+        top: 40px;
+        right: 320px;
+    }
+    .avatarDropdown {
+        left: 90px;
+        margin-bottom: 50px;
+    }
+    #avatar {
+        height: 40px;
+        width: 35px;
+    }
+    /* Homepage */
+    .subTitle {
+        left: 240px;
+    }
+}
+@media screen and (max-width: 844px) {
+    /* Navbar */
+    .navbar-brand {
+        position: relative;
+        font-size: 30px;
+        bottom: 10px;
+        margin-right: 30px;
+    }
+    /* Homepage Navbar */
+    .search-container {
+        right: 280px;
+    }
+    /* Homepage */
+    .subTitle {
+        left: 210px;
+    }
+    .topFive {
+        position: relative;
+        right: 50px;
+        width: 700px;
+    }
+    /* Your Projects Page */
+    .project-info {
+        position: relative;
+        width: 650px;
+        right: 40px;
+    }
+    .update-btn {
+        left: 78%;
+    }
+    .delete-btn {
+        left: 89%;
+    }
+}
+@media screen and (max-width: 791px) {
+     /* NavBar */
+     .align-top {
+        width: 70px;
+        height: 50px;
+    }
+    .navbar-brand {
+        position: relative;
+        font-size: 30px;
+        bottom: 10px;
+        margin-right: 30px;
+    }
+    .homeLink {
+        font-size: 30px;
+    }
+    /* Homepage Navbar */
+    .search-container {
+        top: 50px;
+        right: 250px;
+    }
+    /* Homepage */
+    .subTitle {
+        left: 200px;
+    }
+    .topFive {
+        position: relative;
+        right: 50px;
+        width: 600px;
+    }
+      /* Favorites Page */
+      .favorites-container {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 710px) {
+    body {
+        overflow-x: hidden;
+    }
+     /* Login Page */
+     .signupContainer {
+         width: 650px;
+         position: relative;
+         top: 600px;
+     }
+     .loginForm, .loginTitle {
+        width: 417px;
+        position: relative;
+        right: 570px;
+    }
+    #gitHubLoginBtn, #googleLogInBtn, .GitGoogleTitle {
+        position: relative;
+        top: 10px;
+        right: 530px;
+    }
+     /* Homepage Navbar */
+    .search-container {
+        right: 150px;
+        top: 40px;
+    }
+    /*Homepage */
+    .subTitle {
+        left: 160px;
+    }
+    .topFive {
+        position: relative;
+        right: 60px;
+        width: 600px;
+    }
+     /* Your Projects Page */
+     .project-info {
+        position: relative;
+        width: 600px;
+        right: 70px;
+    }
+    .update-btn {
+        left: 76%;
+    }
+    .delete-btn {
+        left: 88%;
+    }
+    .comment-textbox{
+        margin-left: 15%
+    }
+    .commentBox{
+        width: 100%;
+    }
+    #allProjects {
+        width: 600px;
+    }
+}
+@media screen and (max-width: 682px) {
+    /* Homepage Navbar */
+    .avatarDropdown {
+        position: absolute;
+        left: 490px;
+    }
+}
+@media screen and (max-width: 672px) {
+     /* NavBar */
+    .navbar-brand {
+        font-size: 30px;
+        bottom: 20px;
+        margin-right: 30px;
+        position: relative;
+        right: 30px;
+    }
+    /* Homepage Navbar */
+    .avatarDropdown {
+        left: 480px;
+    }
+    .search-container {
+        right: 150px;
+        top: 30px;
+    }
+     .favoritesLink, .projectsDropdown {
+        position: relative;
+        bottom: 30px;
+        right: 40px;
+    }
+     /* Homepage */
+     .subTitle {
+        left: 150px;
+    }
+     /* Your Projects Page */
+     .project-info {
+        width: 550px;
+        right: 80px;
+    }
+    .update-btn {
+        left: 74%;
+    }
+    .delete-btn {
+        left: 87%;
+    }
+}
+@media screen and (max-width: 656px) {
+    /* Homepage Navbar */
+    .avatarDropdown {
+        left: 460px;
+    }
+    .projectsDropdown {
+        position: relative;
+        bottom: 20px;
+        right: 40px;
+    }
+}
+@media screen and (max-width: 642px) {
+     /* Navbar */
+     .navbar-brand {
+        font-size: 30px;
+        bottom: 10px;
+        margin-right: 30px;
+        position: relative;
+        right: 30px;
+        bottom: 20px;
+    }
+    /* Homepage Navbar */
+    .favoritesLink {
+        bottom: 20px;
+    }
+      /*Homepage */
+      .subTitle {
+        left: 140px;
+    }
+    .topFive {
+        position: relative;
+        right: 80px;
+        width: 600px;
+    }
+}
+@media screen and (max-width: 620px) {
+     /* Homepage Navbar */
+     .avatarDropdown {
+        left: 440px;
+    }
+    /* Your Projects Page */
+    #addProject {
+       left: 10px;
+    }
+}
+@media screen and (max-width: 596px) {
+    /* Homepage Navbar */
+    .avatarDropdown {
+        left: 400px;
+    }
+    .favoritesLink {
+        top: 10px;
+        right: 160px;
+    }
+    .projectsDropdown {
+        position: relative;
+        bottom: 40px;
+        left: 200px;
+    }
+    .search-container {
+        right: 150px;
+        top: 50px;
+    }
+     /* Your Projects Page */
+     .project-info {
+        width: 500px;
+        right: 70px;
+    }
+    .update-btn {
+        left: 72%;
+    }
+    .delete-btn {
+        left: 86%;
+    }
+}
+@media screen and (max-width: 565px) {
+    /* Homepage Navbar */
+    .avatarDropdown {
+        left: 380px;
+    }
+    /*Homepage */
+    .subTitle {
+        left: 120px;
+    }
+    .topFive {
+        position: relative;
+        right: 100px;
+        width: 600px;
+    }
+    .edit-profile{
+        width:90%
+    }
+      /* Your Projects Page */
+      #addProject {
+        left: 40px;
+     }
+}
+
+@media screen and (max-width: 512px) {
+    /* Homepage navbar */
+    .avatarDropdown {
+        left: 340px;
+    }
+     /* Your Projects Page */
+     .project-info {
+        width: 450px;
+        right: 80px;
+    }
+    .update-btn {
+        left: 70%;
+    }
+    .delete-btn {
+        left: 85%;
+    }
+      /* Your Projects Page */
+      #addProject {
+        left: 30px;
+     }
+}
+@media screen and (max-width: 499px) {
+    /* NavBar */
+    .navbar {
+        height: 150px;
+    }
+    /* Homepage Navbar */
+    .favoritesLink {
+        right: 180px;
+    }
+    .projectsDropdown {
+        position: relative;
+        bottom: 40px;
+        left: 180px;
+    } 
+    .search-container {
+        right: 130px;
+        top: 50px;
+        width: 250px;
+    }
+    #search-btn {
+        position: absolute;
+        left: 210px;
+    }
+      /* Login Page */
+      .signupContainer {
+        right: 80px;
+    }
+    .loginForm, .loginTitle {
+       right: 660px;
+   }
+   #gitHubLoginBtn, #googleLogInBtn, .GitGoogleTitle {
+       right: 610px;
+   }
+  
+    /* Homepage */
+    .subTitle {
+        left: 80px;
+    }
+    .topFive {
+        position: relative;
+        right: 110px;
+        width: 550px;
+    }
+} 
+@media screen and (max-width: 491px) {
+    /* Homepage NavBar */
+    .avatarDropdown {
+        left: 300px;
+    }
+    .favoritesLink {
+        bottom: 50px;
+        right: 160px;
+    }
+    .projectsDropdown {
+        position: relative;
+        bottom: 40px;
+        left: 190px;
+    } 
+    .search-container {
+        right: 120px;
+        top: 50px;
+    }
+    /* Your Projects Page */
+    .project-info {
+        width: 450px;
+        right: 90px;
+    }
+    .update-btn {
+        top: 89%;
+        left: 69%;
+    }
+    .delete-btn {
+        top: 89%;
+        left: 85%;
+    }
+}
+@media screen and (max-width: 475px) {
+     /* Navbar */
+     .navbar-brand {
+        font-size: 30px;
+        bottom: 10px;
+        margin-right: 30px;
+        position: relative;
+        right: 30px;
+        bottom: 35px;
+    }
+    /* Homepage Navbar */
+    .favoritesLink {
+        position: absolute;
+        bottom: 30px;
+        right: 180px;
+    }
+    .projectsDropdown {
+        position: absolute;
+        bottom: 3px;
+        left: 180px;
+    } 
+    .search-container {
+        top: 35px;
+    }
+     /* Your Projects Page */
+     .project-info {
+        width: 400px;
+        right: 70px;
+    }
+    .update-btn {
+        left: 66%;
+    }
+    .delete-btn {
+        left: 83%;
+    }
+    #addProject {
+        left: 20px;
+    }
+}
+@media screen and (max-width: 430px) {
+    /* Homepage Navbar */
+    .favoritesLink {
+        right: 140px;
+    }
+    .projectsDropdown {
+        position: absolute;
+        bottom: 3px;
+        left: 180px;
+    } 
+    .search-container {
+        right: 80px;
+    }
+    .avatarDropdown {
+        left: 270px;
+    }
+     /* Homepage */
+     .subTitle {
+        left: 60px;
+    }
+    .topFive {
+        width: 450px;
+        right: 85px;
+    }
+     /* Your Projects Page */
+     .project-info {
+        width: 370px;
+        right: 70px;
+    }
+    .update-btn {
+        top: 87%;
+        left: 62%;
+    }
+    .delete-btn {
+        top: 87%;
+        left: 81%;
+    }
+}
+@media screen and (max-width: 400px) {
+   /* Login Page */
+
+    .signupContainer {
+        width: 500px;
+        top: 600px;
+        right: 60px;
+    }
+    .loginForm, .loginTitle {
+        width: 317px;
+        right: 500px;
+    }
+    #gitHubLoginBtn, #googleLogInBtn, .GitGoogleTitle {
+        top: 10px;
+        right: 470px;
+    }
+     /* Homepage Navbar */
+     .favoritesLink {
+        right: 130px;
+    }
+    .projectsDropdown {
+        position: absolute;
+        bottom: 3px;
+        left: 150px;
+    } 
+    .search-container {
+        right: 50px;
+    }
+    .avatarDropdown {
+        left: 250px;
+    }
+    #avatar {
+        width: 50px;
+        height: 50px;
+    }
+    /* Homepage */
+    .subTitle {
+        left: 50px;
+    }
+    .topFive {
+        width: 420px;
+        right: 80px;
+    }
+     /* Your Projects Page */
+     .project-info {
+        width: 340px;
+        right: 70px;
+    }
+    .update-btn {
+        left: 59%;
+    }
+    .delete-btn {
+        left: 80%;
+    }
+}
+/*---------------*/
